@@ -1,0 +1,1027 @@
+/* ==========================================
+   ZED.DEV DESIGN SYSTEM DEMO
+   Accurate recreation of zed.dev background elements
+   ========================================== */
+
+/* CSS Variables - Exact Zed Color Palette */
+:root {
+    /* Cream colors */
+    --color-cream-50: #f5f4ef;
+    --color-cream-100: #e8e6d9;
+    --color-cream-200: #d9d5bf;
+
+    /* Blue colors */
+    --color-blue-50: #eff6ff;
+    --color-blue-100: #dbeafe;
+    --color-blue-200: #bedbff;
+    --color-blue-300: #90c5ff;
+    --color-blue-400: #54a2ff;
+    --color-blue-500: #3080ff;
+
+    /* Accent blue */
+    --color-accent-blue: #0751cf;
+
+    /* Off-grays */
+    --color-offgray-50: #f1f2f4;
+    --color-offgray-100: #dddfe4;
+    --color-offgray-200: #c6cad2;
+    --color-offgray-300: #b8bdc7;
+
+    /* Gray */
+    --color-gray-300: #d1d5dc;
+    --color-gray-50: #f9fafb;
+
+    /* Nav background */
+    --nav-bg-color: #f7f7f2;
+
+    /* Shadow system - exact from zed.dev */
+    --sh-default: 6px 6px 0 rgba(7, 77, 207, 0.06), -6px -6px 0 rgba(7, 77, 207, 0.06);
+    --sh-alt: 6px 6px 0 rgba(7, 77, 207, 0.06);
+    --sh-alt-opposite: -6px -6px 0 rgba(7, 77, 207, 0.06);
+
+    /* Border colors */
+    --grid-border-color: rgba(190, 219, 255, 0.5);
+    --default-border-color: rgba(198, 202, 210, 0.5);
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #5a6372; /* offgray-700 */
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* Exact cream background: cream-100 at 20% opacity */
+    background-color: rgba(232, 230, 217, 0.2);
+}
+
+/* Noise Texture Overlay on Body */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('_next/static/media/noise.0e24d0e5.png');
+    background-size: 180px;
+    background-repeat: repeat;
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Main Container with Side Borders (grid-border-color) */
+.main-container {
+    position: relative;
+    min-height: 100vh;
+    margin: 0 48px;
+    border-left: 1px solid var(--grid-border-color);
+    border-right: 1px solid var(--grid-border-color);
+    z-index: 2;
+}
+
+/* ==========================================
+   HEADER / NAV BAR
+   ========================================== */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    height: 57px;
+    background-color: var(--nav-bg-color);
+    border-bottom: 1px solid var(--grid-border-color);
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.header-inner {
+    position: relative;
+    width: 100%;
+    max-width: 1148px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Nav corner squares */
+.header::before,
+.header::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+    border-radius: 1px;
+    border: 1px solid var(--color-blue-200);
+    background: white;
+    z-index: 10;
+    bottom: -4.5px;
+}
+
+.header::before {
+    left: -4.5px;
+}
+
+.header::after {
+    right: -4.5px;
+}
+
+/* ==========================================
+   HERO SECTION WITH BLUE GRID
+   ========================================== */
+
+.hero-section {
+    position: relative;
+    padding: 80px 24px 192px;
+    /* Gradient: from-blue-100/20 to transparent going upward */
+    background: linear-gradient(to top, rgba(219, 234, 254, 0.2), transparent);
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 3;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 400;
+    font-family: Georgia, 'Times New Roman', serif; /* Lora-like */
+    color: var(--color-accent-blue);
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+    color: #5a6372;
+    letter-spacing: -0.01em;
+}
+
+.hero-content ul {
+    list-style: none;
+    text-align: left;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.hero-content li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.hero-content li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent-blue);
+}
+
+/* Blue Grid Pattern SVG - LIGHT BLUE LINES */
+.hero-grid {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    /* Light blue color like blue-200/blue-300 */
+    color: var(--color-blue-200);
+    fill: var(--color-blue-200);
+    stroke: var(--color-blue-200);
+    /* Gradient mask fading to top */
+    mask-image: linear-gradient(to top, rgba(255, 255, 255, 0.68), transparent);
+    -webkit-mask-image: linear-gradient(to top, rgba(255, 255, 255, 0.68), transparent);
+    opacity: 0.5;
+    z-index: -1;
+}
+
+/* ==========================================
+   DIVIDER WITH CORNER SQUARES
+   ========================================== */
+
+.divider {
+    position: relative;
+    height: 1px;
+    /* Full-width line that extends beyond container */
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100vw;
+    width: 200vw;
+    height: 1px;
+    background-color: rgba(190, 219, 255, 0.5);
+}
+
+.corner-square {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+    border-radius: 1px;
+    border: 1px solid var(--color-blue-200);
+    background: white;
+    z-index: 10;
+}
+
+.corner-left {
+    top: -3.5px;
+    left: -4.5px;
+}
+
+.corner-right {
+    top: -3.5px;
+    right: -4.5px;
+}
+
+/* ==========================================
+   MAIN CARD - sh-default style
+   Large card with blue offset shadows
+   ========================================== */
+
+.card-section {
+    padding: 64px 24px;
+    /* Pull up into hero for overlap effect */
+    margin-top: -128px;
+}
+
+.card-main {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0;
+    /* Exact styling from zed: bg-gray-50/80 border-gray-300/90 */
+    background-color: rgba(249, 250, 251, 0.8);
+    border: 1px solid rgba(209, 213, 220, 0.9);
+    border-radius: 4px;
+    overflow: hidden;
+    /* sh-default shadow */
+    box-shadow: var(--sh-default);
+}
+
+/* Noise texture on card */
+.card-main::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('_next/static/media/noise.0e24d0e5.png');
+    background-size: 180px;
+    background-repeat: repeat;
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.card-main-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Feature row inside main card - grid-border-color dividers */
+.feature-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--grid-border-color);
+}
+
+.feature-row > div {
+    padding: 16px;
+    border-right: 1px solid var(--grid-border-color);
+}
+
+.feature-row > div:last-child {
+    border-right: none;
+}
+
+.feature-row h3 {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #22252b;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.feature-row p {
+    font-size: 0.8125rem;
+    color: #5a6372;
+    line-height: 1.5;
+}
+
+/* Inner image/content area */
+.card-inner {
+    padding: 10px;
+    background-color: rgba(249, 250, 251, 0.2);
+}
+
+.card-image-placeholder {
+    background: linear-gradient(to bottom, var(--color-cream-50), var(--color-blue-50));
+    border: 1px solid var(--default-border-color);
+    border-radius: 2px;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #98a0ae;
+    font-size: 0.875rem;
+}
+
+/* ==========================================
+   SMALLER CARDS WITH sh-alt SHADOW
+   Blog/media card style
+   ========================================== */
+
+.cards-grid-section {
+    padding: 48px 24px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.card-alt {
+    position: relative;
+    padding: 10px;
+    /* default-border-color: offgray-200/50 */
+    border: 1px solid var(--default-border-color);
+    border-radius: 4px;
+    /* bg-white/60 */
+    background-color: rgba(255, 255, 255, 0.6);
+    /* sh-alt shadow - offset to bottom-right */
+    box-shadow: 6px 6px 0 hsla(219, 93%, 42%, 0.06);
+    transition: all 0.1s ease;
+    overflow: hidden;
+}
+
+.card-alt:hover {
+    border-color: var(--color-blue-300);
+    /* Hover: shadow on both sides */
+    box-shadow:
+        6px 6px 0 hsla(219, 100%, 40%, 0.06),
+        -6px -6px 0 hsla(219, 100%, 40%, 0.06);
+}
+
+.card-alt-image {
+    aspect-ratio: 16/9;
+    background: var(--color-cream-50);
+    border: 1px solid var(--default-border-color);
+    border-radius: 2px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #98a0ae;
+    font-size: 0.875rem;
+    /* Inner shadow like original */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.card-alt-content {
+    padding: 8px 4px;
+}
+
+.card-alt-content h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #22252b;
+    margin-bottom: 4px;
+}
+
+.card-alt-content p {
+    font-size: 0.8125rem;
+    color: #5a6372;
+}
+
+/* ==========================================
+   SQUARE GRADIENT BACKGROUND CARD
+   Used for CTA sections
+   ========================================== */
+
+.square-gradient-section {
+    padding: 48px 24px;
+}
+
+.square-gradient-card {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px;
+    /* square-gradient-bg: border blue-200/80, gradient from blue-200/5 to blue-50/10 */
+    border: 1px solid rgba(190, 219, 255, 0.8);
+    border-radius: 4px;
+    background: linear-gradient(to bottom,
+        rgba(190, 219, 255, 0.05),
+        rgba(239, 246, 255, 0.1)
+    );
+    text-align: center;
+}
+
+.square-gradient-card h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--color-accent-blue);
+    margin-bottom: 12px;
+}
+
+.square-gradient-card p {
+    font-size: 1rem;
+    color: #5a6372;
+    margin-bottom: 24px;
+}
+
+/* ==========================================
+   BUTTONS - Exact zed styling
+   ========================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 12px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--color-accent-blue);
+    color: white;
+    border: 1px solid transparent;
+    /* Primary button shadow */
+    box-shadow:
+        hsl(219, 93%, 30%) 0 -2px 0 0 inset,
+        hsl(219, 93%, 95%) 0 1px 3px 0;
+}
+
+.btn-primary:hover {
+    background-color: hsl(219, 93%, 35%);
+    box-shadow: none;
+}
+
+.btn-secondary {
+    background-color: rgba(241, 242, 244, 0.6);
+    color: #22252b;
+    border: 1px solid rgba(198, 202, 210, 0.5);
+    /* Secondary button shadow */
+    box-shadow: hsl(218, 13%, 50%, 0.1) 0 -2px 0 0 inset;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(221, 223, 228, 0.5);
+    box-shadow: none;
+}
+
+/* ==========================================
+   SMALL INTERACTIVE CARDS
+   Like the extension/feature cards
+   ========================================== */
+
+.small-cards-section {
+    padding: 48px 24px;
+}
+
+.small-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.small-card {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--color-offgray-100);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    /* Inset shadow */
+    box-shadow: hsl(218, 13%, 50%, 0.1) 0 -2px 0 0 inset;
+}
+
+.small-card:hover {
+    border-color: var(--color-blue-300);
+    box-shadow: var(--sh-alt);
+}
+
+.small-card h4 {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #22252b;
+    margin-bottom: 2px;
+}
+
+.small-card p {
+    font-size: 0.75rem;
+    color: #6c7689;
+}
+
+/* ==========================================
+   SECTION HEADERS
+   ========================================== */
+
+.section-header {
+    max-width: 1100px;
+    margin: 0 auto 32px;
+    padding: 0 24px;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-accent-blue);
+    margin-bottom: 8px;
+}
+
+.section-header p {
+    font-size: 1rem;
+    color: #5a6372;
+}
+
+/* ==========================================
+   MAIN FEATURED TESTIMONIAL
+   With grid background overlay (like Anthropic/Ethan Perez quote)
+   ========================================== */
+
+.featured-testimonial-section {
+    padding: 48px 24px;
+}
+
+.featured-testimonial {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 24px;
+    border-radius: 4px;
+    /* square-gradient-bg: border + gradient background */
+    border: 1px solid rgba(190, 219, 255, 0.8);
+    background: linear-gradient(to bottom,
+        rgba(190, 219, 255, 0.05),
+        rgba(239, 246, 255, 0.1)
+    );
+    /* sh-alt shadow */
+    box-shadow: 6px 6px 0 hsla(219, 93%, 42%, 0.06);
+    overflow: hidden;
+}
+
+.featured-testimonial-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Company logo at top */
+.featured-testimonial-logo {
+    height: 24px;
+    width: auto;
+    color: #22252b;
+}
+
+/* Quote with highlighted text */
+.featured-testimonial-quote {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: #22252b;
+    position: relative;
+}
+
+.featured-testimonial-quote::before {
+    content: '"';
+    position: absolute;
+    right: 100%;
+    top: 0;
+}
+
+.featured-testimonial-quote::after {
+    content: '"';
+}
+
+.featured-testimonial-quote .highlight {
+    background-color: rgba(84, 162, 255, 0.2);
+    border-radius: 2px;
+    padding: 0 2px;
+}
+
+/* Author section */
+.featured-testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.featured-testimonial-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    padding: 2px;
+    background-color: var(--color-blue-100);
+    outline: 1px solid var(--color-blue-300);
+}
+
+.featured-testimonial-avatar img,
+.featured-testimonial-avatar .avatar-placeholder {
+    width: 32px;
+    height: 32px;
+    border-radius: 2px;
+    background: linear-gradient(135deg, var(--color-blue-200), var(--color-blue-400));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.featured-testimonial-author-info h4 {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #22252b;
+    font-family: Georgia, 'Times New Roman', serif;
+    margin-bottom: 2px;
+}
+
+.featured-testimonial-author-info p {
+    font-size: 0.6875rem;
+    color: #6c7689;
+}
+
+/* GRID BACKGROUND OVERLAY - This is the key element! */
+.featured-testimonial-grid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    /* Light blue grid color like hero */
+    fill: rgba(48, 128, 255, 0.5);
+    stroke: rgba(48, 128, 255, 0.5);
+    opacity: 0.2;
+}
+
+/* ==========================================
+   SMALLER TESTIMONIAL CARDS
+   Simple quote cards in a grid
+   ========================================== */
+
+.testimonials-section {
+    padding: 48px 24px;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.testimonial-card {
+    position: relative;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    /* Bottom border and right border for grid effect */
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.testimonial-card:nth-child(odd) {
+    border-right: 1px solid rgba(128, 128, 128, 0.2);
+    padding-right: 24px;
+}
+
+.testimonial-card:nth-child(even) {
+    padding-left: 24px;
+}
+
+/* Remove bottom border from last row */
+.testimonial-card:nth-last-child(-n+2) {
+    border-bottom: none;
+}
+
+.testimonial-quote {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #5a6372;
+    position: relative;
+}
+
+.testimonial-quote::before {
+    content: '"';
+    position: absolute;
+    right: 100%;
+    top: 0;
+}
+
+.testimonial-quote::after {
+    content: '"';
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.testimonial-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    padding: 2px;
+    background-color: var(--color-blue-100);
+    outline: 1px solid var(--color-blue-300);
+}
+
+.testimonial-avatar .avatar-placeholder {
+    width: 32px;
+    height: 32px;
+    border-radius: 2px;
+    background: linear-gradient(135deg, var(--color-blue-200), var(--color-blue-400));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+.testimonial-author-info {
+    flex: 1;
+}
+
+.testimonial-author-info h4 {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #22252b;
+    font-family: Georgia, 'Times New Roman', serif;
+    margin-bottom: 2px;
+}
+
+.testimonial-author-info p {
+    font-size: 0.6875rem;
+    color: #6c7689;
+}
+
+.testimonial-company-logo {
+    margin-left: auto;
+    height: 16px;
+    width: auto;
+    color: #5a6372;
+}
+
+/* ==========================================
+   LETTER FROM THE TEAM
+   With REPEATING LOGO GRID background
+   Matches zed.dev popover-bg style with logo pattern
+   ========================================== */
+
+.letter-section {
+    padding: 48px 24px;
+}
+
+.letter-card {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px 24px 24px 24px;
+    border-radius: 2px;
+    /* popover-bg styling */
+    background-color: rgba(249, 250, 251, 0.85);
+    border: 1px solid var(--color-offgray-100);
+    /* Flex layout: content on left, badge on right */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    overflow: hidden;
+}
+
+/* Logo grid background - CSS background-image with repeat */
+.letter-logo-background {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    /* Repeating logo pattern */
+    background-image: url('_next/static/media/logo_blue_no_gradient_padded.5a5468ff.svg');
+    background-repeat: repeat;
+    background-size: 32px;
+    /* 5% opacity like original */
+    opacity: 0.05;
+    /* Gradient mask fading to bottom */
+    mask-image: linear-gradient(to bottom, #fff, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, #fff, transparent);
+}
+
+.letter-content {
+    position: relative;
+    z-index: 2;
+    max-width: 580px;
+    text-align: left;
+}
+
+.letter-header {
+    margin-bottom: 16px;
+}
+
+.letter-label {
+    font-size: 0.8125rem;
+    color: #6c7689;
+    margin-bottom: 4px;
+}
+
+.letter-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: var(--color-accent-blue);
+}
+
+.letter-body {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: #5a6372;
+}
+
+.letter-body p {
+    margin-bottom: 1rem;
+}
+
+.letter-body p:last-child {
+    margin-bottom: 0;
+}
+
+.letter-body hr {
+    width: 100px;
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.letter-signature {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.letter-signature-avatars {
+    display: flex;
+    align-items: center;
+}
+
+.letter-signature-avatars .avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-blue-200), var(--color-blue-400));
+    border: 2px solid white;
+    margin-left: -6px;
+}
+
+.letter-signature-avatars .avatar:first-child {
+    margin-left: 0;
+}
+
+.letter-signature p {
+    font-size: 0.875rem;
+    color: #5a6372;
+    font-weight: 500;
+}
+
+/* Spinning badge on the right side */
+.letter-badge {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    color: var(--color-accent-blue);
+    animation: spin 20s linear infinite;
+}
+
+.letter-badge-svg {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 640px) {
+    .letter-card {
+        flex-direction: column-reverse;
+        align-items: center;
+        text-align: center;
+    }
+
+    .letter-content {
+        text-align: center;
+    }
+
+    .letter-body hr {
+        margin: 20px auto;
+    }
+
+    .letter-signature {
+        justify-content: center;
+    }
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 1024px) {
+    .main-container {
+        margin: 0 32px;
+    }
+
+    .feature-row {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-row > div {
+        border-right: none;
+        border-bottom: 1px solid var(--grid-border-color);
+    }
+
+    .feature-row > div:last-child {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        margin: 0 24px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section {
+        padding: 60px 16px 160px;
+    }
+
+    .card-section {
+        margin-top: -100px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        margin: 0 12px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .small-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zed Design System Demo</title>
+    <link rel="stylesheet" href="index2.css">
+</head>
+<body>
+    <!-- Main container with side borders -->
+    <div class="main-container">
+
+        <!-- Header with sticky nav -->
+        <header class="header">
+            <div class="header-inner">
+                <div style="font-weight: 600; color: #22252b;">Zed Design Demo</div>
+                <div style="display: flex; gap: 8px;">
+                    <a href="#" class="btn btn-secondary">Sign up</a>
+                    <a href="#" class="btn btn-primary">Download</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero section with blue grid background -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Love your editor again</h1>
+                <p>This demo showcases the Zed.dev design elements including the cream background with noise, blue grid pattern, and component shadows.</p>
+                <div style="display: flex; gap: 12px; justify-content: center; margin-top: 24px;">
+                    <a href="#" class="btn btn-primary">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                        </svg>
+                        Download now
+                    </a>
+                    <a href="#" class="btn btn-secondary">Clone source</a>
+                </div>
+            </div>
+
+            <!-- Blue grid SVG pattern - LIGHT BLUE -->
+            <svg class="hero-grid" aria-hidden="true">
+                <defs>
+                    <pattern id="grid-pattern" width="12" height="12" patternUnits="userSpaceOnUse" x="-1" y="-1">
+                        <path d="M.5 12V.5H12" fill="none" stroke-width="1"></path>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" stroke-width="0" fill="url(#grid-pattern)"></rect>
+            </svg>
+        </section>
+
+        <!-- Main card with sh-default shadow (overlapping hero) -->
+        <section class="card-section">
+            <div class="card-main">
+                <div class="card-main-content">
+                    <!-- Feature row with dividers -->
+                    <div class="feature-row">
+                        <div>
+                            <h3>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15.6 2.7a10 10 0 1 0 5.7 5.7"/><circle cx="12" cy="12" r="2"/><path d="M13.4 10.6 19 5"/>
+                                </svg>
+                                Fast
+                            </h3>
+                            <p>Written from scratch in Rust to efficiently leverage multiple CPU cores and your GPU.</p>
+                        </div>
+                        <div>
+                            <h3>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
+                                    <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>
+                                </svg>
+                                Intelligent
+                            </h3>
+                            <p>Integrate LLMs into your workflow to generate, transform, and analyze code.</p>
+                        </div>
+                        <div>
+                            <h3>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/>
+                                </svg>
+                                Collaborative
+                            </h3>
+                            <p>Chat with teammates, write notes together, and share your screen and project.</p>
+                        </div>
+                    </div>
+
+                    <!-- Inner content area -->
+                    <div class="card-inner">
+                        <div class="card-image-placeholder">
+                            [App Screenshot Placeholder]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider with corner squares -->
+        <div class="divider">
+            <div class="corner-square corner-left"></div>
+            <div class="corner-square corner-right"></div>
+        </div>
+
+        <!-- Cards with sh-alt shadow (blog/media style) -->
+        <section class="cards-grid-section">
+            <div class="section-header">
+                <h2>Cards with sh-alt Shadow</h2>
+                <p>These cards have the blue offset shadow that expands on hover.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card-alt">
+                    <div class="card-alt-image">[Image]</div>
+                    <div class="card-alt-content">
+                        <h3>Zed AI — Edit Code in Natural Language</h3>
+                        <p>Use Claude to generate and transform code across your entire project.</p>
+                    </div>
+                </div>
+
+                <div class="card-alt">
+                    <div class="card-alt-image">[Image]</div>
+                    <div class="card-alt-content">
+                        <h3>Channels — Real-time Collaboration</h3>
+                        <p>Share your screen, voice chat, and edit code together seamlessly.</p>
+                    </div>
+                </div>
+
+                <div class="card-alt">
+                    <div class="card-alt-image">[Image]</div>
+                    <div class="card-alt-content">
+                        <h3>Extensions — Customize Your Editor</h3>
+                        <p>Add languages, themes, and tools from our growing extension library.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Another divider -->
+        <div class="divider">
+            <div class="corner-square corner-left"></div>
+            <div class="corner-square corner-right"></div>
+        </div>
+
+        <!-- Square gradient background section -->
+        <section class="square-gradient-section">
+            <div class="square-gradient-card">
+                <h2>Square Gradient Background</h2>
+                <p>This card uses the square-gradient-bg style with a subtle blue gradient border.</p>
+                <div style="display: flex; gap: 12px; justify-content: center;">
+                    <a href="#" class="btn btn-primary">Primary Action</a>
+                    <a href="#" class="btn btn-secondary">Secondary</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Small interactive cards section -->
+        <section class="small-cards-section">
+            <div class="section-header">
+                <h2>Small Interactive Cards</h2>
+                <p>These cards have the inset shadow that transitions to sh-alt on hover.</p>
+            </div>
+
+            <div class="small-cards-grid">
+                <div class="small-card">
+                    <h4>Python</h4>
+                    <p>Language support</p>
+                </div>
+                <div class="small-card">
+                    <h4>TypeScript</h4>
+                    <p>Language support</p>
+                </div>
+                <div class="small-card">
+                    <h4>Rust</h4>
+                    <p>Language support</p>
+                </div>
+                <div class="small-card">
+                    <h4>Go</h4>
+                    <p>Language support</p>
+                </div>
+                <div class="small-card">
+                    <h4>One Dark</h4>
+                    <p>Theme</p>
+                </div>
+                <div class="small-card">
+                    <h4>GitHub Light</h4>
+                    <p>Theme</p>
+                </div>
+                <div class="small-card">
+                    <h4>Vim Mode</h4>
+                    <p>Keybindings</p>
+                </div>
+                <div class="small-card">
+                    <h4>Git Integration</h4>
+                    <p>Source control</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED TESTIMONIAL with Grid Background (like Anthropic/Ethan Perez) -->
+        <section class="featured-testimonial-section">
+            <div class="section-header">
+                <h2>World-class developers use Zed</h2>
+                <p>Trusted by industry-leading teams.</p>
+            </div>
+
+            <div class="featured-testimonial">
+                <!-- GRID BACKGROUND OVERLAY - same as hero -->
+                <svg class="featured-testimonial-grid" aria-hidden="true">
+                    <defs>
+                        <pattern id="testimonial-grid" width="12" height="12" patternUnits="userSpaceOnUse" x="-1" y="-1">
+                            <path d="M.5 12V.5H12" fill="none" stroke-dasharray="0"></path>
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" stroke-width="0" fill="url(#testimonial-grid)"></rect>
+                </svg>
+
+                <div class="featured-testimonial-content">
+                    <!-- Company logo (Anthropic) -->
+                    <svg class="featured-testimonial-logo" viewBox="0 0 1176 133" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="120">
+                        <path d="M287.799 27.7657H330.659V130.812H358.016V27.7657H400.876V3.14415H287.799V27.7657Z"/>
+                        <path d="M239.468 92.5114L182.017 3.14415H151.012V130.812H177.458V41.4444L234.908 130.812H265.913V3.14415H239.468V92.5114Z"/>
+                        <path d="M510.305 54.0288H450.119V3.14415H422.762V130.812H450.119V78.6504H510.305V130.812H537.663V3.14415H510.305V54.0288Z"/>
+                        <path d="M50.8846 3.14415L0 130.812H28.4516L38.8583 104.001H92.0939L102.499 130.812H130.95L80.0658 3.14415H50.8846ZM48.0613 80.2918L65.4752 35.4258L82.889 80.2918H48.0613Z"/>
+                    </svg>
+
+                    <!-- Quote with highlighted text -->
+                    <blockquote class="featured-testimonial-quote">
+                        <span class="highlight">I've had my mind blown using Zed with Claude 3.5 Sonnet.</span> I wrote up a few sentences around a research idea and Claude 3.5 Sonnet delivered a first pass in seconds. When I spotted some small mistakes, I highlighted the parts I wanted to change and shared feedback for it to fix. <span class="highlight">I was able to go from idea to running experiment code in half an hour</span>—it was really easy and fun.
+                    </blockquote>
+
+                    <!-- Author -->
+                    <div class="featured-testimonial-author">
+                        <div class="featured-testimonial-avatar">
+                            <div class="avatar-placeholder">EP</div>
+                        </div>
+                        <div class="featured-testimonial-author-info">
+                            <h4>Ethan Perez</h4>
+                            <p>Adversarial Robustness Research Lead</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smaller Testimonial Cards in Grid -->
+        <section class="testimonials-section">
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">Yes! Now I can have shortcuts to run and debug tests. Ever since snippets were added, Zed has all of the features I could ask for in an editor.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <div class="avatar-placeholder">JV</div>
+                        </div>
+                        <div class="testimonial-author-info">
+                            <h4>Jose Valim</h4>
+                            <p>Creator of Elixir</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">This is obviously a product built with love and care. I can tell it from two minutes of using it. Kudos to the team.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <div class="avatar-placeholder">DA</div>
+                        </div>
+                        <div class="testimonial-author-info">
+                            <h4>Dan Abramov</h4>
+                            <p>Engineer and React Core team member</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">My god it is so fast. Boot time, UI interaction, typing latency. I feel it. I knew VS Code always felt sluggish, but I didn't realize how good things could really be. I'm honestly astounded.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <div class="avatar-placeholder">MB</div>
+                        </div>
+                        <div class="testimonial-author-info">
+                            <h4>Matt Baker</h4>
+                            <p>Principal Engineer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">I've started using Zed, and the native performance combined with the built-in collaboration makes it perfect for my workflow.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <div class="avatar-placeholder">SK</div>
+                        </div>
+                        <div class="testimonial-author-info">
+                            <h4>Sarah Kim</h4>
+                            <p>Staff Engineer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="divider">
+            <div class="corner-square corner-left"></div>
+            <div class="corner-square corner-right"></div>
+        </div>
+
+        <!-- Letter from the Team Section - with REPEATING LOGO GRID -->
+        <section class="letter-section">
+            <div class="letter-card">
+                <!-- REPEATING LOGO GRID BACKGROUND - CSS background-image approach -->
+                <div class="letter-logo-background"></div>
+
+                <!-- Letter content on left -->
+                <div class="letter-content">
+                    <div class="letter-header">
+                        <p class="letter-label">A letter</p>
+                        <h2 class="letter-title">From the team</h2>
+                    </div>
+
+                    <div class="letter-body">
+                        <p>Programming and the tools we use to do so are changing. As the culmination of 15 years of work developing industry-leading tools for developers like Atom, Electron, and Tree-sitter, Zed strives to be at the forefront of this transformation.</p>
+
+                        <hr>
+
+                        <p>We're confident that the future of software development lies in fluent collaboration between humans and AI. Crafted from the ground up, Zed is here to make this vision a reality.</p>
+                    </div>
+
+                    <div class="letter-signature">
+                        <div class="letter-signature-avatars">
+                            <div class="avatar"></div>
+                            <div class="avatar"></div>
+                            <div class="avatar"></div>
+                            <div class="avatar"></div>
+                            <div class="avatar"></div>
+                        </div>
+                        <p>The Zed Team</p>
+                    </div>
+                </div>
+
+                <!-- Decorative spinning badge on right -->
+                <div class="letter-badge">
+                    <svg viewBox="0 0 100 100" class="letter-badge-svg">
+                        <defs>
+                            <path id="circlePath" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/>
+                        </defs>
+                        <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+                        <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+                        <text font-size="6.5" fill="currentColor" letter-spacing="2">
+                            <textPath href="#circlePath">ZED INDUSTRIES • ZED INDUSTRIES • ZED INDUSTRIES •</textPath>
+                        </text>
+                        <!-- Inner Zed logo placeholder -->
+                        <text x="50" y="55" text-anchor="middle" font-size="20" font-weight="bold" fill="currentColor">Z</text>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final divider -->
+        <div class="divider">
+            <div class="corner-square corner-left"></div>
+            <div class="corner-square corner-right"></div>
+        </div>
+
+        <!-- Footer area -->
+        <footer style="padding: 48px 24px; text-align: center;">
+            <p style="color: #5a6372; font-size: 0.875rem;">
+                This is a demo of the Zed.dev design system elements.
+            </p>
+        </footer>
+
+    </div>
+</body>
+</html>
