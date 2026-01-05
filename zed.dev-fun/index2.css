@@ -81,9 +81,7 @@ body::before {
 .main-container {
     position: relative;
     min-height: 100vh;
-    margin: 0 auto;
-    max-width: 1200px;
-    padding: 0 48px;
+    margin: 0 48px;
     border-left: 1px solid var(--grid-border-color);
     border-right: 1px solid var(--grid-border-color);
     z-index: 2;
@@ -975,7 +973,7 @@ body::before {
 
 @media (max-width: 1024px) {
     .main-container {
-        padding: 0 32px;
+        margin: 0 32px;
     }
 
     .feature-row {
@@ -994,7 +992,7 @@ body::before {
 
 @media (max-width: 768px) {
     .main-container {
-        padding: 0 24px;
+        margin: 0 24px;
     }
 
     .hero-content h1 {
@@ -1016,7 +1014,7 @@ body::before {
 
 @media (max-width: 480px) {
     .main-container {
-        padding: 0 12px;
+        margin: 0 12px;
     }
 
     .hero-content h1 {
