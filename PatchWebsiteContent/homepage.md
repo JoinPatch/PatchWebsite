@@ -208,7 +208,54 @@
 
 ---
 
-## Section 7: Funding & Supporters
+## Section 7: Mentors & Advisors
+
+**Section label:**
+> Learn from the best
+
+**Headline:**
+> Supported by exceptional leaders
+
+**Body:**
+> Patch participants learn directly from Ireland's top founders, executives, and builders who share their experience and advice.
+
+**Grid of mentor profiles (photo + name + title/description):**
+
+[Photo: Áine Kerr]
+**Áine Kerr**
+> Co-Founder and COO at Kinzen, previously Facebook. Journalist turned entrepreneur.
+
+[Photo: Des Traynor]
+**Des Traynor**
+> Co-Founder & Chief Strategy Officer at Intercom, valued at over $1.6B.
+
+[Photo: Bobby Healy]
+**Bobby Healy**
+> Founder & CEO of Manna. Serial founder who scaled Cartrawler to $650m valuation.
+
+[Photo: Luke ONeil]
+**Prof. Luke O'Neil**
+> Professor of Biology at Trinty and founder of x
+
+[Photo: Patrick Walsh]
+**Patrick Walsh**
+> Founder of Dogpatch Labs.
+
+[Photo: James Whelton]
+**James Whelton**
+> Founder of CoderDojo.
+
+[Photo: Celine Halioua]
+**Celine Halioua**
+> Founder of Loyal.
+
+[Photo: Patrick Collison]
+**Nicola McClafferty**
+> Cofounder and CEO of Stripe
+
+---
+
+## Section 8: Funding & Supporters
 
 **Section label:**
 > Thanks to
@@ -226,7 +273,7 @@
 
 ---
 
-## Section 8: Apply
+## Section 9: Apply
 
 **Headline:**
 > Applications close [DATE]
@@ -295,14 +342,16 @@
 3. Section 3 Summer Programme card needs 2x emphasis vs other programme cards, with multiple photos (stage presentation, group photo, working)
 4. Section 5 should use dense photo grids with clear subsection breaks
 5. Section 5 Industry subsection uses 2 hero photos (Firefly, Red Bull) plus company logos for others
-6. Testimonials should be interspersed throughout Section 5, not grouped together
+6. Section 6 Testimonials should be interspersed throughout Section 5, not grouped together
+7. Section 7 Mentors should be a clean grid with photos and brief descriptions
 
 **Photo Requirements:**
 - Hero: Optional background or supporting image
 - Section 3: Summer Programme (3 photos: stage, group, working), other programmes (1 photo each)
 - Section 4: 4 alumni initiative photos
 - Section 5: ~10 photos for companies/research, 2 hero photos for industry (Firefly, Red Bull), company logos for other industry companies
-- Section 7: Partner logos
+- Section 7: 8 mentor headshots/professional photos
+- Section 8: Partner logos
 
 **Interactive Elements:**
 - All "Learn more" links should go to dedicated programme pages
