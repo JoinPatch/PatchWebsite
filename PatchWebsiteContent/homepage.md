@@ -284,3 +284,49 @@
 
 **Copyright:**
 > © 2025 Patch. All rights reserved.
+
+---
+
+## Implementation Notes
+
+**Visual Hierarchy:**
+1. Hero section should be prominent with large headline
+2. Section 2 "Letter from the Founder" should be a styled card with visual treatment (repeating logo grid background + spinning badge)
+3. Section 3 Summer Programme card needs 2x emphasis vs other programme cards, with multiple photos (stage presentation, group photo, working)
+4. Section 5 should use dense photo grids with clear subsection breaks
+5. Section 5 Industry subsection uses 2 hero photos (Firefly, Red Bull) plus company logos for others
+6. Testimonials should be interspersed throughout Section 5, not grouped together
+
+**Photo Requirements:**
+- Hero: Optional background or supporting image
+- Section 3: Summer Programme (3 photos: stage, group, working), other programmes (1 photo each)
+- Section 4: 4 alumni initiative photos
+- Section 5: ~10 photos for companies/research, 2 hero photos for industry (Firefly, Red Bull), company logos for other industry companies
+- Section 7: Partner logos
+
+**Interactive Elements:**
+- All "Learn more" links should go to dedicated programme pages
+- Apply CTAs should go to application form (or the Subscribe CTA button we'll add to the top right corner)
+- Newsletter signup in footer
+- Social media links active
+
+**Accessibility:**
+- All images need alt text
+- Proper heading hierarchy (H1 for main headline, H2 for section headlines, H3 for subsections)
+- Sufficient color contrast
+- Keyboard navigation support
+
+--- 
+
+**Other notes**
+Navigation:
+Homepage accessible by the Patch Logo in the top left corner 
+
+- Programmes: 
+  - Summer Accelerator 
+  - Grants 
+  - SF Fellowship 
+  - TECS (link to jointecs.org website)
+- About (page in itself if double clicked):
+  - Impact Report 
+  - 
