@@ -250,7 +250,7 @@
 > Founder of Loyal.
 
 [Photo: Patrick Collison]
-**Nicola McClafferty**
+**Patrick Collison**
 > Cofounder and CEO of Stripe
 
 ---
@@ -378,4 +378,4 @@ Homepage accessible by the Patch Logo in the top left corner
   - TECS (link to jointecs.org website)
 - About (page in itself if double clicked):
   - Impact Report 
-  - 
+
