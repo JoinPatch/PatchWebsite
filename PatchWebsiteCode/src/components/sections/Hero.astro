@@ -1,0 +1,100 @@
+---
+interface Props {
+    headline: string;
+    description: string;
+}
+
+const { headline, description } = Astro.props;
+---
+
+<section class="hero-section">
+    <div class="hero-content">
+        <h1>{headline}</h1>
+        <p>{description}</p>
+        <div class="hero-actions">
+            <slot name="actions" />
+        </div>
+    </div>
+
+    <!-- Blue grid SVG pattern -->
+    <svg class="hero-grid" aria-hidden="true">
+        <defs>
+            <pattern id="hero-grid-pattern" width="12" height="12" patternUnits="userSpaceOnUse" x="-1" y="-1">
+                <path d="M.5 12V.5H12" fill="none" stroke-width="1"></path>
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" stroke-width="0" fill="url(#hero-grid-pattern)"></rect>
+    </svg>
+</section>
+
+<style>
+    .hero-section {
+        position: relative;
+        padding: 80px 24px 192px;
+        background: linear-gradient(to top, rgba(219, 234, 254, 0.2), transparent);
+        isolation: isolate;
+        overflow: hidden;
+    }
+
+    .hero-content {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        z-index: 3;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+        font-weight: 400;
+        font-family: Georgia, 'Times New Roman', serif;
+        color: var(--color-accent-blue);
+        margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+        font-size: 1.125rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-secondary);
+        letter-spacing: -0.01em;
+    }
+
+    .hero-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        margin-top: 24px;
+    }
+
+    /* Blue Grid Pattern SVG */
+    .hero-grid {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        color: var(--color-blue-200);
+        fill: var(--color-blue-200);
+        stroke: var(--color-blue-200);
+        mask-image: linear-gradient(to top, rgba(255, 255, 255, 0.68), transparent);
+        -webkit-mask-image: linear-gradient(to top, rgba(255, 255, 255, 0.68), transparent);
+        opacity: 0.5;
+        z-index: -1;
+    }
+
+    @media (max-width: 768px) {
+        .hero-content h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero-section {
+            padding: 60px 16px 160px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+    }
+</style>

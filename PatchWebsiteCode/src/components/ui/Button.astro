@@ -1,0 +1,67 @@
+---
+interface Props {
+    variant?: 'primary' | 'secondary';
+    href?: string;
+    class?: string;
+}
+
+const { variant = 'primary', href, class: className } = Astro.props;
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+    href={href}
+    class:list={['btn', `btn-${variant}`, className]}
+>
+    <slot />
+</Tag>
+
+<style>
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 8px 12px;
+        font-size: 0.875rem;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.1s ease;
+        text-decoration: none;
+        border: none;
+        font-family: inherit;
+    }
+
+    .btn-primary {
+        background-color: var(--color-accent-blue);
+        color: white;
+        border: 1px solid transparent;
+        box-shadow:
+            hsl(219, 93%, 30%) 0 -2px 0 0 inset,
+            hsl(219, 93%, 95%) 0 1px 3px 0;
+    }
+
+    .btn-primary:hover {
+        background-color: hsl(219, 93%, 35%);
+        box-shadow: none;
+    }
+
+    .btn-secondary {
+        background-color: rgba(241, 242, 244, 0.6);
+        color: var(--text-primary);
+        border: 1px solid var(--default-border-color);
+        box-shadow: hsl(218, 13%, 50%, 0.1) 0 -2px 0 0 inset;
+    }
+
+    .btn-secondary:hover {
+        background-color: rgba(221, 223, 228, 0.5);
+        box-shadow: none;
+    }
+
+    .btn :global(svg) {
+        width: 16px;
+        height: 16px;
+    }
+</style>

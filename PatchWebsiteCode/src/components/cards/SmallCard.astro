@@ -1,0 +1,43 @@
+---
+interface Props {
+    title: string;
+    subtitle: string;
+    class?: string;
+}
+
+const { title, subtitle, class: className } = Astro.props;
+---
+
+<div class:list={['small-card', className]}>
+    <h4>{title}</h4>
+    <p>{subtitle}</p>
+</div>
+
+<style>
+    .small-card {
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border: 1px solid var(--color-offgray-100);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.1s ease;
+        box-shadow: hsl(218, 13%, 50%, 0.1) 0 -2px 0 0 inset;
+    }
+
+    .small-card:hover {
+        border-color: var(--color-blue-300);
+        box-shadow: var(--sh-alt);
+    }
+
+    .small-card h4 {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: 2px;
+    }
+
+    .small-card p {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+    }
+</style>

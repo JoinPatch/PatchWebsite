@@ -1,0 +1,139 @@
+---
+import Avatar from '../ui/Avatar.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+
+interface Props {
+    sectionTitle?: string;
+    sectionSubtitle?: string;
+    quote: string;
+    authorName: string;
+    authorTitle: string;
+    initials: string;
+}
+
+const { sectionTitle, sectionSubtitle, quote, authorName, authorTitle, initials } = Astro.props;
+---
+
+<section class="featured-testimonial-section">
+    {sectionTitle && <SectionHeader title={sectionTitle} subtitle={sectionSubtitle} />}
+
+    <div class="featured-testimonial">
+        <!-- Grid background overlay -->
+        <svg class="featured-testimonial-grid" aria-hidden="true">
+            <defs>
+                <pattern id="testimonial-grid-pattern" width="12" height="12" patternUnits="userSpaceOnUse" x="-1" y="-1">
+                    <path d="M.5 12V.5H12" fill="none" stroke-dasharray="0"></path>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" stroke-width="0" fill="url(#testimonial-grid-pattern)"></rect>
+        </svg>
+
+        <div class="featured-testimonial-content">
+            <!-- Company logo -->
+            <slot name="logo" />
+
+            <!-- Quote -->
+            <blockquote class="featured-testimonial-quote" set:html={quote} />
+
+            <!-- Author -->
+            <div class="featured-testimonial-author">
+                <Avatar initials={initials} size="md" />
+                <div class="featured-testimonial-author-info">
+                    <h4>{authorName}</h4>
+                    <p>{authorTitle}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .featured-testimonial-section {
+        padding: 48px 24px;
+    }
+
+    .featured-testimonial {
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 24px;
+        border-radius: 4px;
+        border: 1px solid rgba(190, 219, 255, 0.8);
+        background: linear-gradient(to bottom,
+            rgba(190, 219, 255, 0.05),
+            rgba(239, 246, 255, 0.1)
+        );
+        box-shadow: 6px 6px 0 hsla(219, 93%, 42%, 0.06);
+        overflow: hidden;
+    }
+
+    .featured-testimonial-content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .featured-testimonial-content :global(svg:first-child) {
+        height: 24px;
+        width: auto;
+        color: var(--text-primary);
+    }
+
+    .featured-testimonial-quote {
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: var(--text-primary);
+        position: relative;
+    }
+
+    .featured-testimonial-quote::before {
+        content: '"';
+        position: absolute;
+        right: 100%;
+        top: 0;
+    }
+
+    .featured-testimonial-quote::after {
+        content: '"';
+    }
+
+    .featured-testimonial-quote :global(.highlight) {
+        background-color: rgba(84, 162, 255, 0.2);
+        border-radius: 2px;
+        padding: 0 2px;
+    }
+
+    .featured-testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .featured-testimonial-author-info h4 {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        font-family: Georgia, 'Times New Roman', serif;
+        margin-bottom: 2px;
+    }
+
+    .featured-testimonial-author-info p {
+        font-size: 0.6875rem;
+        color: var(--text-muted);
+    }
+
+    /* Grid background */
+    .featured-testimonial-grid {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+        fill: rgba(48, 128, 255, 0.5);
+        stroke: rgba(48, 128, 255, 0.5);
+        opacity: 0.2;
+    }
+</style>

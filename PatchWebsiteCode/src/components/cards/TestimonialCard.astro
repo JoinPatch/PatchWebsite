@@ -1,0 +1,91 @@
+---
+import Avatar from '../ui/Avatar.astro';
+
+interface Props {
+    quote: string;
+    authorName: string;
+    authorTitle: string;
+    initials: string;
+    class?: string;
+}
+
+const { quote, authorName, authorTitle, initials, class: className } = Astro.props;
+---
+
+<div class:list={['testimonial-card', className]}>
+    <p class="testimonial-quote">{quote}</p>
+    <div class="testimonial-author">
+        <Avatar initials={initials} size="md" />
+        <div class="testimonial-author-info">
+            <h4>{authorName}</h4>
+            <p>{authorTitle}</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .testimonial-card {
+        position: relative;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 24px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+    }
+
+    .testimonial-card:nth-child(odd) {
+        border-right: 1px solid rgba(128, 128, 128, 0.2);
+        padding-right: 24px;
+    }
+
+    .testimonial-card:nth-child(even) {
+        padding-left: 24px;
+    }
+
+    /* Remove bottom border from last row */
+    .testimonial-card:nth-last-child(-n+2) {
+        border-bottom: none;
+    }
+
+    .testimonial-quote {
+        font-size: 0.875rem;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        position: relative;
+    }
+
+    .testimonial-quote::before {
+        content: '"';
+        position: absolute;
+        right: 100%;
+        top: 0;
+    }
+
+    .testimonial-quote::after {
+        content: '"';
+    }
+
+    .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .testimonial-author-info {
+        flex: 1;
+    }
+
+    .testimonial-author-info h4 {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        font-family: Georgia, 'Times New Roman', serif;
+        margin-bottom: 2px;
+    }
+
+    .testimonial-author-info p {
+        font-size: 0.6875rem;
+        color: var(--text-muted);
+    }
+</style>

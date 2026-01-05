@@ -1,0 +1,117 @@
+---
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<section class:list={['card-section', className]}>
+    <div class="card-main">
+        <div class="card-main-content">
+            <!-- Feature row -->
+            <div class="feature-row">
+                <slot name="features" />
+            </div>
+
+            <!-- Inner content area -->
+            <div class="card-inner">
+                <slot name="content">
+                    <div class="card-image-placeholder">
+                        [App Screenshot Placeholder]
+                    </div>
+                </slot>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .card-section {
+        padding: 64px 24px;
+        margin-top: -128px;
+    }
+
+    .card-main {
+        position: relative;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0;
+        background-color: rgba(249, 250, 251, 0.8);
+        border: 1px solid rgba(209, 213, 220, 0.9);
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: var(--sh-default);
+    }
+
+    /* Noise texture on card */
+    .card-main::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: url('/noise.png');
+        background-size: 180px;
+        background-repeat: repeat;
+        opacity: 0.03;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .card-main-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .feature-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid var(--grid-border-color);
+    }
+
+    .feature-row :global(> *) {
+        padding: 16px;
+        border-right: 1px solid var(--grid-border-color);
+    }
+
+    .feature-row :global(> *:last-child) {
+        border-right: none;
+    }
+
+    .card-inner {
+        padding: 10px;
+        background-color: rgba(249, 250, 251, 0.2);
+    }
+
+    .card-image-placeholder {
+        background: linear-gradient(to bottom, var(--color-cream-50), var(--color-blue-50));
+        border: 1px solid var(--default-border-color);
+        border-radius: 2px;
+        aspect-ratio: 16/9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #98a0ae;
+        font-size: 0.875rem;
+    }
+
+    @media (max-width: 1024px) {
+        .feature-row {
+            grid-template-columns: 1fr;
+        }
+
+        .feature-row :global(> *) {
+            border-right: none;
+            border-bottom: 1px solid var(--grid-border-color);
+        }
+
+        .feature-row :global(> *:last-child) {
+            border-bottom: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .card-section {
+            margin-top: -100px;
+        }
+    }
+</style>

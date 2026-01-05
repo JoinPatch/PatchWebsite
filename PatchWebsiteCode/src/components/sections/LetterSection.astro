@@ -1,0 +1,188 @@
+---
+interface Props {
+    label?: string;
+    title?: string;
+    signature: string;
+}
+
+const { label = 'A letter', title = 'From the team', signature } = Astro.props;
+---
+
+<section class="letter-section">
+    <div class="letter-card">
+        <!-- Repeating logo grid background -->
+        <div class="letter-logo-background"></div>
+
+        <!-- Letter content on left -->
+        <div class="letter-content">
+            <div class="letter-header">
+                <p class="letter-label">{label}</p>
+                <h2 class="letter-title">{title}</h2>
+            </div>
+
+            <div class="letter-body">
+                <slot />
+            </div>
+
+            <div class="letter-signature">
+                <p>{signature}</p>
+            </div>
+        </div>
+
+        <!-- Decorative spinning badge on right -->
+        <div class="letter-badge">
+            <svg viewBox="0 0 100 100" class="letter-badge-svg">
+                <defs>
+                    <path id="circlePath" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"/>
+                </defs>
+                <circle cx="50" cy="50" r="48" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+                <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+                <text font-size="6.5" fill="currentColor" letter-spacing="2">
+                    <textPath href="#circlePath">PATCH • PATCH • PATCH • PATCH • PATCH • PATCH •</textPath>
+                </text>
+                <!-- Inner Patch logo -->
+                <image href="/PatchLogoBlue.svg" x="25" y="25" width="50" height="50"/>
+            </svg>
+        </div>
+    </div>
+</section>
+
+<style>
+    .letter-section {
+        padding: 48px 24px;
+    }
+
+    .letter-card {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 24px;
+        border-radius: 2px;
+        background-color: rgba(249, 250, 251, 0.85);
+        border: 1px solid var(--color-offgray-100);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 24px;
+        overflow: hidden;
+    }
+
+    /* Logo grid background */
+    .letter-logo-background {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        background-image: url('/PatchLogoBlue_Padded.svg');
+        background-repeat: repeat;
+        background-size: 32px;
+        opacity: 0.05;
+        mask-image: linear-gradient(to bottom, #fff, transparent);
+        -webkit-mask-image: linear-gradient(to bottom, #fff, transparent);
+    }
+
+    .letter-content {
+        position: relative;
+        z-index: 2;
+        max-width: 580px;
+        text-align: left;
+    }
+
+    .letter-header {
+        margin-bottom: 16px;
+    }
+
+    .letter-label {
+        font-size: 0.8125rem;
+        color: var(--text-muted);
+        margin-bottom: 4px;
+    }
+
+    .letter-title {
+        font-size: 1.5rem;
+        font-weight: 500;
+        font-family: Georgia, 'Times New Roman', serif;
+        color: var(--color-accent-blue);
+    }
+
+    .letter-body {
+        font-size: 0.9375rem;
+        line-height: 1.7;
+        color: var(--text-secondary);
+    }
+
+    .letter-body :global(p) {
+        margin-bottom: 1rem;
+    }
+
+    .letter-body :global(p:last-child) {
+        margin-bottom: 0;
+    }
+
+    .letter-body :global(hr) {
+        width: 100px;
+        margin: 20px 0;
+        border: none;
+        border-top: 1px solid rgba(128, 128, 128, 0.2);
+    }
+
+    .letter-signature {
+        margin-top: 24px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .letter-signature p {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+        font-weight: 500;
+    }
+
+    /* Spinning badge */
+    .letter-badge {
+        position: relative;
+        z-index: 2;
+        flex-shrink: 0;
+        width: 100px;
+        height: 100px;
+        color: var(--color-accent-blue);
+        animation: spin 20s linear infinite;
+    }
+
+    .letter-badge-svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Responsive: stack on mobile */
+    @media (max-width: 640px) {
+        .letter-card {
+            flex-direction: column-reverse;
+            align-items: center;
+            text-align: center;
+        }
+
+        .letter-content {
+            text-align: center;
+        }
+
+        .letter-body :global(hr) {
+            margin: 20px auto;
+        }
+
+        .letter-signature {
+            justify-content: center;
+        }
+    }
+</style>

@@ -1,0 +1,43 @@
+---
+interface Props {
+    initials: string;
+    size?: 'sm' | 'md';
+    class?: string;
+}
+
+const { initials, size = 'md', class: className } = Astro.props;
+const outerSize = size === 'sm' ? '32px' : '36px';
+const innerSize = size === 'sm' ? '28px' : '32px';
+---
+
+<div class:list={['avatar', `avatar-${size}`, className]}>
+    <div class="avatar-inner">{initials}</div>
+</div>
+
+<style define:vars={{ outerSize, innerSize }}>
+    .avatar {
+        width: var(--outerSize);
+        height: var(--outerSize);
+        border-radius: 4px;
+        padding: 2px;
+        background-color: var(--color-blue-100);
+        outline: 1px solid var(--color-blue-300);
+    }
+
+    .avatar-inner {
+        width: var(--innerSize);
+        height: var(--innerSize);
+        border-radius: 2px;
+        background: linear-gradient(135deg, var(--color-blue-200), var(--color-blue-400));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        font-size: 0.75rem;
+    }
+
+    .avatar-md .avatar-inner {
+        font-size: 0.875rem;
+    }
+</style>

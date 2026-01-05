@@ -1,0 +1,128 @@
+/* ==========================================
+   GLOBAL STYLES - Ported from Zed Design System
+   ========================================== */
+
+/* CSS Variables - Design Tokens */
+:root {
+    /* Cream colors */
+    --color-cream-50: #f5f4ef;
+    --color-cream-100: #e8e6d9;
+    --color-cream-200: #d9d5bf;
+
+    /* Blue colors */
+    --color-blue-50: #eff6ff;
+    --color-blue-100: #dbeafe;
+    --color-blue-200: #bedbff;
+    --color-blue-300: #90c5ff;
+    --color-blue-400: #54a2ff;
+    --color-blue-500: #3080ff;
+
+    /* Accent blue */
+    --color-accent-blue: #0751cf;
+
+    /* Off-grays */
+    --color-offgray-50: #f1f2f4;
+    --color-offgray-100: #dddfe4;
+    --color-offgray-200: #c6cad2;
+    --color-offgray-300: #b8bdc7;
+
+    /* Gray */
+    --color-gray-300: #d1d5dc;
+    --color-gray-50: #f9fafb;
+
+    /* Nav background */
+    --nav-bg-color: #f7f7f2;
+
+    /* Text colors */
+    --text-primary: #22252b;
+    --text-secondary: #5a6372;
+    --text-muted: #6c7689;
+
+    /* Shadow system */
+    --sh-default: 6px 6px 0 rgba(7, 77, 207, 0.06), -6px -6px 0 rgba(7, 77, 207, 0.06);
+    --sh-alt: 6px 6px 0 rgba(7, 77, 207, 0.06);
+    --sh-alt-opposite: -6px -6px 0 rgba(7, 77, 207, 0.06);
+    --sh-alt-hover: 6px 6px 0 hsla(219, 100%, 40%, 0.06), -6px -6px 0 hsla(219, 100%, 40%, 0.06);
+    --sh-inset: hsl(218, 13%, 50%, 0.1) 0 -2px 0 0 inset;
+
+    /* Border colors */
+    --grid-border-color: rgba(190, 219, 255, 0.5);
+    --default-border-color: rgba(198, 202, 210, 0.5);
+}
+
+/* Reset and Base Styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    position: relative;
+    overflow-x: hidden;
+    /* Cream background with 20% opacity */
+    background-color: rgba(232, 230, 217, 0.2);
+}
+
+/* Noise Texture Overlay on Body */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/noise.png');
+    background-size: 180px;
+    background-repeat: repeat;
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Main Container with Side Borders */
+.main-container {
+    position: relative;
+    min-height: 100vh;
+    margin: 0 48px;
+    border-left: 1px solid var(--grid-border-color);
+    border-right: 1px solid var(--grid-border-color);
+    z-index: 2;
+}
+
+/* Typography Utilities */
+.font-serif {
+    font-family: Georgia, 'Times New Roman', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Responsive Container */
+@media (max-width: 1024px) {
+    .main-container {
+        margin: 0 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        margin: 0 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        margin: 0 12px;
+    }
+}

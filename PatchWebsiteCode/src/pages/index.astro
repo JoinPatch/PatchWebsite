@@ -1,11 +1,179 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// UI Components
+import Button from '../components/ui/Button.astro';
+import Divider from '../components/ui/Divider.astro';
+
+// Card Components
+import CardAlt from '../components/cards/CardAlt.astro';
+import SmallCard from '../components/cards/SmallCard.astro';
+import TestimonialCard from '../components/cards/TestimonialCard.astro';
+
+// Section Components
+import Header from '../components/sections/Header.astro';
+import Hero from '../components/sections/Hero.astro';
+import MainCard from '../components/sections/MainCard.astro';
+import FeatureItem from '../components/sections/FeatureItem.astro';
+import CardGridSection from '../components/sections/CardGridSection.astro';
+import SquareGradientSection from '../components/sections/SquareGradientSection.astro';
+import SmallCardsSection from '../components/sections/SmallCardsSection.astro';
+import FeaturedTestimonial from '../components/sections/FeaturedTestimonial.astro';
+import TestimonialsGrid from '../components/sections/TestimonialsGrid.astro';
+import LetterSection from '../components/sections/LetterSection.astro';
+import Footer from '../components/sections/Footer.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Patch - Design System Demo">
+	<Header logoText="Zed Design Demo" />
+
+	<Hero
+		headline="Love your editor again"
+		description="This demo showcases the Zed.dev design elements including the cream background with noise, blue grid pattern, and component shadows."
+	>
+		<Fragment slot="actions">
+			<Button variant="primary" href="#">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+				</svg>
+				Download now
+			</Button>
+			<Button variant="secondary" href="#">Clone source</Button>
+		</Fragment>
+	</Hero>
+
+	<MainCard>
+		<Fragment slot="features">
+			<FeatureItem
+				title="Fast"
+				description="Written from scratch in Rust to efficiently leverage multiple CPU cores and your GPU."
+			>
+				<svg slot="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="M15.6 2.7a10 10 0 1 0 5.7 5.7"/><circle cx="12" cy="12" r="2"/><path d="M13.4 10.6 19 5"/>
+				</svg>
+			</FeatureItem>
+			<FeatureItem
+				title="Intelligent"
+				description="Integrate LLMs into your workflow to generate, transform, and analyze code."
+			>
+				<svg slot="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/>
+					<path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/>
+				</svg>
+			</FeatureItem>
+			<FeatureItem
+				title="Collaborative"
+				description="Chat with teammates, write notes together, and share your screen and project."
+			>
+				<svg slot="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/>
+				</svg>
+			</FeatureItem>
+		</Fragment>
+	</MainCard>
+
+	<Divider />
+
+	<CardGridSection
+		title="Cards with sh-alt Shadow"
+		subtitle="These cards have the blue offset shadow that expands on hover."
+	>
+		<CardAlt
+			title="Zed AI — Edit Code in Natural Language"
+			description="Use Claude to generate and transform code across your entire project."
+		/>
+		<CardAlt
+			title="Channels — Real-time Collaboration"
+			description="Share your screen, voice chat, and edit code together seamlessly."
+		/>
+		<CardAlt
+			title="Extensions — Customize Your Editor"
+			description="Add languages, themes, and tools from our growing extension library."
+		/>
+	</CardGridSection>
+
+	<Divider />
+
+	<SquareGradientSection
+		title="Square Gradient Background"
+		description="This card uses the square-gradient-bg style with a subtle blue gradient border."
+	>
+		<Fragment slot="actions">
+			<Button variant="primary" href="#">Primary Action</Button>
+			<Button variant="secondary" href="#">Secondary</Button>
+		</Fragment>
+	</SquareGradientSection>
+
+	<SmallCardsSection
+		title="Small Interactive Cards"
+		subtitle="These cards have the inset shadow that transitions to sh-alt on hover."
+	>
+		<SmallCard title="Python" subtitle="Language support" />
+		<SmallCard title="TypeScript" subtitle="Language support" />
+		<SmallCard title="Rust" subtitle="Language support" />
+		<SmallCard title="Go" subtitle="Language support" />
+		<SmallCard title="One Dark" subtitle="Theme" />
+		<SmallCard title="GitHub Light" subtitle="Theme" />
+		<SmallCard title="Vim Mode" subtitle="Keybindings" />
+		<SmallCard title="Git Integration" subtitle="Source control" />
+	</SmallCardsSection>
+
+	<FeaturedTestimonial
+		sectionTitle="World-class developers use Zed"
+		sectionSubtitle="Trusted by industry-leading teams."
+		quote={`<span class="highlight">I've had my mind blown using Zed with Claude 3.5 Sonnet.</span> I wrote up a few sentences around a research idea and Claude 3.5 Sonnet delivered a first pass in seconds. When I spotted some small mistakes, I highlighted the parts I wanted to change and shared feedback for it to fix. <span class="highlight">I was able to go from idea to running experiment code in half an hour</span>—it was really easy and fun.`}
+		authorName="Ethan Perez"
+		authorTitle="Adversarial Robustness Research Lead"
+		initials="EP"
+	>
+		<svg slot="logo" viewBox="0 0 1176 133" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="120">
+			<path d="M287.799 27.7657H330.659V130.812H358.016V27.7657H400.876V3.14415H287.799V27.7657Z"/>
+			<path d="M239.468 92.5114L182.017 3.14415H151.012V130.812H177.458V41.4444L234.908 130.812H265.913V3.14415H239.468V92.5114Z"/>
+			<path d="M510.305 54.0288H450.119V3.14415H422.762V130.812H450.119V78.6504H510.305V130.812H537.663V3.14415H510.305V54.0288Z"/>
+			<path d="M50.8846 3.14415L0 130.812H28.4516L38.8583 104.001H92.0939L102.499 130.812H130.95L80.0658 3.14415H50.8846ZM48.0613 80.2918L65.4752 35.4258L82.889 80.2918H48.0613Z"/>
+		</svg>
+	</FeaturedTestimonial>
+
+	<TestimonialsGrid>
+		<TestimonialCard
+			quote="Yes! Now I can have shortcuts to run and debug tests. Ever since snippets were added, Zed has all of the features I could ask for in an editor."
+			authorName="Jose Valim"
+			authorTitle="Creator of Elixir"
+			initials="JV"
+		/>
+		<TestimonialCard
+			quote="This is obviously a product built with love and care. I can tell it from two minutes of using it. Kudos to the team."
+			authorName="Dan Abramov"
+			authorTitle="Engineer and React Core team member"
+			initials="DA"
+		/>
+		<TestimonialCard
+			quote="My god it is so fast. Boot time, UI interaction, typing latency. I feel it. I knew VS Code always felt sluggish, but I didn't realize how good things could really be. I'm honestly astounded."
+			authorName="Matt Baker"
+			authorTitle="Principal Engineer"
+			initials="MB"
+		/>
+		<TestimonialCard
+			quote="I've started using Zed, and the native performance combined with the built-in collaboration makes it perfect for my workflow."
+			authorName="Sarah Kim"
+			authorTitle="Staff Engineer"
+			initials="SK"
+		/>
+	</TestimonialsGrid>
+
+	<Divider />
+
+	<LetterSection signature="Tom McCarthy, Founder of Patch">
+		<p>Patch exists to bring exceptional young people into a community that takes them seriously. Talent on its own is fragile — it needs encouragement, peers, and examples of what's possible in order to grow.</p>
+
+		<hr>
+
+		<p>We don't prescribe paths or outcomes. Instead, we create the conditions where ambition is normal, curiosity is valued, and young people are consistently encouraged to aim higher than they might have on their own.</p>
+	</LetterSection>
+
+	<Divider />
+
+	<Footer>
+		<p>This is a demo of the Zed.dev design system elements.</p>
+	</Footer>
 </Layout>

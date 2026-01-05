@@ -1,0 +1,25 @@
+---
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<footer class:list={['footer', className]}>
+    <slot>
+        <p>This is a demo of the Zed.dev design system elements.</p>
+    </slot>
+</footer>
+
+<style>
+    .footer {
+        padding: 48px 24px;
+        text-align: center;
+    }
+
+    .footer :global(p) {
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+    }
+</style>

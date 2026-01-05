@@ -1,0 +1,37 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+
+interface Props {
+    title: string;
+    subtitle?: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<section class="cards-grid-section">
+    <SectionHeader title={title} subtitle={subtitle} />
+    <div class="cards-grid">
+        <slot />
+    </div>
+</section>
+
+<style>
+    .cards-grid-section {
+        padding: 48px 24px;
+    }
+
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 24px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+        .cards-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

@@ -1,0 +1,50 @@
+---
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={['divider', className]}>
+    <div class="corner-square corner-left"></div>
+    <div class="corner-square corner-right"></div>
+</div>
+
+<style>
+    .divider {
+        position: relative;
+        height: 1px;
+    }
+
+    .divider::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100vw;
+        width: 200vw;
+        height: 1px;
+        background-color: var(--grid-border-color);
+    }
+
+    .corner-square {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        transform: rotate(45deg);
+        border-radius: 1px;
+        border: 1px solid var(--color-blue-200);
+        background: white;
+        z-index: 10;
+    }
+
+    .corner-left {
+        top: -3.5px;
+        left: -4.5px;
+    }
+
+    .corner-right {
+        top: -3.5px;
+        right: -4.5px;
+    }
+</style>

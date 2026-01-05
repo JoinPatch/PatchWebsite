@@ -1,0 +1,76 @@
+---
+import Button from '../ui/Button.astro';
+
+interface Props {
+    logoText?: string;
+}
+
+const { logoText = 'Patch' } = Astro.props;
+---
+
+<header class="header">
+    <div class="header-inner">
+        <div class="header-logo">{logoText}</div>
+        <div class="header-nav">
+            <Button variant="secondary" href="#">Sign up</Button>
+            <Button variant="primary" href="#">Download</Button>
+        </div>
+    </div>
+</header>
+
+<style>
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        height: 57px;
+        background-color: var(--nav-bg-color);
+        border-bottom: 1px solid var(--grid-border-color);
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+    }
+
+    .header-inner {
+        position: relative;
+        width: 100%;
+        max-width: 1148px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-logo {
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+
+    .header-nav {
+        display: flex;
+        gap: 8px;
+    }
+
+    /* Nav corner squares */
+    .header::before,
+    .header::after {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        transform: rotate(45deg);
+        border-radius: 1px;
+        border: 1px solid var(--color-blue-200);
+        background: white;
+        z-index: 10;
+        bottom: -4.5px;
+    }
+
+    .header::before {
+        left: -4.5px;
+    }
+
+    .header::after {
+        right: -4.5px;
+    }
+</style>

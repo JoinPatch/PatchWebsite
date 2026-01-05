@@ -1,0 +1,57 @@
+---
+interface Props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<section class="square-gradient-section">
+    <div class="square-gradient-card">
+        <h2>{title}</h2>
+        <p>{description}</p>
+        <div class="square-gradient-actions">
+            <slot name="actions" />
+        </div>
+    </div>
+</section>
+
+<style>
+    .square-gradient-section {
+        padding: 48px 24px;
+    }
+
+    .square-gradient-card {
+        position: relative;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 48px;
+        border: 1px solid rgba(190, 219, 255, 0.8);
+        border-radius: 4px;
+        background: linear-gradient(to bottom,
+            rgba(190, 219, 255, 0.05),
+            rgba(239, 246, 255, 0.1)
+        );
+        text-align: center;
+    }
+
+    .square-gradient-card h2 {
+        font-size: 2rem;
+        font-weight: 400;
+        color: var(--color-accent-blue);
+        margin-bottom: 12px;
+    }
+
+    .square-gradient-card p {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        margin-bottom: 24px;
+    }
+
+    .square-gradient-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+</style>

@@ -1,0 +1,78 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    class?: string;
+}
+
+const { title, description, class: className } = Astro.props;
+---
+
+<div class:list={['card-alt', className]}>
+    <div class="card-alt-image">
+        <slot name="image">
+            [Image]
+        </slot>
+    </div>
+    <div class="card-alt-content">
+        <h3>{title}</h3>
+        <p>{description}</p>
+    </div>
+</div>
+
+<style>
+    .card-alt {
+        position: relative;
+        padding: 10px;
+        border: 1px solid var(--default-border-color);
+        border-radius: 4px;
+        background-color: rgba(255, 255, 255, 0.6);
+        box-shadow: 6px 6px 0 hsla(219, 93%, 42%, 0.06);
+        transition: all 0.1s ease;
+        overflow: hidden;
+    }
+
+    .card-alt:hover {
+        border-color: var(--color-blue-300);
+        box-shadow:
+            6px 6px 0 hsla(219, 100%, 40%, 0.06),
+            -6px -6px 0 hsla(219, 100%, 40%, 0.06);
+    }
+
+    .card-alt-image {
+        aspect-ratio: 16/9;
+        background: var(--color-cream-50);
+        border: 1px solid var(--default-border-color);
+        border-radius: 2px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #98a0ae;
+        font-size: 0.875rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+
+    .card-alt-image :global(img) {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .card-alt-content {
+        padding: 8px 4px;
+    }
+
+    .card-alt-content h3 {
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+    }
+
+    .card-alt-content p {
+        font-size: 0.8125rem;
+        color: var(--text-secondary);
+    }
+</style>

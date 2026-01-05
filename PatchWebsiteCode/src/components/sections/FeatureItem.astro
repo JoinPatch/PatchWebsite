@@ -1,0 +1,39 @@
+---
+interface Props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<div class="feature-item">
+    <h3>
+        <slot name="icon" />
+        {title}
+    </h3>
+    <p>{description}</p>
+</div>
+
+<style>
+    .feature-item h3 {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .feature-item h3 :global(svg) {
+        width: 16px;
+        height: 16px;
+    }
+
+    .feature-item p {
+        font-size: 0.8125rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+    }
+</style>
