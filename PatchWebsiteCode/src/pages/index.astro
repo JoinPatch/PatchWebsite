@@ -29,14 +29,14 @@ import Footer from '../components/sections/Footer.astro';
 
 // Mentor data
 const mentors = [
-	{ name: "Áine Kerr", title: "Co-Founder and COO at Kinzen, previously Facebook" },
-	{ name: "Des Traynor", title: "Co-Founder & CSO at Intercom, valued at over $1.6B" },
-	{ name: "Bobby Healy", title: "Founder & CEO of Manna, scaled Cartrawler to $650m" },
-	{ name: "Prof. Luke O'Neil", title: "Professor of Biology at Trinity College Dublin" },
-	{ name: "Patrick Walsh", title: "Founder of Dogpatch Labs" },
-	{ name: "James Whelton", title: "Founder of CoderDojo" },
-	{ name: "Celine Halioua", title: "Founder of Loyal" },
-	{ name: "Patrick Collison", title: "Co-founder and CEO of Stripe" },
+	{ name: "Áine Kerr", title: "Co-Founder and COO at Kinzen, previously Facebook", photoSrc: "/FoundersAndMentors/AineKerr.jpg" },
+	{ name: "Des Traynor", title: "Co-Founder & CSO at Intercom, valued at over $1.6B", photoSrc: "/FoundersAndMentors/DesTraynor.jpg" },
+	{ name: "Bobby Healy", title: "Founder & CEO of Manna, scaled Cartrawler to $650m", photoSrc: "/FoundersAndMentors/BobbyHealy.jpg" },
+	{ name: "Prof. Luke O'Neil", title: "Professor of Biology at Trinity College Dublin", photoSrc: "/FoundersAndMentors/LukeONeil.jpg" },
+	{ name: "Patrick Walsh", title: "Founder of Dogpatch Labs", photoSrc: "/FoundersAndMentors/PatrickWalsh.jpg" },
+	{ name: "James Whelton", title: "Founder of CoderDojo", photoSrc: "/FoundersAndMentors/JamesWhelton.jpg" },
+	{ name: "Celine Halioua", title: "Founder of Loyal", photoSrc: "/FoundersAndMentors/CelineHalioua.jpg" },
+	{ name: "Patrick Collison", title: "Co-founder and CEO of Stripe", photoSrc: "/FoundersAndMentors/PatrickCollison.jpg" },
 ];
 
 // Supporter data
@@ -45,7 +45,7 @@ const supporters = [
 	{ name: "OpenAI", logoSrc: "/PartnerLogos/Open-AI-White-Logo-PNG.jpg" },
 	{ name: "NDRC", logoSrc: "/PartnerLogos/NDRC_Logo_White-01.png" },
 	{ name: "Abbey Capital", logoSrc: "/PartnerLogos/AC_Old_New_Logo_Artboard-2.png" },
-	{ name: "Dogpatch Labs" },
+	{ name: "Dogpatch Labs", logoSrc: "/PartnerLogos/DogpatchLabsLogo.png" },
 ];
 
 // Hero collage photos - 6 photos in masonry layout
@@ -216,40 +216,67 @@ const heroCollage = [
 		 SECTION 4: ALUMNI-LED INITIATIVES
 		 ============================================ -->
 	<section class="initiatives-section">
+		<!-- Graph paper background -->
+		<div class="initiatives-graph-paper" aria-hidden="true"></div>
+
 		<SectionHeader
 			label="Started by alumni"
 			title="When Patchers see a gap, they fill it"
 			subtitle="The strongest signal of Patch working: alumni don't wait for permission. They start things."
 		/>
 
-		<div class="initiatives-grid">
-			<CardAlt
-				title="Hack Ireland"
-				description="Ireland's largest student hackathon. 150 students, 30 hours, €25k in prizes. Run by Patch alumni."
-			>
-				<img slot="image" src="/AlumniLedInitiatives/HackIrelandGroupPicture.jpg" alt="Hack Ireland hackathon" />
-			</CardAlt>
+		<div class="initiatives-grid notebook-style">
+			<div class="initiative-card rotate-ccw-sm">
+				<div class="tape tape-tl"></div>
+				<div class="tape tape-tr"></div>
+				<div class="initiative-image">
+					<img src="/AlumniLedInitiatives/HackIrelandGroupPicture.jpg" alt="Hack Ireland hackathon" />
+				</div>
+				<div class="initiative-content">
+					<span class="project-label">PROJECT 01</span>
+					<h3>Hack Ireland</h3>
+					<p>Ireland's largest student hackathon. 150 students, 30 hours, €25k in prizes. Run by Patch alumni.</p>
+				</div>
+			</div>
 
-			<CardAlt
-				title="RoboWars"
-				description="Ireland's premier hardware competition. Teams build combat robots, battle in an arena. Started by 2023 alumni."
-			>
-				<img slot="image" src="/AlumniLedInitiatives/RoboWarsGirl.jpg" alt="RoboWars competition" />
-			</CardAlt>
+			<div class="initiative-card rotate-cw-sm">
+				<div class="tape tape-tl"></div>
+				<div class="tape tape-tr"></div>
+				<div class="initiative-image">
+					<img src="/AlumniLedInitiatives/RoboWarsGirl.jpg" alt="RoboWars competition" />
+				</div>
+				<div class="initiative-content">
+					<span class="project-label">PROJECT 02</span>
+					<h3>RoboWars</h3>
+					<p>Ireland's premier hardware competition. Teams build combat robots, battle in an arena. Started by 2023 alumni.</p>
+				</div>
+			</div>
 
-			<CardAlt
-				title="Eirspace"
-				description="Student rocket-building collective. Designing, building, launching."
-			>
-				<img slot="image" src="/AlumniLedInitiatives/Eirspace.png" alt="Eirspace rocket" />
-			</CardAlt>
+			<div class="initiative-card rotate-cw-sm">
+				<div class="tape tape-tl"></div>
+				<div class="tape tape-tr"></div>
+				<div class="initiative-image">
+					<img src="/AlumniLedInitiatives/Eirspace.png" alt="Eirspace rocket" />
+				</div>
+				<div class="initiative-content">
+					<span class="project-label">PROJECT 03</span>
+					<h3>Eirspace</h3>
+					<p>Student rocket-building collective. Designing, building, launching.</p>
+				</div>
+			</div>
 
-			<CardAlt
-				title="Give(a)go"
-				description="Building community centred around monthly hands-on sessions where attendees build something with new tech."
-			>
-				<img slot="image" src="/AlumniLedInitiatives/GiveAGo.png" alt="Give(a)go workshop" />
-			</CardAlt>
+			<div class="initiative-card rotate-ccw-sm">
+				<div class="tape tape-tl"></div>
+				<div class="tape tape-tr"></div>
+				<div class="initiative-image">
+					<img src="/AlumniLedInitiatives/GiveAGo.png" alt="Give(a)go workshop" />
+				</div>
+				<div class="initiative-content">
+					<span class="project-label">PROJECT 04</span>
+					<h3>Give(a)go</h3>
+					<p>Building community centred around monthly hands-on sessions where attendees build something with new tech.</p>
+				</div>
+			</div>
 		</div>
 	</section>
 
@@ -272,7 +299,7 @@ const heroCollage = [
 			<div class="companies-grid">
 				<div class="company-card">
 					<div class="company-image">
-						<div class="photo-placeholder">[Photo: Ulysses underwater drone]</div>
+						<img slot="image" src="/AlumniCompanies/Ulysses2ColmOBrien.png" alt="Ulysses underwater robots" />
 					</div>
 					<div class="company-info">
 						<h4>Ulysses</h4>
@@ -294,7 +321,7 @@ const heroCollage = [
 
 				<div class="company-card">
 					<div class="company-image">
-						<div class="photo-placeholder">[Photo: Field of Vision team]</div>
+						<img slot="image" src="/FieldOfVisionTablet.jpg" alt="Field of Vision haptic devices" />
 					</div>
 					<div class="company-info">
 						<h4>Field of Vision</h4>
@@ -747,40 +774,134 @@ const heroCollage = [
 		gap: 16px;
 	}
 
-	/* Section: Initiatives */
+	/* Section: Initiatives - Notebook Style */
 	.initiatives-section {
+		position: relative;
 		padding: 48px 24px;
+		overflow: hidden;
+	}
+
+	/* Graph paper background */
+	.initiatives-graph-paper {
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(#e8e8e8 1px, transparent 1px),
+			linear-gradient(90deg, #e8e8e8 1px, transparent 1px);
+		background-size: 20px 20px;
+		opacity: 0.04;
+		pointer-events: none;
 	}
 
 	.initiatives-grid {
+		position: relative;
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		gap: 24px;
+		gap: 32px;
 		max-width: 1100px;
 		margin: 0 auto;
 	}
 
-	/* Section: Alumni */
+	/* Notebook-style initiative cards */
+	.initiative-card {
+		position: relative;
+		background: #fff;
+		padding: 12px;
+		box-shadow: 2px 3px 8px rgba(0,0,0,0.08);
+		border: 1px solid #e0e0e0;
+	}
+
+	.initiative-card .tape {
+		z-index: 10;
+	}
+
+	.initiative-image {
+		position: relative;
+		aspect-ratio: 16/10;
+		overflow: hidden;
+		margin-bottom: 12px;
+	}
+
+	.initiative-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.initiative-content {
+		padding: 4px 0;
+	}
+
+	.project-label {
+		display: inline-block;
+		font-family: 'Courier New', Courier, monospace;
+		font-size: 0.6rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		color: var(--text-muted);
+		margin-bottom: 6px;
+	}
+
+	.initiative-content h3 {
+		font-family: 'Courier New', Courier, monospace;
+		font-size: 0.95rem;
+		font-weight: 600;
+		color: var(--text-primary);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+		margin-bottom: 8px;
+	}
+
+	.initiative-content p {
+		font-size: 0.8rem;
+		color: var(--text-secondary);
+		line-height: 1.5;
+	}
+
+	/* Rotation classes (if not applied globally) */
+	.rotate-cw-sm { transform: rotate(0.5deg); }
+	.rotate-ccw-sm { transform: rotate(-0.5deg); }
+
+	/* Section: Alumni - Notebook Clippings Style */
 	.alumni-section {
+		position: relative;
 		padding: 48px 24px;
+		overflow: hidden;
+	}
+
+	/* Graph paper background for alumni section */
+	.alumni-section::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(#e8e8e8 1px, transparent 1px),
+			linear-gradient(90deg, #e8e8e8 1px, transparent 1px);
+		background-size: 20px 20px;
+		opacity: 0.04;
+		pointer-events: none;
 	}
 
 	.alumni-subsection {
+		position: relative;
 		max-width: 1100px;
-		margin: 0 auto 32px;
+		margin: 0 auto 40px;
 		padding: 0 24px;
 	}
 
 	.subsection-title {
-		font-size: var(--text-lg);
-		font-weight: 500;
-		color: var(--text-primary);
+		font-family: 'Courier New', Courier, monospace;
+		font-size: var(--text-sm);
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--text-muted);
 		margin-bottom: 24px;
 		padding-bottom: 8px;
 		border-bottom: 1px solid var(--default-border-color);
 	}
 
-	/* Companies grid */
+	/* Companies grid - Notebook clipping style */
 	.companies-grid {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
@@ -788,18 +909,24 @@ const heroCollage = [
 	}
 
 	.company-card {
+		position: relative;
 		display: grid;
-		grid-template-columns: 140px 1fr;
+		grid-template-columns: 120px 1fr;
 		gap: 16px;
 		padding: 16px;
-		background: rgba(255, 255, 255, 0.5);
-		border: 1px solid var(--default-border-color);
-		border-radius: 4px;
+		background: #fff;
+		border: 1px solid #e0e0e0;
+		box-shadow: 2px 3px 8px rgba(0,0,0,0.06);
+		transform: rotate(-0.3deg);
+	}
+
+	.company-card:nth-child(2n) {
+		transform: rotate(0.4deg);
 	}
 
 	.company-image {
+		position: relative;
 		aspect-ratio: 1;
-		border-radius: 2px;
 		overflow: hidden;
 	}
 
@@ -815,17 +942,21 @@ const heroCollage = [
 	}
 
 	.company-info h4 {
+		font-family: 'Courier New', Courier, monospace;
 		font-size: var(--text-md);
-		font-weight: 500;
+		font-weight: 600;
 		color: var(--text-primary);
 		margin-bottom: 4px;
+		letter-spacing: 0.02em;
 	}
 
 	.company-tagline {
-		font-size: var(--text-sm);
-		font-weight: 500;
+		font-family: 'Courier New', Courier, monospace;
+		font-size: var(--text-xs);
+		font-weight: 600;
 		color: var(--color-accent-blue);
 		margin-bottom: 8px;
+		letter-spacing: 0.03em;
 	}
 
 	.company-info p:last-child {
@@ -834,22 +965,31 @@ const heroCollage = [
 		line-height: 1.5;
 	}
 
-	/* Research grid */
+	/* Research grid - Taped photos style */
 	.research-grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: 24px;
+		gap: 32px;
 	}
 
 	.research-item {
+		position: relative;
 		text-align: center;
+		padding-top: 8px;
 	}
 
+	.research-item:nth-child(1) { transform: rotate(-0.8deg); }
+	.research-item:nth-child(2) { transform: rotate(0.5deg); }
+	.research-item:nth-child(3) { transform: rotate(-0.3deg); }
+
 	.research-image {
+		position: relative;
 		aspect-ratio: 4/3;
-		margin-bottom: 12px;
-		border-radius: 4px;
+		margin-bottom: 16px;
 		overflow: hidden;
+		background: #fff;
+		padding: 6px;
+		box-shadow: 2px 3px 8px rgba(0,0,0,0.08);
 	}
 
 	.research-image img {
@@ -864,15 +1004,18 @@ const heroCollage = [
 	}
 
 	.research-info h4 {
+		font-family: 'Courier New', Courier, monospace;
 		font-size: var(--text-sm);
-		font-weight: 500;
+		font-weight: 600;
 		color: var(--text-primary);
-		margin-bottom: 4px;
+		margin-bottom: 6px;
+		letter-spacing: 0.02em;
 	}
 
 	.research-info p {
 		font-size: var(--text-xs);
 		color: var(--text-secondary);
+		line-height: 1.4;
 	}
 
 	/* Industry grid */
@@ -887,13 +1030,20 @@ const heroCollage = [
 		display: flex;
 		flex-direction: column;
 		gap: 12px;
+		transform: rotate(-0.5deg);
+	}
+
+	.industry-highlight:nth-child(2) {
+		transform: rotate(0.6deg);
 	}
 
 	.industry-info h4 {
+		font-family: 'Courier New', Courier, monospace;
 		font-size: var(--text-md);
-		font-weight: 500;
+		font-weight: 600;
 		color: var(--text-primary);
 		margin-bottom: 4px;
+		letter-spacing: 0.02em;
 	}
 
 	.industry-info p {
@@ -903,9 +1053,9 @@ const heroCollage = [
 
 	.other-companies {
 		padding: 20px;
-		background: rgba(239, 246, 255, 0.3);
-		border: 1px solid var(--grid-border-color);
-		border-radius: 4px;
+		background: #fff;
+		border: 1px solid #e0e0e0;
+		box-shadow: 2px 3px 8px rgba(0,0,0,0.05);
 	}
 
 	.other-companies p {
@@ -921,13 +1071,14 @@ const heroCollage = [
 	}
 
 	.company-logos span {
-		font-size: var(--text-sm);
+		font-family: 'Courier New', Courier, monospace;
+		font-size: var(--text-xs);
 		font-weight: 500;
-		color: var(--text-muted);
+		color: var(--text-secondary);
 		padding: 6px 12px;
-		background: rgba(255, 255, 255, 0.6);
-		border: 1px solid var(--default-border-color);
-		border-radius: 4px;
+		background: var(--color-cream-50);
+		border: 1px solid #e0e0e0;
+		letter-spacing: 0.02em;
 	}
 
 	/* Inline testimonials in alumni section */

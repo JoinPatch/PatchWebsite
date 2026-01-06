@@ -17,17 +17,24 @@ interface Props {
 }
 
 const { label, title, subtitle, mentors, class: className } = Astro.props;
+
+// Rotation pattern for organic pinned look
+const rotations = ['cw-sm', 'ccw-sm', 'cw-md', 'ccw-sm', 'ccw-md', 'cw-sm', 'ccw-sm', 'cw-md'] as const;
 ---
 
 <section class:list={['mentors-section', className]}>
+    <!-- Graph paper background -->
+    <div class="mentors-graph-paper" aria-hidden="true"></div>
+
     <SectionHeader label={label} title={title} subtitle={subtitle} />
 
     <div class="mentors-grid">
-        {mentors.map((mentor) => (
+        {mentors.map((mentor, index) => (
             <MentorCard
                 name={mentor.name}
                 title={mentor.title}
                 imageSrc={mentor.imageSrc}
+                rotation={rotations[index % rotations.length]}
             />
         ))}
     </div>
@@ -35,15 +42,31 @@ const { label, title, subtitle, mentors, class: className } = Astro.props;
 
 <style>
     .mentors-section {
+        position: relative;
         padding: 48px 24px;
+        overflow: hidden;
+    }
+
+    /* Graph paper background */
+    .mentors-graph-paper {
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(#e8e8e8 1px, transparent 1px),
+            linear-gradient(90deg, #e8e8e8 1px, transparent 1px);
+        background-size: 20px 20px;
+        opacity: 0.04;
+        pointer-events: none;
     }
 
     .mentors-grid {
+        position: relative;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
+        gap: 24px;
         max-width: 1100px;
         margin: 0 auto;
+        padding-top: 8px;
     }
 
     @media (max-width: 1024px) {

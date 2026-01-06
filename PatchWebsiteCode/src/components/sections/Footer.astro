@@ -7,6 +7,9 @@ const { class: className } = Astro.props;
 ---
 
 <footer class:list={['footer', className]}>
+    <!-- Blueprint grid overlay -->
+    <div class="footer-grid" aria-hidden="true"></div>
+
     <div class="footer-content">
         <div class="footer-main">
             <div class="footer-brand">
@@ -69,12 +72,27 @@ const { class: className } = Astro.props;
 
 <style>
     .footer {
+        position: relative;
         padding: 64px 24px 32px;
-        background: var(--color-cream-50);
-        border-top: 1px solid var(--grid-border-color);
+        background: #4a7fbf;
+        border-top: none;
+        overflow: hidden;
+    }
+
+    /* Blueprint grid overlay */
+    .footer-grid {
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
     }
 
     .footer-content {
+        position: relative;
+        z-index: 1;
         max-width: 1100px;
         margin: 0 auto;
     }
@@ -101,17 +119,19 @@ const { class: className } = Astro.props;
     .footer-logo img {
         height: 24px;
         width: auto;
+        /* Invert blue logo to white on blue background */
+        filter: brightness(0) invert(1);
     }
 
     .footer-logo span {
         font-size: 1.125rem;
         font-weight: 600;
-        color: var(--text-primary);
+        color: #fff;
     }
 
     .footer-tagline {
         font-size: var(--text-sm);
-        color: var(--text-secondary);
+        color: rgba(255, 255, 255, 0.8);
         line-height: 1.5;
     }
 
@@ -122,44 +142,49 @@ const { class: className } = Astro.props;
     }
 
     .footer-column h4 {
+        font-family: 'Courier New', Courier, monospace;
         font-size: var(--text-xs);
         font-weight: 600;
         text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: var(--text-primary);
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.6);
         margin-bottom: 12px;
     }
 
     .footer-column a {
         display: block;
         font-size: var(--text-sm);
-        color: var(--text-secondary);
+        color: rgba(255, 255, 255, 0.85);
         text-decoration: none;
         margin-bottom: 8px;
+        transition: color 0.15s ease;
     }
 
     .footer-column a:hover {
-        color: var(--color-accent-blue);
+        color: var(--color-orange-400);
+        text-decoration: none;
     }
 
     .footer-newsletter {
         padding: 24px;
-        background: rgba(255, 255, 255, 0.6);
-        border: 1px solid var(--default-border-color);
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 4px;
         margin-bottom: 32px;
     }
 
     .footer-newsletter h4 {
+        font-family: 'Courier New', Courier, monospace;
         font-size: var(--text-sm);
         font-weight: 500;
-        color: var(--text-primary);
+        color: #fff;
         margin-bottom: 4px;
+        letter-spacing: 0.05em;
     }
 
     .footer-newsletter p {
         font-size: var(--text-sm);
-        color: var(--text-muted);
+        color: rgba(255, 255, 255, 0.7);
         margin-bottom: 12px;
     }
 
@@ -173,43 +198,52 @@ const { class: className } = Astro.props;
         flex: 1;
         padding: 8px 12px;
         font-size: var(--text-sm);
-        border: 1px solid var(--default-border-color);
+        border: 1px solid rgba(255, 255, 255, 0.3);
         border-radius: 4px;
-        background: white;
+        background: rgba(255, 255, 255, 0.1);
         font-family: inherit;
+        color: #fff;
+    }
+
+    .newsletter-form input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
     }
 
     .newsletter-form input:focus {
         outline: none;
-        border-color: var(--color-accent-blue);
+        border-color: var(--color-orange-400);
+        background: rgba(255, 255, 255, 0.15);
     }
 
     .newsletter-form button {
         padding: 8px 16px;
         font-size: var(--text-sm);
         font-weight: 500;
-        color: white;
-        background: var(--color-accent-blue);
+        color: #1a1a1a;
+        background: var(--color-orange-400);
         border: none;
         border-radius: 4px;
         cursor: pointer;
-        font-family: inherit;
-        transition: background 0.1s ease;
+        font-family: 'Courier New', Courier, monospace;
+        letter-spacing: 0.05em;
+        transition: background 0.15s ease;
     }
 
     .newsletter-form button:hover {
-        background: hsl(219, 93%, 35%);
+        background: var(--color-orange-500);
     }
 
     .footer-bottom {
         padding-top: 24px;
-        border-top: 1px solid var(--default-border-color);
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
         text-align: center;
     }
 
     .footer-bottom p {
+        font-family: 'Courier New', Courier, monospace;
         font-size: var(--text-xs);
-        color: var(--text-muted);
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 0.05em;
     }
 
     @media (max-width: 1024px) {

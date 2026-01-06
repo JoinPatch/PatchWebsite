@@ -198,3 +198,83 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+/* ==========================================
+   ENGINEER'S NOTEBOOK UTILITIES
+   ========================================== */
+
+/* Graph Paper Background Utility */
+.graph-paper-bg {
+    position: relative;
+}
+.graph-paper-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(#e8e8e8 1px, transparent 1px),
+        linear-gradient(90deg, #e8e8e8 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.04;
+    pointer-events: none;
+}
+
+/* Tape Effect Utility */
+.tape {
+    position: absolute;
+    width: 30px;
+    height: 12px;
+    background: rgba(255, 230, 150, 0.75);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.tape-tl { top: -6px; left: 10px; transform: rotate(-15deg); }
+.tape-tr { top: -6px; right: 10px; transform: rotate(12deg); }
+.tape-bl { bottom: -6px; left: 10px; transform: rotate(12deg); }
+.tape-br { bottom: -6px; right: 10px; transform: rotate(-15deg); }
+
+/* Pinned Element */
+.pinned {
+    position: relative;
+}
+.pinned::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background: #c44;
+    border-radius: 50%;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+/* Notebook Rotation Classes */
+.rotate-cw-sm { transform: rotate(0.5deg); }
+.rotate-ccw-sm { transform: rotate(-0.5deg); }
+.rotate-cw-md { transform: rotate(1.2deg); }
+.rotate-ccw-md { transform: rotate(-1.2deg); }
+
+/* Technical/Monospace Typography */
+.font-technical {
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 0.05em;
+}
+
+/* Blueprint Blue Background */
+.blueprint-bg {
+    background: #4a7fbf;
+}
+
+/* Blueprint Grid Overlay */
+.blueprint-grid::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}

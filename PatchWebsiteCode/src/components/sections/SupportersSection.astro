@@ -15,14 +15,23 @@ interface Props {
 }
 
 const { label, title, subtitle, supporters, class: className } = Astro.props;
+
+// Rotation pattern for organic stamp/sticker look
+const rotations = ['-0.8deg', '0.5deg', '-0.3deg', '0.7deg', '-0.5deg'];
 ---
 
 <section class:list={['supporters-section', className]}>
+    <!-- Graph paper background -->
+    <div class="supporters-graph-paper" aria-hidden="true"></div>
+
     <SectionHeader label={label} title={title} subtitle={subtitle} />
 
     <div class="supporters-grid">
-        {supporters.map((supporter) => (
-            <div class="supporter-logo">
+        {supporters.map((supporter, index) => (
+            <div
+                class="supporter-stamp"
+                style={`--rotation: ${rotations[index % rotations.length]}`}
+            >
                 {supporter.logoSrc ? (
                     <img src={supporter.logoSrc} alt={supporter.name} loading="lazy" />
                 ) : (
@@ -35,10 +44,25 @@ const { label, title, subtitle, supporters, class: className } = Astro.props;
 
 <style>
     .supporters-section {
+        position: relative;
         padding: 48px 24px;
+        overflow: hidden;
+    }
+
+    /* Graph paper background */
+    .supporters-graph-paper {
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(#e8e8e8 1px, transparent 1px),
+            linear-gradient(90deg, #e8e8e8 1px, transparent 1px);
+        background-size: 20px 20px;
+        opacity: 0.04;
+        pointer-events: none;
     }
 
     .supporters-grid {
+        position: relative;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -49,35 +73,45 @@ const { label, title, subtitle, supporters, class: className } = Astro.props;
         padding: 24px;
     }
 
-    .supporter-logo {
+    .supporter-stamp {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 48px;
-        filter: grayscale(100%);
-        opacity: 0.7;
+        height: 56px;
+        padding: 12px 16px;
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        box-shadow: 2px 3px 6px rgba(0,0,0,0.06);
+        transform: rotate(var(--rotation, 0deg));
         transition: all 0.2s ease;
     }
 
-    .supporter-logo:hover {
-        filter: grayscale(0%);
+    .supporter-stamp:hover {
+        transform: rotate(0deg) scale(1.02);
+        box-shadow: 3px 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .supporter-stamp img {
+        max-height: 100%;
+        max-width: 160px;
+        object-fit: contain;
+        filter: invert(1) grayscale(40%);
+        opacity: 0.85;
+        transition: all 0.2s ease;
+    }
+
+    .supporter-stamp:hover img {
+        filter: invert(1) grayscale(0%);
         opacity: 1;
     }
 
-    .supporter-logo img {
-        max-height: 100%;
-        max-width: 120px;
-        object-fit: contain;
-    }
-
     .supporter-name {
+        font-family: 'Courier New', Courier, monospace;
         font-size: var(--text-sm);
         font-weight: 500;
-        color: var(--text-muted);
-        padding: 8px 16px;
-        border: 1px solid var(--default-border-color);
-        border-radius: 4px;
-        background: rgba(255, 255, 255, 0.5);
+        color: var(--text-secondary);
+        letter-spacing: 0.02em;
+        white-space: nowrap;
     }
 
     @media (max-width: 640px) {
@@ -85,12 +119,13 @@ const { label, title, subtitle, supporters, class: className } = Astro.props;
             gap: 24px 32px;
         }
 
-        .supporter-logo {
-            height: 36px;
+        .supporter-stamp {
+            height: 44px;
+            padding: 8px 12px;
         }
 
-        .supporter-logo img {
-            max-width: 100px;
+        .supporter-stamp img {
+            max-width: 140px;
         }
     }
 </style>
