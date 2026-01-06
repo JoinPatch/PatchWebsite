@@ -1,6 +1,4 @@
 ---
-import JitteredGrid from '../ui/JitteredGrid.astro';
-
 interface Props {
     headline: string;
     description: string;
@@ -10,25 +8,38 @@ const { headline, description } = Astro.props;
 ---
 
 <section class="hero-section">
-    <JitteredGrid
-        seed={42}
-        opacity={0.8}
-        animate={true}
-        animationDuration={60}
-        maskDirection="none"
-    />
+    <!-- Blueprint background with texture -->
+    <div class="blueprint-bg" aria-hidden="true">
+        <div class="blueprint-texture"></div>
+        <div class="blueprint-grid"></div>
+        <!-- Corner markers -->
+        <div class="corner-mark top-left"></div>
+        <div class="corner-mark top-right"></div>
+        <div class="corner-mark bottom-left"></div>
+        <div class="corner-mark bottom-right"></div>
+    </div>
 
     <div class="hero-layout">
         <div class="hero-content">
-            <h1>{headline}</h1>
-            <p>{description}</p>
-            <div class="hero-actions">
-                <slot name="actions" />
+            <div class="content-frame">
+                <h1>{headline}</h1>
+                <p>{description}</p>
+                <div class="hero-actions">
+                    <slot name="actions" />
+                </div>
             </div>
         </div>
 
         <div class="hero-media">
-            <slot name="media" />
+            <div class="blueprint-frame">
+                <div class="frame-label">FIG. 1 — PATCH COMMUNITY</div>
+                <slot name="media" />
+                <div class="frame-annotations">
+                    <span class="annotation">A</span>
+                    <span class="annotation">B</span>
+                    <span class="annotation">C</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -37,9 +48,104 @@ const { headline, description } = Astro.props;
     .hero-section {
         position: relative;
         padding: 80px 24px 192px;
-        background: linear-gradient(to top, rgba(219, 234, 254, 0.2), transparent);
+        background: #4a7fbf;
         isolation: isolate;
         overflow: hidden;
+    }
+
+    /* Blueprint background container */
+    .blueprint-bg {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
+
+    /* Paper texture using noise */
+    .blueprint-texture {
+        position: absolute;
+        inset: 0;
+        background-image: url('/noise.png');
+        background-size: 200px;
+        opacity: 0.08;
+        mix-blend-mode: overlay;
+    }
+
+    /* Grid lines */
+    .blueprint-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+            /* Major grid lines */
+            linear-gradient(to right, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+            /* Minor grid lines */
+            linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+        background-size:
+            80px 80px,
+            80px 80px,
+            16px 16px,
+            16px 16px;
+    }
+
+    /* Corner registration marks */
+    .corner-mark {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        pointer-events: none;
+    }
+
+    .corner-mark::before,
+    .corner-mark::after {
+        content: '';
+        position: absolute;
+        background: rgba(255, 255, 255, 0.4);
+    }
+
+    .corner-mark::before {
+        width: 12px;
+        height: 2px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .corner-mark::after {
+        width: 2px;
+        height: 12px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .corner-mark.top-left {
+        top: 24px;
+        left: 24px;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    .corner-mark.top-right {
+        top: 24px;
+        right: 24px;
+        border-left: none;
+        border-bottom: none;
+    }
+
+    .corner-mark.bottom-left {
+        bottom: 24px;
+        left: 24px;
+        border-right: none;
+        border-top: none;
+    }
+
+    .corner-mark.bottom-right {
+        bottom: 24px;
+        right: 24px;
+        border-left: none;
+        border-top: none;
     }
 
     .hero-layout {
@@ -58,11 +164,15 @@ const { headline, description } = Astro.props;
         text-align: left;
     }
 
+    .content-frame {
+        position: relative;
+    }
+
     .hero-content h1 {
         font-size: 3rem;
         font-weight: 400;
         font-family: Georgia, 'Times New Roman', serif;
-        color: var(--color-accent-blue);
+        color: #ffffff;
         margin-bottom: 1rem;
         line-height: 1.15;
     }
@@ -70,7 +180,7 @@ const { headline, description } = Astro.props;
     .hero-content p {
         font-size: 1.125rem;
         margin-bottom: 1.5rem;
-        color: var(--text-secondary);
+        color: rgba(255, 255, 255, 0.85);
         letter-spacing: -0.01em;
         max-width: 480px;
     }
@@ -84,6 +194,71 @@ const { headline, description } = Astro.props;
 
     .hero-media {
         position: relative;
+    }
+
+    /* Blueprint-style frame around photos */
+    .blueprint-frame {
+        position: relative;
+        padding: 12px;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* Dashed outer frame */
+    .blueprint-frame::before {
+        content: '';
+        position: absolute;
+        inset: -8px;
+        border: 1px dashed rgba(255, 255, 255, 0.3);
+        pointer-events: none;
+    }
+
+    .frame-label {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        margin-bottom: 8px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.7);
+        text-transform: uppercase;
+    }
+
+    .frame-annotations {
+        position: absolute;
+        right: -32px;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 20px 0;
+    }
+
+    .annotation {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border: 1.5px solid rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        font-family: 'Courier New', monospace;
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    .annotation::before {
+        content: '';
+        position: absolute;
+        right: 100%;
+        width: 8px;
+        height: 1.5px;
+        background: rgba(255, 255, 255, 0.4);
+        margin-right: 4px;
     }
 
     @media (max-width: 1024px) {
@@ -106,6 +281,9 @@ const { headline, description } = Astro.props;
             justify-content: center;
         }
 
+        .frame-annotations {
+            display: none;
+        }
     }
 
     @media (max-width: 768px) {
@@ -116,11 +294,23 @@ const { headline, description } = Astro.props;
         .hero-section {
             padding: 60px 16px 160px;
         }
+
+        .corner-mark {
+            display: none;
+        }
     }
 
     @media (max-width: 480px) {
         .hero-content h1 {
             font-size: 2rem;
+        }
+
+        .blueprint-frame::before {
+            display: none;
+        }
+
+        .frame-label {
+            display: none;
         }
     }
 </style>
