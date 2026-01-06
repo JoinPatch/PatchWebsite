@@ -65,6 +65,54 @@ const { logoText = 'Patch' } = Astro.props;
         <div class="header-nav">
             <Button variant="cta" href="#apply">Apply Now</Button>
         </div>
+
+        <!-- Mobile menu button -->
+        <button class="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+    </div>
+
+    <!-- Mobile menu drawer -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-content">
+            <span class="corner-bracket corner-tl" aria-hidden="true"></span>
+            <span class="corner-bracket corner-tr" aria-hidden="true"></span>
+            <span class="corner-bracket corner-bl" aria-hidden="true"></span>
+            <span class="corner-bracket corner-br" aria-hidden="true"></span>
+
+            <nav class="mobile-nav">
+                <div class="mobile-nav-section">
+                    <span class="mobile-nav-label">Programmes</span>
+                    <a href="#summer-programme">Summer Programme</a>
+                    <a href="#tecs">TECS</a>
+                    <a href="/grants">Fast Grants</a>
+                    <a href="#sf-fellowship">SF Fellowship</a>
+                </div>
+
+                <a href="https://joinpatch.org/impact-report" target="_blank" rel="noopener noreferrer" class="mobile-nav-link mobile-nav-link-external">
+                    Impact
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                        <polyline points="15 3 21 3 21 9"/>
+                        <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                </a>
+
+                <div class="mobile-nav-section">
+                    <span class="mobile-nav-label">Policies</span>
+                    <a href="/child-protection-policy">Child Protection Policy</a>
+                    <a href="/child-safeguarding-statement">Child Safeguarding Statement</a>
+                    <a href="/privacy-policy">Privacy Policy</a>
+                    <a href="/cookie-policy">Cookie Policy</a>
+                </div>
+            </nav>
+
+            <div class="mobile-menu-cta">
+                <Button variant="cta" href="#apply">Apply Now</Button>
+            </div>
+        </div>
     </div>
 </header>
 
@@ -379,8 +427,157 @@ const { logoText = 'Patch' } = Astro.props;
         right: -4.5px;
     }
 
+    /* Mobile menu toggle button - hidden on desktop */
+    .mobile-menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 10px;
+        background: none;
+        border: 1px solid var(--default-border-color);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        z-index: 101;
+    }
+
+    .mobile-menu-toggle:hover {
+        background: rgba(7, 81, 207, 0.04);
+        border-color: var(--color-accent-blue);
+    }
+
+    .hamburger-line {
+        display: block;
+        width: 20px;
+        height: 2px;
+        background: var(--text-secondary);
+        transition: all 0.3s ease;
+    }
+
+    /* Hamburger to X animation when menu is open */
+    .mobile-menu-toggle.is-active .hamburger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .mobile-menu-toggle.is-active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-toggle.is-active .hamburger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile menu drawer - hidden by default */
+    .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--nav-bg-color);
+        border-bottom: 1px solid var(--grid-border-color);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 99;
+    }
+
+    .mobile-menu.is-open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .mobile-menu-content {
+        position: relative;
+        padding: 24px;
+        max-width: 1148px;
+        margin: 0 auto;
+    }
+
+    /* Corner brackets for mobile menu */
+    .mobile-menu-content .corner-bracket {
+        position: absolute;
+    }
+
+    .mobile-menu-content .corner-tl { top: 12px; left: 12px; }
+    .mobile-menu-content .corner-tr { top: 12px; right: 12px; }
+    .mobile-menu-content .corner-bl { bottom: 12px; left: 12px; }
+    .mobile-menu-content .corner-br { bottom: 12px; right: 12px; }
+
+    .mobile-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .mobile-nav-section {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .mobile-nav-label {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-blue-200);
+        padding: 4px 0;
+        border-bottom: 1px solid var(--grid-border-color);
+        margin-bottom: 4px;
+    }
+
+    .mobile-nav-section a,
+    .mobile-nav-link {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: 10px 12px;
+        border-radius: 4px;
+        transition: all 0.15s ease;
+    }
+
+    .mobile-nav-section a:hover,
+    .mobile-nav-link:hover {
+        color: var(--text-primary);
+        background: rgba(7, 81, 207, 0.04);
+    }
+
+    .mobile-nav-link-external svg {
+        opacity: 0.6;
+    }
+
+    .mobile-menu-cta {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--grid-border-color);
+    }
+
+    .mobile-menu-cta :global(.btn) {
+        width: 100%;
+        justify-content: center;
+    }
+
     @media (max-width: 768px) {
         .header-links {
+            display: none;
+        }
+
+        .header-nav {
             display: none;
         }
 
@@ -389,12 +586,71 @@ const { logoText = 'Patch' } = Astro.props;
         }
 
         .logo-image {
-            height: 28px;
+            height: 32px;
         }
 
         .header-inner::before,
         .header-inner::after {
             display: none;
         }
+
+        .mobile-menu-toggle {
+            display: flex;
+        }
+
+        .mobile-menu {
+            display: block;
+        }
     }
 </style>
+
+<script>
+    // Mobile menu toggle functionality
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+            const isOpen = mobileMenu.classList.contains('is-open');
+
+            mobileMenuToggle.classList.toggle('is-active');
+            mobileMenu.classList.toggle('is-open');
+
+            // Update aria-expanded
+            mobileMenuToggle.setAttribute('aria-expanded', !isOpen);
+            mobileMenuToggle.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+        });
+
+        // Close menu when clicking on a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('is-active');
+                mobileMenu.classList.remove('is-open');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.setAttribute('aria-label', 'Open menu');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                mobileMenuToggle.classList.remove('is-active');
+                mobileMenu.classList.remove('is-open');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.setAttribute('aria-label', 'Open menu');
+            }
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+                mobileMenuToggle.classList.remove('is-active');
+                mobileMenu.classList.remove('is-open');
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                mobileMenuToggle.setAttribute('aria-label', 'Open menu');
+                mobileMenuToggle.focus();
+            }
+        });
+    }
+</script>
