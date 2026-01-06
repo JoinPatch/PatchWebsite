@@ -1,0 +1,698 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// UI Components
+import Button from '../components/ui/Button.astro';
+import Divider from '../components/ui/Divider.astro';
+import SectionHeader from '../components/ui/SectionHeader.astro';
+import FaqGrid from '../components/ui/FaqGrid.astro';
+
+// Section Components
+import Header from '../components/sections/Header.astro';
+import Hero from '../components/sections/Hero.astro';
+import Footer from '../components/sections/Footer.astro';
+
+// Hero photos - just 4
+const heroPhotos = [
+	{ src: "/GrantsTomasMarkey.JPG", alt: "Direct air capture prototype" },
+	{ src: "/AlumniLedInitiatives/GiveAGo.png", alt: "Give(a)Go community event" },
+	{ src: "/Robodog.jpg", alt: "Hardware project" },
+	{ src: "/TECS.jpg", alt: "TECS competition" },
+];
+
+// FAQ data
+const faqs = [
+	{
+		question: "Who can apply for a grant?",
+		answer: "Young people aged <strong>13–19</strong> in Ireland who want to build, create, or make something happen."
+	},
+	{
+		question: "What can I apply with?",
+		answer: `Anything that helps you learn, build, and push yourself. We fund hardware & engineering projects, community events & workshops, travel for learning, creative technical projects, and early-stage experiments. You do <strong>not</strong> need a polished idea — curiosity + action count.`
+	},
+	{
+		question: "How much funding can I get?",
+		answer: "<strong>€200–€1,000.</strong> If your project needs more, we'll help you think through other funding options."
+	},
+	{
+		question: "What's the process?",
+		answer: "Fast and lightweight: <strong>1.</strong> Short online form → <strong>2.</strong> 15–30 min call → <strong>3.</strong> Decision within ~1 week."
+	},
+	{
+		question: "Do I get mentorship?",
+		answer: "Yes. We connect you with someone helpful in your domain when relevant. Mentorship is tailored and lightweight — these grants are about momentum, not bureaucracy."
+	},
+	{
+		question: "What do you look for?",
+		answer: "Curiosity and initiative. A desire to learn by doing. Follow-through. Ambition to stretch yourself."
+	},
+	{
+		question: "Can I reapply?",
+		answer: "Yes! If your idea evolves or you have a new one, you're welcome to apply again."
+	}
+];
+---
+
+<Layout title="Fast Grants - Patch">
+	<Header logoText="Patch" />
+
+	<!-- ============================================
+		 HERO
+		 ============================================ -->
+	<Hero
+		headline="Fast Grants"
+		description="Quick grants of €200–€1,000 for young builders in Ireland — go build."
+		frameLabel="FIG. 2 — PATCH GRANTEES"
+		compact={true}
+	>
+		<Fragment slot="actions">
+			<Button variant="cta" href="https://tally.so/r/wzN661">
+				Apply Now
+			</Button>
+		</Fragment>
+		<Fragment slot="media">
+			<div class="photo-grid-4">
+				{heroPhotos.map((photo, i) => (
+					<div class={`photo-item photo-${i + 1}`}>
+						<img src={photo.src} alt={photo.alt} loading="lazy" />
+					</div>
+				))}
+			</div>
+		</Fragment>
+	</Hero>
+
+	<!-- ============================================
+		 NOTEBOOK CONTENT
+		 ============================================ -->
+	<section class="notebook-section">
+		<!-- Notebook binding -->
+		<div class="notebook-binding">
+			<span class="ring"></span>
+			<span class="ring"></span>
+			<span class="ring"></span>
+			<span class="ring"></span>
+			<span class="ring"></span>
+		</div>
+
+		<!-- Page edges -->
+		<div class="notebook-pages">
+			<div class="page-edge page-1"></div>
+			<div class="page-edge page-2"></div>
+		</div>
+
+		<!-- Main content -->
+		<div class="notebook-content">
+			<!-- Graph paper background -->
+			<div class="graph-paper"></div>
+
+			<!-- Red margin line -->
+			<div class="margin-line"></div>
+
+			<div class="notebook-inner">
+				<!-- INTRO -->
+				<div class="entry entry-intro">
+					<div class="entry-header">
+						<span class="entry-label">OVERVIEW</span>
+						<span class="entry-date">2025</span>
+					</div>
+					<p class="entry-text lead">Patch Grants support young builders in Ireland (ages <strong>13–19</strong>) with fast, flexible funding to help you take action and learn by doing.</p>
+
+					<div class="what-we-fund">
+						<span class="fund-label">What we fund:</span>
+						<ul>
+							<li>Build a prototype or hardware project</li>
+							<li>Run a small community event or workshop</li>
+							<li>Travel to a conference or learning opportunity</li>
+							<li>Explore an idea you can't shake</li>
+						</ul>
+						<p class="fund-note">…we'll fund anything that meaningfully helps you learn by building real things.</p>
+					</div>
+				</div>
+
+				<div class="notebook-divider">
+					<div class="corner-diamond"></div>
+				</div>
+
+				<!-- HOW IT WORKS -->
+				<div class="entry entry-specs">
+					<div class="entry-header">
+						<span class="entry-label">SPECIFICATIONS</span>
+					</div>
+
+					<div class="specs-grid">
+						<div class="spec-row">
+							<span class="spec-key">Grant size</span>
+							<span class="spec-dots"></span>
+							<span class="spec-val">€200–€1,000</span>
+						</div>
+						<div class="spec-row">
+							<span class="spec-key">Turnaround</span>
+							<span class="spec-dots"></span>
+							<span class="spec-val">~1 week</span>
+						</div>
+						<div class="spec-row">
+							<span class="spec-key">Process</span>
+							<span class="spec-dots"></span>
+							<span class="spec-val">Form → Call → Decision</span>
+						</div>
+					</div>
+
+					<p class="entry-text">These grants are designed to help early builders get started fast — before you have a network, track record, or budget.</p>
+				</div>
+
+				<div class="notebook-divider">
+					<div class="corner-diamond"></div>
+				</div>
+
+				<!-- EXAMPLES -->
+				<div class="entry entry-examples">
+					<div class="entry-header">
+						<span class="entry-label">EXAMPLES FUNDED</span>
+					</div>
+
+					<div class="examples-list">
+						<div class="example"><strong>Direct air capture prototype</strong> — won Top Individual at BTYSE</div>
+						<div class="example"><strong>Give(a)Go</strong> — monthly hands-on tech meetup</div>
+						<div class="example"><strong>1517 Fund conference travel</strong> — led to SF internship</div>
+						<div class="example"><strong>Custom PCB + electronics</strong> — NFC-powered cufflinks</div>
+					</div>
+
+					<p class="entry-text highlight-text">At Patch, we believe young people can build real things, right now — and we want to help you start.</p>
+				</div>
+
+				<div class="notebook-divider">
+					<div class="corner-diamond"></div>
+				</div>
+
+				<!-- QUOTE & CTA -->
+				<div class="entry entry-cta">
+					<blockquote>
+						<p>"Patch exists to give curious, ambitious young people a space and community where they can realise their potential."</p>
+						<cite>— Tom McCarthy, Founder</cite>
+					</blockquote>
+					<div class="cta-wrapper">
+						<Button variant="cta" href="https://tally.so/r/wzN661">Apply for a Grant</Button>
+					</div>
+				</div>
+
+				<!-- Margin annotation -->
+				<div class="margin-note">GRANTS PROGRAMME →</div>
+				<div class="page-number">pg. 12</div>
+			</div>
+		</div>
+	</section>
+
+	<Divider />
+
+	<!-- ============================================
+		 FAQs
+		 ============================================ -->
+	<section class="faqs-section">
+		<SectionHeader title="FAQs" />
+		<FaqGrid items={faqs} />
+	</section>
+
+	<Divider />
+
+	<!-- ============================================
+		 PARTNERS & CONTACT
+		 ============================================ -->
+	<section class="partners-section">
+		<div class="partners-content">
+			<span class="partners-label">PARTNERS</span>
+			<p>Thanks to generous partner support, we offer <strong>€20,000 in grants</strong> annually. Applications reviewed on a rolling basis.</p>
+			<p class="thanks">With thanks to <strong>Brian Kingham</strong>, <strong>Mark Cummins</strong>, <strong>Joe Liemandt</strong>, <strong>Rob Granieri</strong>, and <strong>Craig Falls</strong>.</p>
+			<p class="contact">Questions? <a href="mailto:grants@joinpatch.org">grants@joinpatch.org</a></p>
+		</div>
+	</section>
+
+	<Footer />
+</Layout>
+
+<style>
+	/* ============================================
+	   4-PHOTO GRID FOR HERO (Compact)
+	   ============================================ */
+	.photo-grid-4 {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		gap: 6px;
+		max-width: 320px;
+		margin: 0 auto;
+	}
+
+	.photo-grid-4 .photo-item {
+		overflow: hidden;
+		border-radius: 6px;
+		border: 1px solid rgba(198, 202, 210, 0.6);
+		background: white;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		aspect-ratio: 4/3;
+	}
+
+	.photo-grid-4 .photo-item img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	@media (max-width: 768px) {
+		.photo-grid-4 {
+			max-width: 280px;
+		}
+	}
+
+	/* ============================================
+	   NOTEBOOK SECTION
+	   ============================================ */
+	.notebook-section {
+		position: relative;
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 48px 24px;
+	}
+
+	/* Binding */
+	.notebook-binding {
+		position: absolute;
+		left: 0;
+		top: 80px;
+		bottom: 80px;
+		width: 24px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		z-index: 10;
+	}
+
+	.ring {
+		width: 18px;
+		height: 18px;
+		border: 3px solid #888;
+		border-radius: 50%;
+		background: linear-gradient(135deg, #aaa 0%, #666 100%);
+		box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+	}
+
+	/* Page edges */
+	.notebook-pages {
+		position: absolute;
+		top: 48px;
+		left: 28px;
+		right: 0;
+		bottom: 48px;
+		pointer-events: none;
+	}
+
+	.page-edge {
+		position: absolute;
+		background: #f0f0e8;
+		border: 1px solid #ddd;
+	}
+
+	.page-edge.page-1 {
+		inset: 4px -4px -4px 4px;
+		transform: rotate(0.3deg);
+	}
+
+	.page-edge.page-2 {
+		inset: 2px -2px -2px 2px;
+		transform: rotate(0.1deg);
+	}
+
+	/* Main content */
+	.notebook-content {
+		position: relative;
+		background: #f9f9f5;
+		border: 1px solid #ccc;
+		margin-left: 28px;
+		padding: 32px 32px 32px 56px;
+		box-shadow:
+			0 4px 12px rgba(0,0,0,0.08),
+			inset 0 0 60px rgba(0,0,0,0.02);
+	}
+
+	.graph-paper {
+		position: absolute;
+		inset: 0;
+		background:
+			linear-gradient(#e0e0e0 1px, transparent 1px),
+			linear-gradient(90deg, #e0e0e0 1px, transparent 1px);
+		background-size: 20px 20px;
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
+	.margin-line {
+		position: absolute;
+		left: 48px;
+		top: 0;
+		bottom: 0;
+		width: 1px;
+		background: rgba(200, 100, 100, 0.35);
+	}
+
+	.notebook-inner {
+		position: relative;
+		z-index: 1;
+	}
+
+	/* Entries */
+	.entry {
+		margin-bottom: 24px;
+	}
+
+	.entry-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 16px;
+	}
+
+	.entry-label {
+		font-family: 'Courier New', monospace;
+		font-size: 0.65rem;
+		font-weight: 700;
+		letter-spacing: 0.15em;
+		color: var(--color-accent-blue);
+	}
+
+	.entry-date {
+		font-family: 'Courier New', monospace;
+		font-size: 0.6rem;
+		color: #999;
+	}
+
+	.entry-text {
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: var(--text-base);
+		line-height: 1.7;
+		color: #2a4a7a;
+		margin: 0;
+	}
+
+	.entry-text.lead {
+		font-size: var(--text-lg);
+		margin-bottom: 20px;
+	}
+
+	.entry-text strong {
+		color: var(--text-primary);
+	}
+
+	.highlight-text {
+		background: linear-gradient(180deg, transparent 60%, rgba(255, 177, 0, 0.25) 60%);
+		display: inline;
+	}
+
+	/* What we fund box */
+	.what-we-fund {
+		background: rgba(255, 255, 255, 0.8);
+		border: 1px solid #ddd;
+		padding: 16px 20px;
+		margin-top: 16px;
+	}
+
+	.fund-label {
+		font-family: 'Courier New', monospace;
+		font-size: 0.7rem;
+		font-weight: 600;
+		color: #666;
+		display: block;
+		margin-bottom: 12px;
+	}
+
+	.what-we-fund ul {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 12px 0;
+	}
+
+	.what-we-fund li {
+		position: relative;
+		padding-left: 16px;
+		margin-bottom: 8px;
+		font-size: var(--text-sm);
+		color: var(--text-secondary);
+		line-height: 1.5;
+	}
+
+	.what-we-fund li::before {
+		content: '—';
+		position: absolute;
+		left: 0;
+		color: var(--color-accent-blue);
+	}
+
+	.fund-note {
+		font-family: Georgia, 'Times New Roman', serif;
+		font-style: italic;
+		font-size: var(--text-sm);
+		color: #888;
+		margin: 0;
+	}
+
+	/* Notebook divider */
+	.notebook-divider {
+		position: relative;
+		height: 1px;
+		background: var(--grid-border-color);
+		margin: 28px 0;
+	}
+
+	.corner-diamond {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		width: 8px;
+		height: 8px;
+		background: #fff;
+		border: 1px solid var(--color-blue-200);
+		transform: translate(-50%, -50%) rotate(45deg);
+	}
+
+	/* Specs */
+	.specs-grid {
+		margin-bottom: 16px;
+	}
+
+	.spec-row {
+		display: flex;
+		align-items: baseline;
+		padding: 8px 0;
+		border-bottom: 1px dotted #ddd;
+	}
+
+	.spec-key {
+		font-family: 'Courier New', monospace;
+		font-size: var(--text-sm);
+		color: #666;
+		min-width: 100px;
+	}
+
+	.spec-dots {
+		flex: 1;
+		border-bottom: 1px dotted #ccc;
+		margin: 0 8px;
+		height: 1px;
+		align-self: center;
+	}
+
+	.spec-val {
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: var(--text-base);
+		color: var(--text-primary);
+	}
+
+	/* Examples */
+	.examples-list {
+		margin-bottom: 16px;
+	}
+
+	.example {
+		padding: 10px 0;
+		border-bottom: 1px solid #eee;
+		font-size: var(--text-sm);
+		color: var(--text-secondary);
+		line-height: 1.5;
+	}
+
+	.example:last-child {
+		border-bottom: none;
+	}
+
+	.example strong {
+		color: var(--text-primary);
+	}
+
+	/* Quote & CTA */
+	.entry-cta {
+		text-align: center;
+	}
+
+	.entry-cta blockquote {
+		margin: 0 0 24px;
+		padding: 20px;
+		background: rgba(255, 255, 255, 0.8);
+		border-left: 3px solid var(--color-orange-400);
+	}
+
+	.entry-cta blockquote p {
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: var(--text-md);
+		font-style: italic;
+		color: #2a4a7a;
+		line-height: 1.6;
+		margin: 0 0 8px;
+	}
+
+	.entry-cta cite {
+		font-family: 'Courier New', monospace;
+		font-size: var(--text-xs);
+		font-style: normal;
+		color: #888;
+	}
+
+	.cta-wrapper {
+		display: flex;
+		justify-content: center;
+	}
+
+	/* Margin annotations */
+	.margin-note {
+		position: absolute;
+		top: 50%;
+		left: 8px;
+		transform: rotate(-90deg) translateX(-50%);
+		transform-origin: left center;
+		font-family: 'Courier New', monospace;
+		font-size: 0.55rem;
+		color: rgba(200, 100, 100, 0.5);
+		letter-spacing: 0.1em;
+		white-space: nowrap;
+	}
+
+	.page-number {
+		position: absolute;
+		bottom: 12px;
+		right: 16px;
+		font-family: 'Courier New', monospace;
+		font-size: 0.65rem;
+		color: #999;
+	}
+
+	/* ============================================
+	   FAQ SECTION
+	   ============================================ */
+	.faqs-section {
+		padding: 48px 24px;
+		max-width: 700px;
+		margin: 0 auto;
+	}
+
+	/* ============================================
+	   PARTNERS
+	   ============================================ */
+	.partners-section {
+		padding: 48px 24px;
+	}
+
+	.partners-content {
+		max-width: 600px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.partners-label {
+		display: block;
+		font-family: 'Courier New', monospace;
+		font-size: 0.65rem;
+		font-weight: 700;
+		letter-spacing: 0.15em;
+		color: var(--text-muted);
+		margin-bottom: 16px;
+	}
+
+	.partners-content p {
+		font-size: var(--text-base);
+		color: var(--text-secondary);
+		line-height: 1.6;
+		margin-bottom: 12px;
+	}
+
+	.partners-content strong {
+		color: var(--text-primary);
+	}
+
+	.partners-content .thanks {
+		font-size: var(--text-sm);
+		color: var(--text-muted);
+	}
+
+	.partners-content .contact {
+		margin-top: 20px;
+		padding-top: 20px;
+		border-top: 1px solid var(--default-border-color);
+	}
+
+	.partners-content a {
+		color: var(--color-accent-blue);
+	}
+
+	/* ============================================
+	   RESPONSIVE
+	   ============================================ */
+	@media (max-width: 768px) {
+		.notebook-binding {
+			display: none;
+		}
+
+		.notebook-pages {
+			display: none;
+		}
+
+		.notebook-content {
+			margin-left: 0;
+			padding: 24px;
+			padding-left: 32px;
+		}
+
+		.margin-line {
+			left: 24px;
+		}
+
+		.margin-note {
+			display: none;
+		}
+
+		.spec-row {
+			flex-wrap: wrap;
+		}
+
+		.spec-dots {
+			display: none;
+		}
+
+		.spec-val {
+			width: 100%;
+			padding-left: 100px;
+			margin-top: 4px;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.notebook-section {
+			padding: 32px 16px;
+		}
+
+		.notebook-content {
+			padding: 20px 16px 20px 24px;
+		}
+
+		.margin-line {
+			left: 16px;
+		}
+	}
+</style>

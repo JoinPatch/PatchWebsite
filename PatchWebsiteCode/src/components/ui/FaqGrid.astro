@@ -1,0 +1,203 @@
+---
+interface FaqItem {
+    question: string;
+    answer: string;
+}
+
+interface Props {
+    items: FaqItem[];
+    class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+
+<div class:list={['faq-grid', className]}>
+    {items.map((item) => (
+        <details class="faq-item">
+            <summary>
+                <span class="faq-diamond"></span>
+                <span class="faq-question">{item.question}</span>
+                <span class="faq-diamond"></span>
+            </summary>
+            <div class="faq-answer">
+                <p set:html={item.answer} />
+            </div>
+        </details>
+    ))}
+</div>
+
+<style>
+    /* ==========================================
+       FAQ GRID
+       Grid-aligned structural design with stateful intersections
+       Based on the grid-divider philosophy: diamonds at real intersections
+       ========================================== */
+
+    .faq-grid {
+        position: relative;
+        max-width: 700px;
+        margin: 0 auto;
+
+        /* Vertical rails — continuation of main grid */
+        border-left: 1px solid rgba(190, 219, 255, 0.5);
+        border-right: 1px solid rgba(190, 219, 255, 0.5);
+    }
+
+    /* Top intersection diamonds on the container */
+    .faq-grid::before,
+    .faq-grid::after {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: white;
+        border: 1px solid var(--color-blue-200);
+        transform: rotate(45deg);
+        border-radius: 1px;
+        top: -4.5px;
+        z-index: 10;
+    }
+
+    .faq-grid::before {
+        left: -4.5px;
+    }
+
+    .faq-grid::after {
+        right: -4.5px;
+    }
+
+    /* Each FAQ item as a grid row */
+    .faq-item {
+        position: relative;
+        border-bottom: 1px solid rgba(190, 219, 255, 0.5);
+    }
+
+    /* First item needs top border to close the grid */
+    .faq-item:first-child {
+        border-top: 1px solid rgba(190, 219, 255, 0.5);
+    }
+
+    /* The clickable summary row */
+    .faq-item summary {
+        list-style: none;
+        cursor: pointer;
+
+        display: grid;
+        grid-template-columns: 32px 1fr 32px;
+        align-items: center;
+
+        padding: 16px 0;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: var(--text-primary, #22252b);
+        user-select: none;
+
+        transition: color 0.15s ease;
+    }
+
+    /* Remove default marker */
+    .faq-item summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .faq-item summary::marker {
+        display: none;
+    }
+
+    .faq-item summary:hover {
+        color: var(--color-accent-blue);
+    }
+
+    /* Question text */
+    .faq-question {
+        padding: 0 8px;
+    }
+
+    /* Diamonds as stateful intersections */
+    .faq-diamond {
+        width: 8px;
+        height: 8px;
+        background: white;
+        border: 1px solid var(--color-blue-200);
+        transform: rotate(45deg);
+        border-radius: 1px;
+        transition: transform 0.2s ease;
+        justify-self: center;
+    }
+
+    /* State = geometry: rotate when open */
+    .faq-item[open] .faq-diamond {
+        transform: rotate(90deg);
+    }
+
+    /* Answer block - indents to grid */
+    .faq-answer {
+        padding: 0 32px 16px;
+        font-size: var(--text-sm, 0.875rem);
+        color: var(--text-secondary, #5a6372);
+        line-height: 1.6;
+        animation: faqFadeIn 0.2s ease;
+    }
+
+    .faq-answer p {
+        margin: 0;
+    }
+
+    .faq-answer :global(strong) {
+        color: var(--text-primary, #22252b);
+    }
+
+    @keyframes faqFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-4px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Hover effect on summary diamonds */
+    .faq-item summary:hover .faq-diamond {
+        border-color: var(--color-blue-400, #5b9bdd);
+    }
+
+    /* Bottom intersection diamonds at horizontal/vertical rail crossings */
+    .faq-item::before,
+    .faq-item::after {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: white;
+        border: 1px solid var(--color-blue-200);
+        transform: rotate(45deg);
+        border-radius: 1px;
+        bottom: -4.5px;
+        z-index: 10;
+    }
+
+    .faq-item::before {
+        left: -4.5px;
+    }
+
+    .faq-item::after {
+        right: -4.5px;
+    }
+
+    /* ==========================================
+       RESPONSIVE
+       ========================================== */
+    @media (max-width: 768px) {
+        .faq-item summary {
+            grid-template-columns: 24px 1fr 24px;
+            font-size: var(--text-sm, 0.875rem);
+        }
+
+        .faq-answer {
+            padding: 0 24px 16px;
+        }
+    }
+</style>
