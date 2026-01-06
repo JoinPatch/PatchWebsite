@@ -12,21 +12,23 @@ interface Props {
 
 const { title, description, details = [], primaryCta, secondaryCta, class: className } = Astro.props;
 
-// Single arc of 13 photos - mirrored left/right with center lowest
+// Single arc of 15 photos - stacked at outer 2 layers, singles toward center
 const arcPhotos = [
-    "/RobotGirl.jpg",
-    "/Example2.jpg",
-    "/Robodog.jpg",
-    "/example1.jpg",
-    "/AlumniPhotos/AidanWithRocket.jpg",
-    "/SFFellowshipGoldenGateGroup.JPG",
-    "/PatrickCollisonWithGroupOfPatchersInSFFellowship.png",
-    "/SFFellowshipGoldenGateGroup.JPG",
-    "/AlumniPhotos/AidanWithRocket.jpg",
-    "/example1.jpg",
-    "/Robodog.jpg",
-    "/Example2.jpg",
-    "/RobotGirl.jpg",
+    "/RobotGirl.jpg",           // 1 - far left stack top
+    "/Example2.jpg",            // 2 - far left stack bottom
+    "/Robodog.jpg",             // 3 - 2nd layer left stack top
+    "/example1.jpg",            // 4 - 2nd layer left stack bottom
+    "/AlumniPhotos/AidanWithRocket.jpg",  // 5 - single
+    "/SFFellowshipGoldenGateGroup.JPG",   // 6 - single
+    "/PatrickCollisonWithGroupOfPatchersInSFFellowship.png", // 7 - single
+    "/Example3.jpg",            // 8 - center
+    "/JohnCollisonWithPatchers.jpg",      // 9 - single
+    "/SFFellowshipGoldenGateGroup.JPG",   // 10 - single
+    "/AlumniPhotos/AidanWithRocket.jpg",  // 11 - single
+    "/example1.jpg",            // 12 - 2nd layer right stack top
+    "/Robodog.jpg",             // 13 - 2nd layer right stack bottom
+    "/Example2.jpg",            // 14 - far right stack top
+    "/RobotGirl.jpg",           // 15 - far right stack bottom
 ];
 ---
 
@@ -185,24 +187,42 @@ const arcPhotos = [
     }
 
     /* Center photo (lowest point) */
-    .photo-arc img:nth-child(7) {
+    .photo-arc img:nth-child(8) {
         left: -56px;
         top: 0px;
     }
 
-    /* Left side - moving outward, rising gently */
-    .photo-arc img:nth-child(6) { left: -180px; top: -20px; }
-    .photo-arc img:nth-child(5) { left: -300px; top: -45px; }
-    .photo-arc img:nth-child(4) { left: -420px; top: -75px; }
-    .photo-arc img:nth-child(3) { left: -540px; top: -110px; }
+    /* Left side singles - moving outward, rising gently */
+    .photo-arc img:nth-child(7) { left: -180px; top: -20px; }
+    .photo-arc img:nth-child(6) { left: -300px; top: -45px; }
+    .photo-arc img:nth-child(5) { left: -420px; top: -75px; }
 
-    /* Right side - perfect mirror */
-    .photo-arc img:nth-child(8)  { left:  68px; top: -20px; }
-    .photo-arc img:nth-child(9)  { left: 188px; top: -45px; }
-    .photo-arc img:nth-child(10) { left: 308px; top: -75px; }
-    .photo-arc img:nth-child(11) { left: 428px; top: -110px; }
+    /* Right side singles - perfect mirror */
+    .photo-arc img:nth-child(9)  { left:  68px; top: -20px; }
+    .photo-arc img:nth-child(10) { left: 188px; top: -45px; }
+    .photo-arc img:nth-child(11) { left: 308px; top: -75px; }
 
-    /* Far left stack (Amodo-style) */
+    /* 2nd layer left stack */
+    .photo-arc img:nth-child(3) {
+        left: -540px;
+        top: -200px;
+    }
+    .photo-arc img:nth-child(4) {
+        left: -540px;
+        top: -50px;
+    }
+
+    /* 2nd layer right stack (mirror: 540 - 112 = 428) */
+    .photo-arc img:nth-child(12) {
+        left: 428px;
+        top: -200px;
+    }
+    .photo-arc img:nth-child(13) {
+        left: 428px;
+        top: -50px;
+    }
+
+    /* Far left stack */
     .photo-arc img:nth-child(1) {
         left: -660px;
         top: -280px;
@@ -212,12 +232,12 @@ const arcPhotos = [
         top: -130px;
     }
 
-    /* Far right stack (mirror) */
-    .photo-arc img:nth-child(12) {
+    /* Far right stack (mirror: 660 - 112 = 548) */
+    .photo-arc img:nth-child(14) {
         left: 548px;
         top: -280px;
     }
-    .photo-arc img:nth-child(13) {
+    .photo-arc img:nth-child(15) {
         left: 548px;
         top: -130px;
     }
