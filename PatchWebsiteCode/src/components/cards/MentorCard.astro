@@ -4,11 +4,12 @@ interface Props {
     title: string;
     imageSrc?: string;
     initials?: string;
+    link?: string;
     rotation?: 'cw-sm' | 'ccw-sm' | 'cw-md' | 'ccw-md' | 'none';
     class?: string;
 }
 
-const { name, title, imageSrc, initials, rotation = 'none', class: className } = Astro.props;
+const { name, title, imageSrc, initials, link, rotation = 'none', class: className } = Astro.props;
 
 // Generate initials from name if not provided
 const displayInitials = initials || name.split(' ').map(n => n[0]).join('').slice(0, 2);
@@ -17,24 +18,45 @@ const displayInitials = initials || name.split(' ').map(n => n[0]).join('').slic
 const rotationClass = rotation !== 'none' ? `rotate-${rotation}` : '';
 ---
 
-<div class:list={['mentor-card', rotationClass, className]}>
-    <!-- Pushpin -->
-    <div class="pushpin" aria-hidden="true"></div>
+{link ? (
+    <a href={link} target="_blank" rel="noopener noreferrer" class:list={['mentor-card', 'mentor-card-link', rotationClass, className]}>
+        <!-- Pushpin -->
+        <div class="pushpin" aria-hidden="true"></div>
 
-    <div class="mentor-photo">
-        {imageSrc ? (
-            <img src={imageSrc} alt={name} loading="lazy" />
-        ) : (
-            <div class="mentor-placeholder">
-                <span class="mentor-initials">{displayInitials}</span>
-            </div>
-        )}
+        <div class="mentor-photo">
+            {imageSrc ? (
+                <img src={imageSrc} alt={name} loading="lazy" />
+            ) : (
+                <div class="mentor-placeholder">
+                    <span class="mentor-initials">{displayInitials}</span>
+                </div>
+            )}
+        </div>
+        <div class="mentor-info">
+            <h4 class="mentor-name">{name}</h4>
+            <p class="mentor-title">{title}</p>
+        </div>
+    </a>
+) : (
+    <div class:list={['mentor-card', rotationClass, className]}>
+        <!-- Pushpin -->
+        <div class="pushpin" aria-hidden="true"></div>
+
+        <div class="mentor-photo">
+            {imageSrc ? (
+                <img src={imageSrc} alt={name} loading="lazy" />
+            ) : (
+                <div class="mentor-placeholder">
+                    <span class="mentor-initials">{displayInitials}</span>
+                </div>
+            )}
+        </div>
+        <div class="mentor-info">
+            <h4 class="mentor-name">{name}</h4>
+            <p class="mentor-title">{title}</p>
+        </div>
     </div>
-    <div class="mentor-info">
-        <h4 class="mentor-name">{name}</h4>
-        <p class="mentor-title">{title}</p>
-    </div>
-</div>
+)}
 
 <style>
     .mentor-card {
@@ -48,6 +70,17 @@ const rotationClass = rotation !== 'none' ? `rotate-${rotation}` : '';
         background: #fff;
         box-shadow: 2px 3px 8px rgba(0,0,0,0.08);
         border: 1px solid #e8e8e8;
+    }
+
+    .mentor-card-link {
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.2s ease;
+    }
+
+    .mentor-card-link:hover {
+        transform: rotate(0deg) translateY(-4px) !important;
+        box-shadow: 3px 6px 12px rgba(0,0,0,0.15);
     }
 
     /* Pushpin effect */
@@ -80,8 +113,8 @@ const rotationClass = rotation !== 'none' ? `rotate-${rotation}` : '';
     }
 
     .mentor-photo {
-        width: 80px;
-        height: 100px;
+        width: 160px;
+        height: 200px;
         overflow: hidden;
         margin-bottom: 12px;
         border: 1px solid #ddd;
