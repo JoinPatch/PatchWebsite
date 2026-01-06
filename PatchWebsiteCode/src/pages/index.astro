@@ -12,11 +12,13 @@ import PhotoCollage from '../components/ui/PhotoCollage.astro';
 import CardAlt from '../components/cards/CardAlt.astro';
 import SummerProgrammeCard from '../components/cards/SummerProgrammeCard.astro';
 import InlineTestimonial from '../components/cards/InlineTestimonial.astro';
+import LogbookTestimonial from '../components/cards/LogbookTestimonial.astro';
 import TestimonialCard from '../components/cards/TestimonialCard.astro';
 
 // Section Components
 import Header from '../components/sections/Header.astro';
 import Hero from '../components/sections/Hero.astro';
+import FieldNotesSection from '../components/sections/FieldNotesSection.astro';
 import CardGridSection from '../components/sections/CardGridSection.astro';
 import LetterSection from '../components/sections/LetterSection.astro';
 import FeaturedTestimonial from '../components/sections/FeaturedTestimonial.astro';
@@ -75,10 +77,11 @@ const heroCollage = [
 		description="We give you the environment to build, research, or start something real — with the peers, mentorship, and resources to do it properly."
 	>
 		<Fragment slot="actions">
-			<Button variant="cta" href="#apply">
+			<!-- Switch between 'technical' and 'telegram' to compare styles -->
+			<Button variant="technical" href="#apply">
 				Apply to Summer Programme 2025
 			</Button>
-			<Button variant="secondary" href="#summer-programme">
+			<Button variant="telegram" href="#summer-programme">
 				Learn more
 			</Button>
 		</Fragment>
@@ -321,15 +324,6 @@ const heroCollage = [
 			</div>
 		</div>
 
-		<!-- Testimonial after Companies -->
-		<InlineTestimonial
-			variant="highlighted"
-			quote={`<span class="highlight">Growing up in rural Kerry, I'd never had anyone to talk to about genetics and AI.</span> During Patch, I met people who cared about the same things. I didn't feel alone anymore.`}
-			authorName="Conor Casey"
-			authorTitle="Patch 2020"
-			initials="CC"
-		/>
-
 		<!-- Research & Academia -->
 		<div class="alumni-subsection">
 			<h3 class="subsection-title">Research & Academia</h3>
@@ -366,14 +360,6 @@ const heroCollage = [
 				</div>
 			</div>
 		</div>
-
-		<!-- Testimonial after Research -->
-		<InlineTestimonial
-			quote={`Of everything interesting that's ever happened in my life, <span class="highlight">a ridiculous fraction has been downstream of Patch.</span> The belief that 'you can just do things' never left me.`}
-			authorName="Sam Enright"
-			authorTitle="Progress Ireland cofounder"
-			initials="SE"
-		/>
 
 		<!-- Industry -->
 		<div class="alumni-subsection">
@@ -419,17 +405,42 @@ const heroCollage = [
 			</div>
 		</div>
 
-		<!-- Final testimonial -->
-		<InlineTestimonial
-			variant="highlighted"
-			quote={`<span class="highlight">Patch completely changed how I think about ambition and impact.</span> Being surrounded by people building boldly pushed me to dream bigger.`}
-			authorName="Diana Hrisovescu"
-			authorTitle="O'Shaughnessy Ventures Fellow"
-			initials="DH"
-		/>
 	</section>
 
 	<Divider variant="jittered" />
+
+	<!-- ============================================
+		 SECTION 6B: FIELD NOTES (TESTIMONIALS)
+		 ============================================ -->
+	<FieldNotesSection
+		testimonials={[
+			{
+				quote: `<span class="highlight">Growing up in rural Kerry, I'd never had anyone to talk to about genetics and AI.</span> During Patch, I met people who cared about the same things. I didn't feel alone anymore.`,
+				authorName: "Conor Casey",
+				authorTitle: "Patch 2020",
+				photoSrc: "/AlumniPhotos/ColmRedBull.png",
+				date: "15/08/2020",
+				entryNum: "#47"
+			},
+			{
+				quote: `Of everything interesting that's ever happened in my life, a ridiculous fraction has been downstream of Patch. <span class="highlight">The belief that 'you can just do things' never left me.</span>`,
+				authorName: "Sam Enright",
+				authorTitle: "Patch 2019, Progress Ireland cofounder",
+				photoSrc: "/AlumniPhotos/AidanWithRocket.jpg",
+				date: "12/03/2022",
+				entryNum: "#103"
+			},
+			{
+				quote: `<span class="highlight">Patch completely changed how I think about ambition and impact.</span> Being surrounded by people building boldly pushed me to dream bigger.`,
+				authorName: "Diana Hrisovescu",
+				authorTitle: "Patch 2021,O'Shaughnessy Ventures Fellow",
+				date: "28/07/2023",
+				entryNum: "#156"
+			}
+		]}
+	/>
+
+	<Divider />
 
 	<!-- ============================================
 		 SECTION 7: MENTORS & ADVISORS

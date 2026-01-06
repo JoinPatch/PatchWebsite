@@ -1,0 +1,475 @@
+---
+interface Testimonial {
+    quote: string;
+    authorName: string;
+    authorTitle: string;
+    photoSrc?: string;
+    date?: string;
+    entryNum?: string;
+}
+
+interface Props {
+    testimonials: Testimonial[];
+    class?: string;
+}
+
+const { testimonials, class: className } = Astro.props;
+---
+
+<section class:list={['field-notes-section', className]}>
+    <div class="field-notes-header">
+        <div class="header-decoration left">
+            <span class="dec-line"></span>
+            <span class="dec-dot"></span>
+        </div>
+        <div class="header-content">
+            <span class="header-label">FIELD NOTES</span>
+            <h2 class="header-title">From the engineers' handbook</h2>
+        </div>
+        <div class="header-decoration right">
+            <span class="dec-dot"></span>
+            <span class="dec-line"></span>
+        </div>
+    </div>
+
+    <div class="notebook-container">
+        <!-- Notebook binding -->
+        <div class="notebook-binding">
+            <span class="ring"></span>
+            <span class="ring"></span>
+            <span class="ring"></span>
+            <span class="ring"></span>
+            <span class="ring"></span>
+        </div>
+
+        <!-- Notebook pages background -->
+        <div class="notebook-pages">
+            <div class="page-edge page-1"></div>
+            <div class="page-edge page-2"></div>
+            <div class="page-edge page-3"></div>
+        </div>
+
+        <!-- Main notebook content -->
+        <div class="notebook-content">
+            <!-- Graph paper background -->
+            <div class="graph-paper"></div>
+
+            <!-- Entries grid -->
+            <div class="entries-collage">
+                {testimonials.map((testimonial, index) => (
+                    <div class={`field-entry entry-${index + 1}`}>
+                        {testimonial.photoSrc && (
+                            <div class="entry-photo">
+                                <span class="tape tape-tl"></span>
+                                <span class="tape tape-tr"></span>
+                                <img src={testimonial.photoSrc} alt={testimonial.authorName} />
+                            </div>
+                        )}
+                        <div class="entry-content">
+                            <div class="entry-header">
+                                <span class="entry-num">ENTRY {testimonial.entryNum || `#${index + 1}`}</span>
+                                <span class="entry-date">{testimonial.date || '2024'}</span>
+                            </div>
+                            <p class="entry-quote" set:html={testimonial.quote} />
+                            <div class="entry-author">
+                                <span class="author-name">— {testimonial.authorName}</span>
+                                <span class="author-title">{testimonial.authorTitle}</span>
+                            </div>
+                        </div>
+                        {index === 0 && <div class="annotation">^ Key insight!</div>}
+                    </div>
+                ))}
+            </div>
+
+            <!-- Decorative elements -->
+            <div class="doodle doodle-1">
+                <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="20" cy="20" r="15" stroke-dasharray="4 2"/>
+                    <path d="M20 8 L20 32 M8 20 L32 20"/>
+                </svg>
+            </div>
+            <div class="page-number">pg. 47</div>
+            <div class="margin-note">observations from the field →</div>
+        </div>
+    </div>
+
+    <div class="field-notes-footer">
+        <span class="footer-text">PATCH PROGRAMME — PARTICIPANT OBSERVATIONS — CONFIDENTIAL</span>
+    </div>
+</section>
+
+<style>
+    .field-notes-section {
+        padding: 64px 24px;
+        background: linear-gradient(180deg,
+            var(--color-cream) 0%,
+            #f5f5f0 100%
+        );
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Header */
+    .field-notes-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        margin-bottom: 40px;
+    }
+
+    .header-decoration {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .dec-line {
+        width: 60px;
+        height: 1px;
+        background: var(--color-blue-300);
+    }
+
+    .dec-dot {
+        width: 6px;
+        height: 6px;
+        border: 1.5px solid var(--color-blue-300);
+        border-radius: 50%;
+    }
+
+    .header-content {
+        text-align: center;
+    }
+
+    .header-label {
+        display: block;
+        font-family: 'Courier New', monospace;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        color: var(--color-blue-400);
+        margin-bottom: 4px;
+    }
+
+    .header-title {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    /* Notebook container */
+    .notebook-container {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    /* Binding */
+    .notebook-binding {
+        position: absolute;
+        left: -20px;
+        top: 20px;
+        bottom: 20px;
+        width: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 10;
+    }
+
+    .ring {
+        width: 20px;
+        height: 20px;
+        border: 3px solid #888;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #aaa 0%, #666 100%);
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* Page edges */
+    .notebook-pages {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        right: -8px;
+        bottom: -8px;
+        pointer-events: none;
+    }
+
+    .page-edge {
+        position: absolute;
+        background: #f0f0e8;
+        border: 1px solid #ddd;
+    }
+
+    .page-edge.page-1 {
+        inset: 6px -6px -6px 6px;
+        transform: rotate(0.5deg);
+    }
+
+    .page-edge.page-2 {
+        inset: 4px -4px -4px 4px;
+        transform: rotate(0.3deg);
+    }
+
+    .page-edge.page-3 {
+        inset: 2px -2px -2px 2px;
+        transform: rotate(0.1deg);
+    }
+
+    /* Main notebook content */
+    .notebook-content {
+        position: relative;
+        background: #f9f9f5;
+        border: 1px solid #ccc;
+        padding: 32px;
+        padding-left: 48px;
+        min-height: 500px;
+        box-shadow:
+            0 4px 12px rgba(0,0,0,0.1),
+            inset 0 0 60px rgba(0,0,0,0.02);
+    }
+
+    /* Graph paper */
+    .graph-paper {
+        position: absolute;
+        inset: 0;
+        background:
+            linear-gradient(#e8e8e8 1px, transparent 1px),
+            linear-gradient(90deg, #e8e8e8 1px, transparent 1px);
+        background-size: 20px 20px;
+        pointer-events: none;
+    }
+
+    /* Red margin line */
+    .notebook-content::before {
+        content: '';
+        position: absolute;
+        left: 40px;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: rgba(200, 100, 100, 0.3);
+    }
+
+    /* Entries collage */
+    .entries-collage {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        z-index: 1;
+    }
+
+    .field-entry {
+        position: relative;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid #ddd;
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .field-entry.entry-1 {
+        transform: rotate(-0.5deg);
+    }
+
+    .field-entry.entry-2 {
+        transform: rotate(0.8deg);
+    }
+
+    .field-entry.entry-3 {
+        transform: rotate(0.3deg);
+        grid-column: 1 / -1;
+    }
+
+    /* Entry photo */
+    .entry-photo {
+        position: relative;
+        float: right;
+        width: 70px;
+        height: 70px;
+        margin: 0 0 8px 12px;
+        background: #fff;
+        padding: 3px;
+        box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+        transform: rotate(3deg);
+    }
+
+    .entry-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .tape {
+        position: absolute;
+        width: 30px;
+        height: 12px;
+        background: rgba(255, 230, 150, 0.75);
+        border: 1px solid rgba(200, 180, 100, 0.4);
+        z-index: 2;
+    }
+
+    .tape-tl {
+        top: -6px;
+        left: -8px;
+        transform: rotate(-20deg);
+    }
+
+    .tape-tr {
+        top: -6px;
+        right: -8px;
+        transform: rotate(15deg);
+    }
+
+    /* Entry content */
+    .entry-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.6rem;
+        font-weight: 600;
+        color: #888;
+        letter-spacing: 0.05em;
+    }
+
+    .entry-quote {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: #2a4a7a;
+        margin: 0 0 12px 0;
+    }
+
+    .entry-quote :global(.highlight) {
+        background: linear-gradient(180deg, transparent 60%, rgba(255, 160, 0, 0.35) 60%);
+    }
+
+    .entry-author {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .author-name {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 0.85rem;
+        font-style: italic;
+        color: #2a4a7a;
+    }
+
+    .author-title {
+        font-family: 'Courier New', monospace;
+        font-size: 0.65rem;
+        color: #888;
+    }
+
+    /* Annotation */
+    .annotation {
+        position: absolute;
+        bottom: -20px;
+        left: 20px;
+        font-family: 'Comic Sans MS', cursive, sans-serif;
+        font-size: 0.75rem;
+        color: #c44;
+        transform: rotate(-2deg);
+    }
+
+    /* Decorative elements */
+    .doodle {
+        position: absolute;
+        color: rgba(100, 130, 180, 0.3);
+    }
+
+    .doodle-1 {
+        bottom: 40px;
+        right: 40px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .page-number {
+        position: absolute;
+        bottom: 16px;
+        right: 24px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.7rem;
+        color: #999;
+    }
+
+    .margin-note {
+        position: absolute;
+        top: 50%;
+        left: 8px;
+        transform: rotate(-90deg) translateX(-50%);
+        transform-origin: left center;
+        font-family: 'Courier New', monospace;
+        font-size: 0.55rem;
+        color: rgba(200, 100, 100, 0.5);
+        letter-spacing: 0.1em;
+        white-space: nowrap;
+    }
+
+    /* Footer */
+    .field-notes-footer {
+        text-align: center;
+        margin-top: 32px;
+    }
+
+    .footer-text {
+        font-family: 'Courier New', monospace;
+        font-size: 0.6rem;
+        letter-spacing: 0.15em;
+        color: var(--text-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .notebook-binding {
+            display: none;
+        }
+
+        .notebook-content {
+            padding-left: 24px;
+        }
+
+        .notebook-content::before {
+            left: 16px;
+        }
+
+        .entries-collage {
+            grid-template-columns: 1fr;
+        }
+
+        .field-entry.entry-3 {
+            grid-column: 1;
+        }
+
+        .header-decoration {
+            display: none;
+        }
+
+        .margin-note {
+            display: none;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .notebook-pages {
+            display: none;
+        }
+
+        .entry-photo {
+            float: none;
+            margin: 0 auto 12px;
+        }
+
+        .doodle {
+            display: none;
+        }
+    }
+</style>
