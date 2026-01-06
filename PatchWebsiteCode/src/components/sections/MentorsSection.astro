@@ -6,6 +6,7 @@ interface Mentor {
     name: string;
     title: string;
     imageSrc?: string;
+    link?: string;
 }
 
 interface Props {
@@ -34,6 +35,7 @@ const rotations = ['cw-sm', 'ccw-sm', 'cw-md', 'ccw-sm', 'ccw-md', 'cw-sm', 'ccw
                 name={mentor.name}
                 title={mentor.title}
                 imageSrc={mentor.imageSrc}
+                link={mentor.link}
                 rotation={rotations[index % rotations.length]}
             />
         ))}
