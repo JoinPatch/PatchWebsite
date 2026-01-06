@@ -1,6 +1,6 @@
 ---
 interface Props {
-    variant?: 'primary' | 'secondary' | 'cta';
+    variant?: 'primary' | 'secondary' | 'cta' | 'technical' | 'telegram';
     href?: string;
     class?: string;
 }
@@ -9,14 +9,43 @@ const { variant = 'primary', href, class: className } = Astro.props;
 const Tag = href ? 'a' : 'button';
 ---
 
-<Tag
-    href={href}
-    class:list={['btn', `btn-${variant}`, className]}
->
-    <slot />
-</Tag>
+{variant === 'technical' && (
+    <Tag href={href} class:list={['btn-technical', className]}>
+        <span class="corner-tl"></span>
+        <span class="corner-tr"></span>
+        <span class="corner-bl"></span>
+        <span class="corner-br"></span>
+        <span class="ref-number">01</span>
+        <span class="btn-text"><slot /></span>
+        <span class="leader-line"></span>
+    </Tag>
+)}
 
-<style>
+{variant === 'telegram' && (
+    <Tag href={href} class:list={['btn-telegram', className]}>
+        <span class="sprocket-holes">
+            <span></span><span></span><span></span><span></span><span></span>
+        </span>
+        <span class="telegram-content">
+            <span class="telegram-header">=== URGENT ===</span>
+            <span class="btn-text"><slot /></span>
+        </span>
+        <span class="sprocket-holes">
+            <span></span><span></span><span></span><span></span><span></span>
+        </span>
+    </Tag>
+)}
+
+{(variant === 'primary' || variant === 'secondary' || variant === 'cta') && (
+    <Tag href={href} class:list={['btn', `btn-${variant}`, className]}>
+        <slot />
+    </Tag>
+)}
+
+<style is:global>
+    /* =============================================
+       STANDARD BUTTON STYLES
+       ============================================= */
     .btn {
         display: inline-flex;
         align-items: center;
@@ -76,8 +105,231 @@ const Tag = href ? 'a' : 'button';
         background-color: var(--color-orange-600);
     }
 
-    .btn :global(svg) {
+    .btn svg {
         width: 16px;
         height: 16px;
+    }
+
+    /* =============================================
+       TECHNICAL DRAWING LABEL STYLE
+       ============================================= */
+    .btn-technical {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 32px;
+        padding-left: 48px;
+        background: #fff;
+        border: 2px solid #1a1a1a;
+        font-family: 'Arial', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: #1a1a1a;
+        cursor: pointer;
+        transition: all 0.15s ease;
+        text-decoration: none;
+    }
+
+    .btn-technical:hover {
+        background: #1a1a1a;
+        color: #fff;
+    }
+
+    .btn-technical .corner-tl,
+    .btn-technical .corner-tr,
+    .btn-technical .corner-bl,
+    .btn-technical .corner-br {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border: 2px solid #1a1a1a;
+        transition: border-color 0.15s ease;
+    }
+
+    .btn-technical .corner-tl {
+        top: -4px;
+        left: -4px;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    .btn-technical .corner-tr {
+        top: -4px;
+        right: -4px;
+        border-left: none;
+        border-bottom: none;
+    }
+
+    .btn-technical .corner-bl {
+        bottom: -4px;
+        left: -4px;
+        border-right: none;
+        border-top: none;
+    }
+
+    .btn-technical .corner-br {
+        bottom: -4px;
+        right: -4px;
+        border-left: none;
+        border-top: none;
+    }
+
+    .btn-technical:hover .corner-tl,
+    .btn-technical:hover .corner-tr,
+    .btn-technical:hover .corner-bl,
+    .btn-technical:hover .corner-br {
+        border-color: #fff;
+    }
+
+    .btn-technical .ref-number {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: 'Courier New', monospace;
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: #666;
+        padding: 2px 6px;
+        border: 1px solid #999;
+        border-radius: 2px;
+        background: #f5f5f5;
+        transition: all 0.15s ease;
+    }
+
+    .btn-technical:hover .ref-number {
+        background: #333;
+        border-color: #666;
+        color: #fff;
+    }
+
+    .btn-technical .leader-line {
+        position: absolute;
+        right: -24px;
+        top: 50%;
+        width: 20px;
+        height: 2px;
+        background: #1a1a1a;
+    }
+
+    .btn-technical .leader-line::after {
+        content: '';
+        position: absolute;
+        right: -6px;
+        top: -4px;
+        width: 10px;
+        height: 10px;
+        border: 2px solid #1a1a1a;
+        border-radius: 50%;
+        background: #fff;
+    }
+
+    .btn-technical .btn-text {
+        text-transform: uppercase;
+    }
+
+    /* =============================================
+       TELEGRAM / TELEX STYLE
+       ============================================= */
+    .btn-telegram {
+        display: inline-flex;
+        align-items: stretch;
+        padding: 0;
+        background: #fdf6e3;
+        border: none;
+        font-family: 'Courier New', monospace;
+        cursor: pointer;
+        box-shadow:
+            0 2px 4px rgba(0,0,0,0.15),
+            inset 0 1px 0 rgba(255,255,255,0.5);
+        transition: transform 0.1s ease;
+        text-decoration: none;
+    }
+
+    .btn-telegram:hover {
+        transform: scale(1.02);
+    }
+
+    .btn-telegram:active {
+        transform: scale(0.98);
+    }
+
+    .btn-telegram .sprocket-holes {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 3px;
+        padding: 8px 6px;
+        background: #f5edd6;
+        border: 1px solid #d4c9a8;
+    }
+
+    .btn-telegram .sprocket-holes:first-child {
+        border-right: none;
+        border-radius: 2px 0 0 2px;
+    }
+
+    .btn-telegram .sprocket-holes:last-child {
+        border-left: none;
+        border-radius: 0 2px 2px 0;
+    }
+
+    .btn-telegram .sprocket-holes span {
+        width: 6px;
+        height: 6px;
+        background: #e8dfc8;
+        border-radius: 50%;
+        border: 1px solid #c4b896;
+    }
+
+    .btn-telegram .telegram-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        border-top: 1px solid #d4c9a8;
+        border-bottom: 1px solid #d4c9a8;
+        background: linear-gradient(180deg, #fdf6e3 0%, #f8f0d8 100%);
+    }
+
+    .btn-telegram .telegram-header {
+        font-size: 0.55rem;
+        letter-spacing: 0.2em;
+        color: #8b7355;
+        margin-bottom: 4px;
+    }
+
+    .btn-telegram .btn-text {
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        color: #3d3225;
+        text-transform: uppercase;
+    }
+
+    /* =============================================
+       RESPONSIVE ADJUSTMENTS
+       ============================================= */
+    @media (max-width: 480px) {
+        .btn-technical {
+            padding: 12px 24px;
+            padding-left: 40px;
+            font-size: 0.75rem;
+        }
+
+        .btn-technical .leader-line {
+            display: none;
+        }
+
+        .btn-telegram .telegram-content {
+            padding: 8px 16px;
+        }
+
+        .btn-telegram .btn-text {
+            font-size: 0.8rem;
+        }
     }
 </style>

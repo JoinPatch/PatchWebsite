@@ -1,7 +1,6 @@
 ---
 import Avatar from '../ui/Avatar.astro';
 import SectionHeader from '../ui/SectionHeader.astro';
-import JitteredGrid from '../ui/JitteredGrid.astro';
 
 interface Props {
     sectionTitle?: string;
@@ -19,15 +18,6 @@ const { sectionTitle, sectionSubtitle, quote, authorName, authorTitle, initials 
     {sectionTitle && <SectionHeader title={sectionTitle} subtitle={sectionSubtitle} />}
 
     <div class="featured-testimonial">
-        <!-- Jittered grid background overlay -->
-        <JitteredGrid
-            seed={789}
-            opacity={0.06}
-            animate={false}
-            color="rgba(255, 177, 0, 0.5)"
-            maskDirection="none"
-        />
-
         <div class="featured-testimonial-content">
             <!-- Company logo -->
             <slot name="logo" />

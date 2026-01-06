@@ -1,0 +1,602 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Button Style Comparison">
+	<main class="button-showcase">
+		<h1>Engineering-Themed Button Styles</h1>
+		<p class="intro">Compare different historical engineering and computing aesthetics for the "Apply Now" button.</p>
+
+		<div class="button-grid">
+			<!-- 1. Punch Card Style -->
+			<div class="button-section">
+				<h2>1. Punch Card Style</h2>
+				<p class="description">Inspired by 1960s-70s IBM punch cards with perforations and monospace type.</p>
+				<div class="button-demo">
+					<button class="btn-punch-card">
+						<span class="punch-holes-left"></span>
+						<span class="btn-text">APPLY NOW</span>
+						<span class="punch-holes-right"></span>
+					</button>
+				</div>
+			</div>
+
+			<!-- 3. Technical Drawing Label Style -->
+			<div class="button-section">
+				<h2>2. Technical Drawing Label</h2>
+				<p class="description">Clean engineering drawing callouts with corner details and reference markers.</p>
+				<div class="button-demo">
+					<button class="btn-technical">
+						<span class="corner-tl"></span>
+						<span class="corner-tr"></span>
+						<span class="corner-bl"></span>
+						<span class="corner-br"></span>
+						<span class="ref-number">01</span>
+						<span class="btn-text">APPLY NOW</span>
+						<span class="leader-line"></span>
+					</button>
+				</div>
+			</div>
+
+			<!-- 4. Telegram/Telex Style -->
+			<div class="button-section">
+				<h2>3. Telegram / Telex Style</h2>
+				<p class="description">Early 1900s telegram aesthetic with typewriter text and paper tape feel.</p>
+				<div class="button-demo">
+					<button class="btn-telegram">
+						<span class="sprocket-holes">
+							<span></span><span></span><span></span><span></span><span></span>
+						</span>
+						<span class="telegram-content">
+							<span class="telegram-header">═══ URGENT ═══</span>
+							<span class="btn-text">APPLY NOW STOP</span>
+						</span>
+						<span class="sprocket-holes">
+							<span></span><span></span><span></span><span></span><span></span>
+						</span>
+					</button>
+				</div>
+			</div>
+
+			<!-- 5. Patent Drawing Style -->
+			<div class="button-section">
+				<h2>4. Patent Drawing Style</h2>
+				<p class="description">Clean patent illustration aesthetic with figure numbers and reference lines.</p>
+				<div class="button-demo">
+					<button class="btn-patent">
+						<span class="fig-label">FIG. 1</span>
+						<span class="btn-text">APPLY NOW</span>
+						<span class="patent-refs">
+							<span class="ref-line ref-a"><span class="ref-dot"></span><span class="ref-letter">A</span></span>
+							<span class="ref-line ref-b"><span class="ref-dot"></span><span class="ref-letter">B</span></span>
+						</span>
+					</button>
+				</div>
+			</div>
+
+			<!-- 6. Mechanical Counter/Odometer -->
+			<div class="button-section">
+				<h2>5. Mechanical Counter / Odometer</h2>
+				<p class="description">Split-flap display aesthetic with metallic bevels like old counters.</p>
+				<div class="button-demo">
+					<button class="btn-odometer">
+						<span class="odometer-housing">
+							<span class="flap">A</span>
+							<span class="flap">P</span>
+							<span class="flap">P</span>
+							<span class="flap">L</span>
+							<span class="flap">Y</span>
+							<span class="flap-space"></span>
+							<span class="flap">N</span>
+							<span class="flap">O</span>
+							<span class="flap">W</span>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.button-showcase {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 60px 24px;
+	}
+
+	h1 {
+		font-size: 2rem;
+		font-weight: 500;
+		margin-bottom: 8px;
+		color: #1a1a1a;
+	}
+
+	.intro {
+		color: #666;
+		margin-bottom: 48px;
+	}
+
+	.button-grid {
+		display: flex;
+		flex-direction: column;
+		gap: 48px;
+	}
+
+	.button-section {
+		padding: 32px;
+		background: #f8f9fa;
+		border: 1px solid #e0e0e0;
+		border-radius: 8px;
+	}
+
+	.button-section h2 {
+		font-size: 1.25rem;
+		font-weight: 600;
+		margin-bottom: 8px;
+		color: #1a1a1a;
+	}
+
+	.description {
+		font-size: 0.9rem;
+		color: #666;
+		margin-bottom: 24px;
+	}
+
+	.button-demo {
+		display: flex;
+		justify-content: center;
+		padding: 40px 20px;
+		background: #fff;
+		border: 1px dashed #ccc;
+		border-radius: 4px;
+	}
+
+	/* =============================================
+	   1. PUNCH CARD STYLE
+	   ============================================= */
+	.btn-punch-card {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 0;
+		padding: 0;
+		background: #fffef5;
+		border: none;
+		font-family: 'Courier New', monospace;
+		cursor: pointer;
+		box-shadow:
+			0 2px 4px rgba(0,0,0,0.1),
+			0 4px 8px rgba(0,0,0,0.05);
+		transition: transform 0.15s ease, box-shadow 0.15s ease;
+	}
+
+	.btn-punch-card:hover {
+		transform: translateY(-2px);
+		box-shadow:
+			0 4px 8px rgba(0,0,0,0.15),
+			0 8px 16px rgba(0,0,0,0.08);
+	}
+
+	.btn-punch-card .punch-holes-left,
+	.btn-punch-card .punch-holes-right {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		padding: 8px 6px;
+		background: #f5f4e8;
+		border: 1px solid #d4d0b8;
+	}
+
+	.btn-punch-card .punch-holes-left {
+		border-right: none;
+		border-radius: 2px 0 0 2px;
+	}
+
+	.btn-punch-card .punch-holes-right {
+		border-left: none;
+		border-radius: 0 2px 2px 0;
+	}
+
+	.btn-punch-card .punch-holes-left::before,
+	.btn-punch-card .punch-holes-left::after,
+	.btn-punch-card .punch-holes-right::before,
+	.btn-punch-card .punch-holes-right::after {
+		content: '';
+		width: 8px;
+		height: 8px;
+		background: #e8e6d9;
+		border: 1px solid #c4c0a8;
+		border-radius: 1px;
+	}
+
+	.btn-punch-card .btn-text {
+		padding: 12px 24px;
+		background: #fffef5;
+		border-top: 1px solid #d4d0b8;
+		border-bottom: 1px solid #d4d0b8;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.15em;
+		color: #2c3e50;
+	}
+
+	/* Punch holes pattern overlay */
+	.btn-punch-card::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: calc(100% - 40px);
+		height: 100%;
+		background-image:
+			radial-gradient(circle, transparent 1px, transparent 1px);
+		background-size: 8px 8px;
+		pointer-events: none;
+		opacity: 0.3;
+	}
+
+	/* =============================================
+	   2. TECHNICAL DRAWING LABEL STYLE
+	   ============================================= */
+	.btn-technical {
+		position: relative;
+		padding: 14px 32px;
+		padding-left: 48px;
+		background: #fff;
+		border: 2px solid #1a1a1a;
+		font-family: 'Arial', sans-serif;
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		color: #1a1a1a;
+		cursor: pointer;
+		transition: all 0.15s ease;
+	}
+
+	.btn-technical:hover {
+		background: #1a1a1a;
+		color: #fff;
+	}
+
+	.btn-technical .corner-tl,
+	.btn-technical .corner-tr,
+	.btn-technical .corner-bl,
+	.btn-technical .corner-br {
+		position: absolute;
+		width: 8px;
+		height: 8px;
+		border: 2px solid #1a1a1a;
+	}
+
+	.btn-technical .corner-tl {
+		top: -4px;
+		left: -4px;
+		border-right: none;
+		border-bottom: none;
+	}
+
+	.btn-technical .corner-tr {
+		top: -4px;
+		right: -4px;
+		border-left: none;
+		border-bottom: none;
+	}
+
+	.btn-technical .corner-bl {
+		bottom: -4px;
+		left: -4px;
+		border-right: none;
+		border-top: none;
+	}
+
+	.btn-technical .corner-br {
+		bottom: -4px;
+		right: -4px;
+		border-left: none;
+		border-top: none;
+	}
+
+	.btn-technical:hover .corner-tl,
+	.btn-technical:hover .corner-tr,
+	.btn-technical:hover .corner-bl,
+	.btn-technical:hover .corner-br {
+		border-color: #fff;
+	}
+
+	.btn-technical .ref-number {
+		position: absolute;
+		left: 12px;
+		top: 50%;
+		transform: translateY(-50%);
+		font-family: 'Courier New', monospace;
+		font-size: 0.7rem;
+		font-weight: 700;
+		color: #666;
+		padding: 2px 6px;
+		border: 1px solid #999;
+		border-radius: 2px;
+		background: #f5f5f5;
+	}
+
+	.btn-technical:hover .ref-number {
+		background: #333;
+		border-color: #666;
+		color: #fff;
+	}
+
+	.btn-technical .leader-line {
+		position: absolute;
+		right: -24px;
+		top: 50%;
+		width: 20px;
+		height: 2px;
+		background: #1a1a1a;
+	}
+
+	.btn-technical .leader-line::after {
+		content: '';
+		position: absolute;
+		right: -6px;
+		top: -4px;
+		width: 10px;
+		height: 10px;
+		border: 2px solid #1a1a1a;
+		border-radius: 50%;
+		background: #fff;
+	}
+
+	/* =============================================
+	   3. TELEGRAM / TELEX STYLE
+	   ============================================= */
+	.btn-telegram {
+		display: flex;
+		align-items: stretch;
+		padding: 0;
+		background: #fdf6e3;
+		border: none;
+		font-family: 'Courier New', monospace;
+		cursor: pointer;
+		box-shadow:
+			0 2px 4px rgba(0,0,0,0.15),
+			inset 0 1px 0 rgba(255,255,255,0.5);
+		transition: transform 0.1s ease;
+	}
+
+	.btn-telegram:hover {
+		transform: scale(1.02);
+	}
+
+	.btn-telegram:active {
+		transform: scale(0.98);
+	}
+
+	.btn-telegram .sprocket-holes {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 3px;
+		padding: 8px 6px;
+		background: #f5edd6;
+		border: 1px solid #d4c9a8;
+	}
+
+	.btn-telegram .sprocket-holes:first-child {
+		border-right: none;
+		border-radius: 2px 0 0 2px;
+	}
+
+	.btn-telegram .sprocket-holes:last-child {
+		border-left: none;
+		border-radius: 0 2px 2px 0;
+	}
+
+	.btn-telegram .sprocket-holes span {
+		width: 6px;
+		height: 6px;
+		background: #e8dfc8;
+		border-radius: 50%;
+		border: 1px solid #c4b896;
+	}
+
+	.btn-telegram .telegram-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 10px 20px;
+		border-top: 1px solid #d4c9a8;
+		border-bottom: 1px solid #d4c9a8;
+		background: linear-gradient(180deg, #fdf6e3 0%, #f8f0d8 100%);
+	}
+
+	.btn-telegram .telegram-header {
+		font-size: 0.55rem;
+		letter-spacing: 0.2em;
+		color: #8b7355;
+		margin-bottom: 4px;
+	}
+
+	.btn-telegram .btn-text {
+		font-size: 0.9rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		color: #3d3225;
+	}
+
+	/* =============================================
+	   4. PATENT DRAWING STYLE
+	   ============================================= */
+	.btn-patent {
+		position: relative;
+		padding: 16px 40px;
+		padding-top: 28px;
+		background: #fff;
+		border: 1.5px solid #333;
+		font-family: 'Times New Roman', serif;
+		font-size: 0.95rem;
+		font-weight: 400;
+		font-style: italic;
+		letter-spacing: 0.08em;
+		color: #1a1a1a;
+		cursor: pointer;
+		transition: all 0.15s ease;
+	}
+
+	.btn-patent:hover {
+		background: #f8f8f8;
+		border-width: 2px;
+	}
+
+	.btn-patent .fig-label {
+		position: absolute;
+		top: 6px;
+		left: 50%;
+		transform: translateX(-50%);
+		font-family: 'Times New Roman', serif;
+		font-size: 0.65rem;
+		font-style: italic;
+		font-weight: 400;
+		color: #666;
+		letter-spacing: 0.05em;
+	}
+
+	.btn-patent .patent-refs {
+		position: absolute;
+		right: -40px;
+		top: 0;
+		bottom: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		padding: 8px 0;
+	}
+
+	.btn-patent .ref-line {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+	}
+
+	.btn-patent .ref-dot {
+		width: 16px;
+		height: 1.5px;
+		background: #333;
+	}
+
+	.btn-patent .ref-letter {
+		font-family: 'Times New Roman', serif;
+		font-size: 0.7rem;
+		font-style: italic;
+		color: #333;
+	}
+
+	/* Hatching pattern on hover */
+	.btn-patent::before {
+		content: '';
+		position: absolute;
+		inset: 4px;
+		background: repeating-linear-gradient(
+			45deg,
+			transparent,
+			transparent 3px,
+			rgba(0,0,0,0.03) 3px,
+			rgba(0,0,0,0.03) 4px
+		);
+		opacity: 0;
+		transition: opacity 0.15s ease;
+		pointer-events: none;
+	}
+
+	.btn-patent:hover::before {
+		opacity: 1;
+	}
+
+	/* =============================================
+	   5. MECHANICAL COUNTER / ODOMETER
+	   ============================================= */
+	.btn-odometer {
+		padding: 0;
+		background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 50%, #2a2a2a 100%);
+		border: 3px solid #444;
+		border-radius: 6px;
+		cursor: pointer;
+		box-shadow:
+			0 4px 8px rgba(0,0,0,0.3),
+			inset 0 1px 0 rgba(255,255,255,0.1),
+			inset 0 -1px 0 rgba(0,0,0,0.3);
+		transition: transform 0.1s ease, box-shadow 0.1s ease;
+	}
+
+	.btn-odometer:hover {
+		transform: translateY(-2px);
+		box-shadow:
+			0 6px 12px rgba(0,0,0,0.4),
+			inset 0 1px 0 rgba(255,255,255,0.1),
+			inset 0 -1px 0 rgba(0,0,0,0.3);
+	}
+
+	.btn-odometer:active {
+		transform: translateY(0);
+	}
+
+	.btn-odometer .odometer-housing {
+		display: flex;
+		gap: 2px;
+		padding: 8px 12px;
+	}
+
+	.btn-odometer .flap {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 28px;
+		height: 40px;
+		background: linear-gradient(180deg,
+			#1a1a1a 0%,
+			#252525 45%,
+			#0a0a0a 50%,
+			#252525 55%,
+			#1a1a1a 100%
+		);
+		border: 1px solid #333;
+		border-radius: 3px;
+		font-family: 'Courier New', monospace;
+		font-size: 1.2rem;
+		font-weight: 700;
+		color: #f0f0f0;
+		text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+		box-shadow:
+			inset 0 1px 0 rgba(255,255,255,0.05),
+			inset 0 -1px 0 rgba(0,0,0,0.3),
+			0 1px 2px rgba(0,0,0,0.2);
+		position: relative;
+	}
+
+	/* Split line in middle */
+	.btn-odometer .flap::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 50%;
+		height: 1px;
+		background: linear-gradient(90deg,
+			transparent 0%,
+			rgba(0,0,0,0.4) 20%,
+			rgba(0,0,0,0.6) 50%,
+			rgba(0,0,0,0.4) 80%,
+			transparent 100%
+		);
+	}
+
+	.btn-odometer .flap-space {
+		width: 12px;
+	}
+
+	/* Hover effect - slight glow */
+	.btn-odometer:hover .flap {
+		color: #fff;
+		text-shadow: 0 0 8px rgba(255,255,255,0.3), 0 1px 2px rgba(0,0,0,0.5);
+	}
+</style>

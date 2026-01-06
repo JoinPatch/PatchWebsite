@@ -261,9 +261,16 @@ const { headline, description } = Astro.props;
 
     .hero-actions {
         display: flex;
-        gap: 12px;
+        gap: 24px;
         justify-content: flex-start;
         margin-top: 24px;
+        flex-wrap: wrap;
+    }
+
+    /* Ensure engineering button styles work on blueprint background */
+    .hero-actions :global(.btn-technical) {
+        background: #fff;
+        margin-right: 16px; /* Space for leader line */
     }
 
     .hero-media {
