@@ -1,131 +1,186 @@
 ---
-import SectionHeader from '../ui/SectionHeader.astro';
-
 interface Supporter {
     name: string;
     logoSrc?: string;
 }
 
 interface Props {
-    label?: string;
-    title: string;
-    subtitle?: string;
     supporters: Supporter[];
     class?: string;
 }
 
-const { label, title, subtitle, supporters, class: className } = Astro.props;
-
-// Rotation pattern for organic stamp/sticker look
-const rotations = ['-0.8deg', '0.5deg', '-0.3deg', '0.7deg', '-0.5deg'];
+const { supporters, class: className } = Astro.props;
 ---
 
 <section class:list={['supporters-section', className]}>
-    <!-- Graph paper background -->
-    <div class="supporters-graph-paper" aria-hidden="true"></div>
+    <div class="supporters-content">
+        <!-- Title -->
+        <h2 class="section-title">Underpinning our community</h2>
 
-    <SectionHeader label={label} title={title} subtitle={subtitle} />
+        <!-- Intro prose -->
+        <div class="intro-prose">
+            <p>
+                Patch is built on a foundation of philanthropy, volunteerism, and alumni giving back.
+                The full-time team are alumni, and dozens of mentors and speakers contribute their time
+                each year, supporting new cohorts and strengthening the community across generations.
+            </p>
+            <p>
+                Thanks to generous partner support, Patch programmes are free to attend. We also offer
+                stipends where needed, ensuring access is based on potential rather than background.
+            </p>
+            <p>
+                We're grateful to the sponsors, donors, mentors, parents, and community members who
+                make this work possible.
+            </p>
+        </div>
 
-    <div class="supporters-grid">
-        {supporters.map((supporter, index) => (
-            <div
-                class="supporter-stamp"
-                style={`--rotation: ${rotations[index % rotations.length]}`}
-            >
-                {supporter.logoSrc ? (
-                    <img src={supporter.logoSrc} alt={supporter.name} loading="lazy" />
-                ) : (
-                    <span class="supporter-name">{supporter.name}</span>
-                )}
-            </div>
-        ))}
+        <!-- Divider -->
+        <hr class="section-divider" />
+
+        <!-- Partners label -->
+        <span class="partners-label">Our Partners</span>
+
+        <!-- Logo grid -->
+        <div class="partners-grid">
+            {supporters.map((supporter) => (
+                <img
+                    src={supporter.logoSrc}
+                    alt={supporter.name}
+                    class="partner-logo"
+                    loading="lazy"
+                />
+            ))}
+        </div>
+
+        <!-- Individual donors -->
+        <p class="donors-line">
+            With additional support from Mark Cummins, Brian Kingham, and Craig Falls.
+        </p>
     </div>
 </section>
 
 <style>
     .supporters-section {
-        position: relative;
-        padding: 48px 24px;
-        overflow: hidden;
+        background: #fafaf7;
+        padding: 64px 24px;
     }
 
-    /* Graph paper background */
-    .supporters-graph-paper {
-        position: absolute;
-        inset: 0;
-        background:
-            linear-gradient(#e8e8e8 1px, transparent 1px),
-            linear-gradient(90deg, #e8e8e8 1px, transparent 1px);
-        background-size: 20px 20px;
-        opacity: 0.04;
-        pointer-events: none;
+    .supporters-content {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
     }
 
-    .supporters-grid {
-        position: relative;
+    .section-label {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--text-muted, #6c7689);
+        display: block;
+        margin-bottom: 12px;
+    }
+
+    .section-title {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 1.75rem;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        color: var(--color-accent-blue);
+        margin: 0 0 24px 0;
+    }
+
+    .intro-prose {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--text-secondary, #5a6372);
+        max-width: 640px;
+        margin: 0 auto 32px;
+    }
+
+    .intro-prose p {
+        margin: 0;
+    }
+
+    .intro-prose p + p {
+        margin-top: 16px;
+    }
+
+    .section-divider {
+        border: none;
+        border-top: 1px solid #d0d0d0;
+        width: 100%;
+        max-width: 400px;
+        margin: 32px auto;
+    }
+
+    .partners-label {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--text-muted, #6c7689);
+        display: block;
+        margin-bottom: 24px;
+    }
+
+    .partners-grid {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        gap: 32px 48px;
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 24px;
+        gap: 32px 40px;
+        margin-bottom: 24px;
     }
 
-    .supporter-stamp {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 56px;
-        padding: 12px 16px;
-        background: #fff;
-        border: 1px solid #e0e0e0;
-        box-shadow: 2px 3px 6px rgba(0,0,0,0.06);
-        transform: rotate(var(--rotation, 0deg));
-        transition: all 0.2s ease;
-    }
-
-    .supporter-stamp:hover {
-        transform: rotate(0deg) scale(1.02);
-        box-shadow: 3px 4px 10px rgba(0,0,0,0.1);
-    }
-
-    .supporter-stamp img {
-        max-height: 100%;
-        max-width: 160px;
+    .partner-logo {
+        height: auto;
+        max-height: 32px;
+        width: auto;
+        max-width: 120px;
         object-fit: contain;
-        filter: invert(1) grayscale(40%);
-        opacity: 0.85;
-        transition: all 0.2s ease;
+        filter: invert(1) brightness(0.15);
+        opacity: 0.75;
+        transition: opacity 0.2s ease;
     }
 
-    .supporter-stamp:hover img {
-        filter: invert(1) grayscale(0%);
+    .partner-logo:hover {
         opacity: 1;
     }
 
-    .supporter-name {
+    .donors-line {
         font-family: 'Courier New', Courier, monospace;
-        font-size: var(--text-sm);
-        font-weight: 500;
-        color: var(--text-secondary);
-        letter-spacing: 0.02em;
-        white-space: nowrap;
+        font-size: 0.8rem;
+        color: var(--text-muted, #6c7689);
+        margin: 8px 0 0 0;
     }
 
     @media (max-width: 640px) {
-        .supporters-grid {
+        .supporters-section {
+            padding: 48px 20px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+        }
+
+        .intro-prose {
+            font-size: 0.9375rem;
+        }
+
+        .partners-grid {
             gap: 24px 32px;
         }
 
-        .supporter-stamp {
-            height: 44px;
-            padding: 8px 12px;
+        .partner-logo {
+            max-height: 24px;
+            max-width: 100px;
         }
 
-        .supporter-stamp img {
-            max-width: 140px;
+        .donors-line {
+            font-size: 0.75rem;
         }
     }
 </style>
