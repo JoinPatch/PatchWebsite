@@ -176,7 +176,7 @@ const heroCollage = [
 					images={[
 						{ src: "/example1.jpg", alt: "Team presenting on stage" },
 						{ src: "/Example2.jpg", alt: "Group photo" },
-						{ src: "/Example3.jpg", alt: "People working on projects" }
+						{ src: "/SummerProgrammeRobodogStage.jpg", alt: "People working on projects" }
 					]}
 				/>
 
@@ -185,9 +185,8 @@ const heroCollage = [
 					description="A one-month competition for TY-6th year students to turn ideas into working prototypes. Run with Immersive Software Engineering at UL."
 					href="#tecs"
 					figureNum="FIG. 2"
-					gridOverlay={true}
-				>
-					<div slot="image" class="photo-placeholder">[Photo: TECS competition]</div>
+					>
+					<img slot="image" src="/TECS.jpg" alt="TECS competition prize winners" />
 				</CardAlt>
 
 				<CardAlt
@@ -195,9 +194,8 @@ const heroCollage = [
 					description="€200-€1,000 grants for 13-19 year olds to build hardware, attend conferences, or start events. Quick decisions, no bureaucracy."
 					href="#fast-grants"
 					figureNum="FIG. 3"
-					gridOverlay={true}
-				>
-					<div slot="image" class="photo-placeholder">[Photo: Grant recipient project]</div>
+					>
+					<img slot="image" src="/GrantsTomasMarkey.JPG" alt="Grant recipient project" />
 				</CardAlt>
 
 				<CardAlt
@@ -205,8 +203,7 @@ const heroCollage = [
 					description="10 days in San Francisco. Inside startups, meeting founders, seeing what's possible."
 					href="#sf-fellowship"
 					figureNum="FIG. 4"
-					gridOverlay={true}
-				>
+					>
 					<img slot="image" src="/SFFellowshipGoldenGateGroup.JPG" alt="SF Fellowship group at Golden Gate Bridge" />
 				</CardAlt>
 			</div>
@@ -229,7 +226,6 @@ const heroCollage = [
 			<CardAlt
 				title="Hack Ireland"
 				description="Ireland's largest student hackathon. 150 students, 30 hours, €25k in prizes. Run by Patch alumni."
-				gridOverlay={true}
 			>
 				<img slot="image" src="/AlumniLedInitiatives/HackIrelandGroupPicture.jpg" alt="Hack Ireland hackathon" />
 			</CardAlt>
@@ -237,7 +233,6 @@ const heroCollage = [
 			<CardAlt
 				title="RoboWars"
 				description="Ireland's premier hardware competition. Teams build combat robots, battle in an arena. Started by 2023 alumni."
-				gridOverlay={true}
 			>
 				<img slot="image" src="/AlumniLedInitiatives/RoboWarsGirl.jpg" alt="RoboWars competition" />
 			</CardAlt>
@@ -245,17 +240,15 @@ const heroCollage = [
 			<CardAlt
 				title="Eirspace"
 				description="Student rocket-building collective. Designing, building, launching."
-				gridOverlay={true}
 			>
-				<div slot="image" class="photo-placeholder">[Photo: Eirspace rocket or team]</div>
+				<img slot="image" src="/AlumniLedInitiatives/Eirspace.png" alt="Eirspace rocket" />
 			</CardAlt>
 
 			<CardAlt
 				title="Give(a)go"
-				description="Community workshops teaching AI agents, game dev, hardware. Open to everyone."
-				gridOverlay={true}
+				description="Building community centred around monthly hands-on sessions where attendees build something with new tech."
 			>
-				<div slot="image" class="photo-placeholder">[Photo: Give(a)go workshop]</div>
+				<img slot="image" src="/AlumniLedInitiatives/GiveAGo.png" alt="Give(a)go workshop" />
 			</CardAlt>
 		</div>
 	</section>
@@ -290,7 +283,7 @@ const heroCollage = [
 
 				<div class="company-card">
 					<div class="company-image">
-						<div class="photo-placeholder">[Photo: Icarus Robotics]</div>
+						<img slot="image" src="/AlumniCompanies/JamiePalmerIcarusRobotics.png" alt="Icarus Robotics at Times Square" />
 					</div>
 					<div class="company-info">
 						<h4>Icarus Robotics</h4>
@@ -330,7 +323,7 @@ const heroCollage = [
 			<div class="research-grid">
 				<div class="research-item">
 					<div class="research-image">
-						<div class="photo-placeholder">[Photo: Dylan Cuskelly in Cambridge gowns]</div>
+						<img slot="image" src="/AlumniPhotos/DylanCuskelly.jpg" alt="Dylan Cuskelly in Cambridge gowns" />
 					</div>
 					<div class="research-info">
 						<h4>Cambridge Physics PhD</h4>
@@ -810,6 +803,12 @@ const heroCollage = [
 		overflow: hidden;
 	}
 
+	.company-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
 	.company-image .photo-placeholder {
 		height: 100%;
 		min-height: auto;
@@ -851,6 +850,12 @@ const heroCollage = [
 		margin-bottom: 12px;
 		border-radius: 4px;
 		overflow: hidden;
+	}
+
+	.research-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 
 	.research-image .photo-placeholder {
