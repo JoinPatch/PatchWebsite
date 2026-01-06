@@ -1,0 +1,1391 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const sampleQuote = `Growing up in rural Kerry, I'd never had anyone to talk to about genetics and AI. During Patch, I met people who cared about the same things. I didn't feel alone anymore.`;
+const sampleName = "Conor Casey";
+const sampleTitle = "Patch 2020";
+const samplePhoto = "/AlumniPhotos/ColmRedBull.png";
+
+// Text with highlight markers for demonstration
+const highlightedQuote = `Growing up in rural Kerry, <mark>I'd never had anyone to talk to about genetics and AI.</mark> During Patch, I met people who cared about the same things. I didn't feel alone anymore.`;
+---
+
+<Layout title="Testimonial Style Comparison">
+	<main class="testimonial-showcase">
+		<h1>Engineering-Themed Testimonial Styles</h1>
+		<p class="intro">Compare different historical engineering aesthetics for presenting testimonials with portraits.</p>
+
+		<div class="testimonial-grid">
+
+			<!-- 1. Patent Application Style -->
+			<section class="testimonial-section">
+				<h2>1. Patent Application Style</h2>
+				<p class="description">Formal patent deposition aesthetic with witness formatting and reference numbers.</p>
+				<div class="testimonial-demo">
+					<div class="patent-testimonial">
+						<div class="patent-header">
+							<span class="patent-number">DEPOSITION No. 2020-0847</span>
+							<span class="patent-date">Filed: August 15, 2020</span>
+						</div>
+						<div class="patent-body">
+							<div class="patent-witness">
+								<div class="witness-photo-frame">
+									<img src={samplePhoto} alt={sampleName} />
+								</div>
+								<span class="witness-label">WITNESS</span>
+							</div>
+							<div class="patent-content">
+								<p class="patent-claim">
+									<span class="claim-number">1.</span> Growing up in rural Kerry, <span class="patent-highlight">I'd never had anyone to talk to about genetics and AI<sup>[1]</sup></span>. During Patch, I met people who cared about the same things. I didn't feel alone anymore.
+								</p>
+								<div class="patent-signature">
+									<div class="signature-line"></div>
+									<span class="signature-name">{sampleName}</span>
+									<span class="signature-title">{sampleTitle}</span>
+								</div>
+							</div>
+						</div>
+						<div class="patent-footer">
+							<span class="patent-ref">[1] See also: Community Building, Social Impact</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 2. Engineering Logbook Style -->
+			<section class="testimonial-section">
+				<h2>2. Engineering Logbook / Lab Notebook</h2>
+				<p class="description">Personal lab notebook with graph paper, taped photo, and handwritten annotations.</p>
+				<div class="testimonial-demo">
+					<div class="logbook-testimonial">
+						<div class="logbook-paper">
+							<div class="logbook-header">
+								<span class="logbook-date">DATE: 15/08/2020</span>
+								<span class="logbook-project">PROJECT: PATCH PROGRAMME</span>
+								<span class="logbook-page">PAGE 47</span>
+							</div>
+							<div class="logbook-photo-container">
+								<div class="taped-photo">
+									<span class="tape tape-tl"></span>
+									<span class="tape tape-tr"></span>
+									<img src={samplePhoto} alt={sampleName} />
+								</div>
+							</div>
+							<div class="logbook-content">
+								<p class="logbook-entry">
+									Growing up in rural Kerry, <span class="logbook-highlight">I'd never had anyone to talk to about genetics and AI.</span> During Patch, I met people who cared about the same things. I didn't feel alone anymore.
+								</p>
+								<div class="logbook-annotation">^ Important!</div>
+							</div>
+							<div class="logbook-footer">
+								<div class="logbook-entry-num">ENTRY #47</div>
+								<div class="logbook-signature">
+									<span class="sig-name">— {sampleName}</span>
+									<span class="sig-title">{sampleTitle}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 3. Technical Specification Sheet -->
+			<section class="testimonial-section">
+				<h2>3. Technical Specification Sheet</h2>
+				<p class="description">Clean spec sheet format with operator badge and parameter fields.</p>
+				<div class="testimonial-demo">
+					<div class="spec-testimonial">
+						<div class="spec-header">
+							<span class="spec-title">PARTICIPANT FEEDBACK REPORT</span>
+							<span class="spec-doc">DOC-PFR-2020-047</span>
+						</div>
+						<div class="spec-body">
+							<div class="spec-badge">
+								<div class="badge-photo">
+									<img src={samplePhoto} alt={sampleName} />
+								</div>
+								<div class="badge-info">
+									<span class="badge-label">PARTICIPANT</span>
+									<span class="badge-name">{sampleName}</span>
+									<span class="badge-id">{sampleTitle}</span>
+								</div>
+							</div>
+							<div class="spec-fields">
+								<div class="spec-field">
+									<span class="field-label">SUBJECT:</span>
+									<span class="field-value">Programme Experience</span>
+								</div>
+								<div class="spec-field">
+									<span class="field-label">STATUS:</span>
+									<span class="field-value status-verified">VERIFIED</span>
+								</div>
+								<div class="spec-field full-width">
+									<span class="field-label">OBSERVATION:</span>
+									<p class="field-value observation">
+										Growing up in rural Kerry, <span class="spec-critical">I'd never had anyone to talk to about genetics and AI.</span> During Patch, I met people who cared about the same things. I didn't feel alone anymore.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="spec-footer">
+							<span class="spec-rev">REV. A</span>
+							<span class="spec-date">2020-08-15</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 4. Telegram/Cable Message -->
+			<section class="testimonial-section">
+				<h2>4. Telegram / Cable Message</h2>
+				<p class="description">Early 1900s telegram with sender ID and urgent message formatting.</p>
+				<div class="testimonial-demo">
+					<div class="telegram-testimonial">
+						<div class="telegram-header-bar">
+							<span class="telegram-title">═══ WESTERN UNION ═══</span>
+						</div>
+						<div class="telegram-body">
+							<div class="telegram-meta">
+								<div class="telegram-sender">
+									<div class="sender-photo">
+										<img src={samplePhoto} alt={sampleName} />
+									</div>
+									<span class="sender-label">SENDER</span>
+								</div>
+								<div class="telegram-info">
+									<span class="telegram-number">MSG NO. 847-2020</span>
+									<span class="telegram-date">RECEIVED AUG 15 2020 14:32</span>
+								</div>
+							</div>
+							<div class="telegram-message">
+								<p>
+									GROWING UP IN RURAL KERRY <span class="telegram-emphasis">=== I HAD NEVER HAD ANYONE TO TALK TO ABOUT GENETICS AND AI ===</span> DURING PATCH I MET PEOPLE WHO CARED ABOUT THE SAME THINGS I DID NOT FEEL ALONE ANYMORE
+								</p>
+							</div>
+							<div class="telegram-sign">
+								<span class="telegram-from">— {sampleName.toUpperCase()}</span>
+								<span class="telegram-title-line">{sampleTitle.toUpperCase()}</span>
+							</div>
+						</div>
+						<div class="telegram-footer-bar">
+							<span class="telegram-class">CLASS: PRIORITY</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 5. Punch Card / Early Computer Printout -->
+			<section class="testimonial-section">
+				<h2>5. Punch Card / Early Computer Printout</h2>
+				<p class="description">Dot-matrix printout with ID window and monospace formatting.</p>
+				<div class="testimonial-demo">
+					<div class="punchcard-testimonial">
+						<div class="punchcard-holes top">
+							<span></span><span></span><span></span><span></span><span></span>
+							<span></span><span></span><span></span><span></span><span></span>
+							<span></span><span></span><span></span><span></span><span></span>
+						</div>
+						<div class="punchcard-body">
+							<div class="punchcard-header">
+								<span class="card-id">CARD 0847</span>
+								<span class="card-date">DATE: 15-AUG-2020</span>
+							</div>
+							<div class="punchcard-content">
+								<div class="punchcard-id-window">
+									<img src={samplePhoto} alt={sampleName} />
+									<span class="id-name">{sampleName.toUpperCase()}</span>
+								</div>
+								<div class="punchcard-text">
+									<pre>
+GROWING UP IN RURAL KERRY,
+<span class="punch-highlight">>I'D NEVER HAD ANYONE TO TALK<</span>
+<span class="punch-highlight">>TO ABOUT GENETICS AND AI.<</span>
+DURING PATCH, I MET PEOPLE
+WHO CARED ABOUT THE SAME
+THINGS. I DIDN'T FEEL ALONE
+ANYMORE.
+
+OPERATOR: {sampleTitle.toUpperCase()}
+									</pre>
+								</div>
+							</div>
+						</div>
+						<div class="punchcard-holes bottom">
+							<span></span><span></span><span></span><span></span><span></span>
+							<span></span><span></span><span></span><span></span><span></span>
+							<span></span><span></span><span></span><span></span><span></span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 6. Blueprint Annotation / Callout -->
+			<section class="testimonial-section">
+				<h2>6. Blueprint Annotation / Callout</h2>
+				<p class="description">Blueprint-style callout with leader lines and reference markers.</p>
+				<div class="testimonial-demo blueprint-demo">
+					<div class="blueprint-testimonial">
+						<div class="blueprint-bg-pattern"></div>
+						<div class="blueprint-callout">
+							<div class="callout-portrait">
+								<div class="portrait-circle">
+									<img src={samplePhoto} alt={sampleName} />
+								</div>
+								<div class="portrait-leader"></div>
+							</div>
+							<div class="callout-box">
+								<div class="callout-header">DETAIL A — PARTICIPANT TESTIMONY</div>
+								<p class="callout-text">
+									Growing up in rural Kerry, <span class="blueprint-mark" data-ref="B">I'd never had anyone to talk to about genetics and AI.</span> During Patch, I met people who cared about the same things. I didn't feel alone anymore.
+								</p>
+								<div class="callout-attribution">
+									<span class="attr-name">{sampleName}</span>
+									<span class="attr-divider">—</span>
+									<span class="attr-title">{sampleTitle}</span>
+								</div>
+								<div class="callout-refs">
+									<span class="ref-marker">A</span>
+									<span class="ref-marker">B</span>
+								</div>
+							</div>
+						</div>
+						<div class="blueprint-scale">SCALE 1:1</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 7. Incident Report / Field Notes -->
+			<section class="testimonial-section">
+				<h2>7. Incident Report / Field Notes</h2>
+				<p class="description">Structured field report with observer badge and rubber stamps.</p>
+				<div class="testimonial-demo">
+					<div class="incident-testimonial">
+						<div class="incident-header">
+							<span class="incident-title">FIELD OBSERVATION REPORT</span>
+							<span class="incident-number">FOR-2020-0847</span>
+						</div>
+						<div class="incident-body">
+							<div class="incident-observer">
+								<div class="observer-badge">
+									<img src={samplePhoto} alt={sampleName} />
+								</div>
+								<div class="observer-info">
+									<span class="observer-label">OBSERVER</span>
+									<span class="observer-name">{sampleName}</span>
+									<span class="observer-id">{sampleTitle}</span>
+								</div>
+							</div>
+							<div class="incident-fields">
+								<div class="incident-row">
+									<span class="incident-label">DATE:</span>
+									<span class="incident-value">15 August 2020</span>
+								</div>
+								<div class="incident-row">
+									<span class="incident-label">LOCATION:</span>
+									<span class="incident-value">Kerry, Ireland</span>
+								</div>
+								<div class="incident-row">
+									<span class="incident-label">SUBJECT:</span>
+									<span class="incident-value">Programme Impact Assessment</span>
+								</div>
+								<div class="incident-row full">
+									<span class="incident-label">OBSERVATION:</span>
+									<p class="incident-text">
+										Growing up in rural Kerry, <span class="incident-highlight">I'd never had anyone to talk to about genetics and AI.</span> During Patch, I met people who cared about the same things. I didn't feel alone anymore.
+									</p>
+								</div>
+							</div>
+							<div class="incident-stamps">
+								<div class="rubber-stamp verified">VERIFIED</div>
+								<div class="rubber-stamp approved">APPROVED</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- 8. Vacuum Tube Era / Control Room Display -->
+			<section class="testimonial-section">
+				<h2>8. Vacuum Tube Era / Control Room</h2>
+				<p class="description">CRT monitor aesthetic with phosphor text and indicator lights.</p>
+				<div class="testimonial-demo dark-demo">
+					<div class="crt-testimonial">
+						<div class="crt-frame">
+							<div class="crt-indicators">
+								<span class="indicator on"></span>
+								<span class="indicator"></span>
+								<span class="indicator on"></span>
+							</div>
+							<div class="crt-screen">
+								<div class="crt-scanlines"></div>
+								<div class="crt-content">
+									<div class="crt-portrait">
+										<img src={samplePhoto} alt={sampleName} />
+									</div>
+									<div class="crt-text">
+										<p class="crt-line">> OPERATOR: {sampleName.toUpperCase()}</p>
+										<p class="crt-line">> STATUS: {sampleTitle.toUpperCase()}</p>
+										<p class="crt-line">> </p>
+										<p class="crt-line">> TRANSMISSION BEGIN:</p>
+										<p class="crt-line">> Growing up in rural Kerry,</p>
+										<p class="crt-line"><span class="crt-highlight">> I'd never had anyone to talk</span></p>
+										<p class="crt-line"><span class="crt-highlight">> to about genetics and AI.</span></p>
+										<p class="crt-line">> During Patch, I met people who</p>
+										<p class="crt-line">> cared about the same things.</p>
+										<p class="crt-line">> I didn't feel alone anymore.</p>
+										<p class="crt-line">> </p>
+										<p class="crt-line crt-blink">> END TRANSMISSION_</p>
+									</div>
+								</div>
+							</div>
+							<div class="crt-label">TERMINAL 04</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.testimonial-showcase {
+		max-width: 1000px;
+		margin: 0 auto;
+		padding: 60px 24px;
+	}
+
+	h1 {
+		font-size: 2rem;
+		font-weight: 500;
+		margin-bottom: 8px;
+		color: #1a1a1a;
+	}
+
+	.intro {
+		color: #666;
+		margin-bottom: 48px;
+	}
+
+	.testimonial-grid {
+		display: flex;
+		flex-direction: column;
+		gap: 48px;
+	}
+
+	.testimonial-section {
+		padding: 32px;
+		background: #f8f9fa;
+		border: 1px solid #e0e0e0;
+		border-radius: 8px;
+	}
+
+	.testimonial-section h2 {
+		font-size: 1.25rem;
+		font-weight: 600;
+		margin-bottom: 8px;
+		color: #1a1a1a;
+	}
+
+	.description {
+		font-size: 0.9rem;
+		color: #666;
+		margin-bottom: 24px;
+	}
+
+	.testimonial-demo {
+		padding: 40px 20px;
+		background: #fff;
+		border: 1px dashed #ccc;
+		border-radius: 4px;
+		display: flex;
+		justify-content: center;
+	}
+
+	.dark-demo {
+		background: #1a1a1a;
+	}
+
+	.blueprint-demo {
+		background: #4a7fbf;
+	}
+
+	/* =============================================
+	   1. PATENT APPLICATION STYLE
+	   ============================================= */
+	.patent-testimonial {
+		max-width: 600px;
+		width: 100%;
+		background: #fff;
+		border: 2px solid #1a1a1a;
+		font-family: 'Times New Roman', serif;
+	}
+
+	.patent-header {
+		display: flex;
+		justify-content: space-between;
+		padding: 12px 16px;
+		border-bottom: 2px solid #1a1a1a;
+		font-size: 0.75rem;
+		font-weight: 600;
+	}
+
+	.patent-body {
+		display: flex;
+		gap: 20px;
+		padding: 20px;
+	}
+
+	.patent-witness {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.witness-photo-frame {
+		width: 80px;
+		height: 80px;
+		border: 2px solid #1a1a1a;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+
+	.witness-photo-frame img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.witness-label {
+		font-size: 0.6rem;
+		font-weight: 700;
+		letter-spacing: 0.15em;
+		color: #666;
+	}
+
+	.patent-content {
+		flex: 1;
+	}
+
+	.patent-claim {
+		font-size: 0.95rem;
+		line-height: 1.7;
+		margin-bottom: 20px;
+	}
+
+	.claim-number {
+		font-weight: 700;
+		margin-right: 8px;
+	}
+
+	.patent-highlight {
+		text-decoration: underline;
+		text-decoration-style: double;
+	}
+
+	.patent-signature {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+		margin-top: 20px;
+	}
+
+	.signature-line {
+		width: 150px;
+		height: 1px;
+		background: #1a1a1a;
+		margin-bottom: 4px;
+	}
+
+	.signature-name {
+		font-style: italic;
+		font-size: 0.9rem;
+	}
+
+	.signature-title {
+		font-size: 0.75rem;
+		color: #666;
+	}
+
+	.patent-footer {
+		padding: 8px 16px;
+		border-top: 1px solid #ccc;
+		font-size: 0.7rem;
+		color: #666;
+		font-style: italic;
+	}
+
+	/* =============================================
+	   2. ENGINEERING LOGBOOK STYLE
+	   ============================================= */
+	.logbook-testimonial {
+		max-width: 550px;
+		width: 100%;
+	}
+
+	.logbook-paper {
+		background:
+			linear-gradient(#e8e8e8 1px, transparent 1px),
+			linear-gradient(90deg, #e8e8e8 1px, transparent 1px),
+			#f9f9f5;
+		background-size: 20px 20px;
+		padding: 24px;
+		border: 1px solid #ccc;
+		box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+		position: relative;
+	}
+
+	.logbook-header {
+		display: flex;
+		justify-content: space-between;
+		font-family: 'Courier New', monospace;
+		font-size: 0.7rem;
+		font-weight: 600;
+		margin-bottom: 16px;
+		color: #333;
+	}
+
+	.logbook-photo-container {
+		float: right;
+		margin: 0 0 12px 16px;
+	}
+
+	.taped-photo {
+		position: relative;
+		width: 90px;
+		height: 90px;
+		background: #fff;
+		padding: 4px;
+		box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+		transform: rotate(2deg);
+	}
+
+	.taped-photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.tape {
+		position: absolute;
+		width: 40px;
+		height: 16px;
+		background: rgba(255, 230, 150, 0.7);
+		border: 1px solid rgba(200, 180, 100, 0.5);
+	}
+
+	.tape-tl {
+		top: -8px;
+		left: -10px;
+		transform: rotate(-25deg);
+	}
+
+	.tape-tr {
+		top: -8px;
+		right: -10px;
+		transform: rotate(20deg);
+	}
+
+	.logbook-content {
+		font-family: 'Comic Sans MS', cursive, sans-serif;
+		font-size: 0.95rem;
+		line-height: 1.8;
+		color: #2a4a7a;
+	}
+
+	.logbook-entry {
+		margin-bottom: 8px;
+	}
+
+	.logbook-highlight {
+		background: linear-gradient(180deg, transparent 60%, rgba(255, 160, 0, 0.35) 60%);
+	}
+
+	.logbook-annotation {
+		font-size: 0.8rem;
+		color: #c44;
+		margin-left: 20px;
+		font-style: italic;
+	}
+
+	.logbook-footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-end;
+		margin-top: 20px;
+		padding-top: 12px;
+		border-top: 1px dashed #aaa;
+		clear: both;
+	}
+
+	.logbook-entry-num {
+		font-family: 'Courier New', monospace;
+		font-size: 0.65rem;
+		font-weight: 600;
+		color: #888;
+		letter-spacing: 0.05em;
+	}
+
+	.logbook-signature {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		font-family: 'Comic Sans MS', cursive;
+	}
+
+	.sig-name {
+		font-size: 0.9rem;
+		color: #2a4a7a;
+	}
+
+	.sig-title {
+		font-size: 0.75rem;
+		color: #666;
+	}
+
+	/* =============================================
+	   3. TECHNICAL SPECIFICATION SHEET
+	   ============================================= */
+	.spec-testimonial {
+		max-width: 600px;
+		width: 100%;
+		background: #fff;
+		border: 2px solid #333;
+		font-family: 'Arial', sans-serif;
+	}
+
+	.spec-header {
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 16px;
+		background: #333;
+		color: #fff;
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.05em;
+	}
+
+	.spec-body {
+		padding: 20px;
+	}
+
+	.spec-badge {
+		display: flex;
+		gap: 12px;
+		padding: 12px;
+		background: #f5f5f5;
+		border: 1px solid #ddd;
+		margin-bottom: 16px;
+	}
+
+	.badge-photo {
+		width: 60px;
+		height: 60px;
+		border: 2px solid #333;
+		overflow: hidden;
+	}
+
+	.badge-photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.badge-info {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 2px;
+	}
+
+	.badge-label {
+		font-size: 0.6rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		color: #666;
+	}
+
+	.badge-name {
+		font-size: 1rem;
+		font-weight: 600;
+		color: #1a1a1a;
+	}
+
+	.badge-id {
+		font-size: 0.8rem;
+		color: #666;
+	}
+
+	.spec-fields {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 12px;
+	}
+
+	.spec-field {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.spec-field.full-width {
+		grid-column: 1 / -1;
+	}
+
+	.field-label {
+		font-size: 0.65rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		color: #666;
+	}
+
+	.field-value {
+		font-size: 0.85rem;
+		color: #1a1a1a;
+	}
+
+	.field-value.observation {
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	.status-verified {
+		color: #22863a;
+		font-weight: 600;
+	}
+
+	.spec-critical {
+		background: #fff3cd;
+		padding: 2px 4px;
+		border-left: 3px solid #ffc107;
+	}
+
+	.spec-footer {
+		display: flex;
+		justify-content: space-between;
+		padding: 8px 16px;
+		border-top: 1px solid #ddd;
+		font-size: 0.7rem;
+		color: #666;
+	}
+
+	/* =============================================
+	   4. TELEGRAM / CABLE MESSAGE
+	   ============================================= */
+	.telegram-testimonial {
+		max-width: 500px;
+		width: 100%;
+		background: #fdf6e3;
+		font-family: 'Courier New', monospace;
+		box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+	}
+
+	.telegram-header-bar,
+	.telegram-footer-bar {
+		padding: 8px 16px;
+		background: #8b7355;
+		color: #fdf6e3;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.15em;
+		text-align: center;
+	}
+
+	.telegram-body {
+		padding: 20px;
+	}
+
+	.telegram-meta {
+		display: flex;
+		gap: 16px;
+		margin-bottom: 16px;
+		padding-bottom: 12px;
+		border-bottom: 1px dashed #c4b896;
+	}
+
+	.telegram-sender {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 4px;
+	}
+
+	.sender-photo {
+		width: 50px;
+		height: 50px;
+		border: 2px solid #8b7355;
+		border-radius: 4px;
+		overflow: hidden;
+	}
+
+	.sender-photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		filter: sepia(30%);
+	}
+
+	.sender-label {
+		font-size: 0.55rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		color: #8b7355;
+	}
+
+	.telegram-info {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 4px;
+		font-size: 0.7rem;
+		color: #5d4e37;
+	}
+
+	.telegram-message {
+		font-size: 0.9rem;
+		line-height: 1.6;
+		color: #3d3225;
+		text-transform: uppercase;
+	}
+
+	.telegram-emphasis {
+		font-weight: 700;
+		color: #8b4513;
+	}
+
+	.telegram-sign {
+		margin-top: 16px;
+		padding-top: 12px;
+		border-top: 1px dashed #c4b896;
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.telegram-from {
+		font-weight: 700;
+		color: #5d4e37;
+	}
+
+	.telegram-title-line {
+		font-size: 0.75rem;
+		color: #8b7355;
+	}
+
+	/* =============================================
+	   5. PUNCH CARD / EARLY COMPUTER PRINTOUT
+	   ============================================= */
+	.punchcard-testimonial {
+		max-width: 550px;
+		width: 100%;
+		background: #fffef5;
+		border: 1px solid #d4d0b8;
+		font-family: 'Courier New', monospace;
+	}
+
+	.punchcard-holes {
+		display: flex;
+		justify-content: center;
+		gap: 12px;
+		padding: 8px;
+		background: #f5f4e8;
+		border-bottom: 1px solid #d4d0b8;
+	}
+
+	.punchcard-holes.bottom {
+		border-bottom: none;
+		border-top: 1px solid #d4d0b8;
+	}
+
+	.punchcard-holes span {
+		width: 8px;
+		height: 8px;
+		background: #e8e6d9;
+		border: 1px solid #c4c0a8;
+		border-radius: 50%;
+	}
+
+	.punchcard-body {
+		padding: 16px;
+	}
+
+	.punchcard-header {
+		display: flex;
+		justify-content: space-between;
+		font-size: 0.7rem;
+		font-weight: 600;
+		color: #666;
+		margin-bottom: 12px;
+	}
+
+	.punchcard-content {
+		display: flex;
+		gap: 16px;
+	}
+
+	.punchcard-id-window {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 6px;
+		padding: 8px;
+		background: #f0efe5;
+		border: 1px solid #d4d0b8;
+	}
+
+	.punchcard-id-window img {
+		width: 60px;
+		height: 60px;
+		object-fit: cover;
+		filter: grayscale(100%) contrast(1.1);
+	}
+
+	.id-name {
+		font-size: 0.55rem;
+		font-weight: 700;
+		color: #666;
+		text-align: center;
+	}
+
+	.punchcard-text {
+		flex: 1;
+	}
+
+	.punchcard-text pre {
+		font-size: 0.75rem;
+		line-height: 1.5;
+		color: #333;
+		margin: 0;
+		white-space: pre-wrap;
+	}
+
+	.punch-highlight {
+		background: #333;
+		color: #fffef5;
+	}
+
+	/* =============================================
+	   6. BLUEPRINT ANNOTATION / CALLOUT
+	   ============================================= */
+	.blueprint-testimonial {
+		max-width: 600px;
+		width: 100%;
+		position: relative;
+		padding: 30px;
+	}
+
+	.blueprint-bg-pattern {
+		position: absolute;
+		inset: 0;
+		background-image:
+			linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+			linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+		background-size: 20px 20px;
+		pointer-events: none;
+	}
+
+	.blueprint-callout {
+		position: relative;
+		display: flex;
+		gap: 20px;
+		align-items: flex-start;
+	}
+
+	.callout-portrait {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.portrait-circle {
+		width: 80px;
+		height: 80px;
+		border: 2px solid rgba(255, 255, 255, 0.7);
+		border-radius: 50%;
+		overflow: hidden;
+		background: rgba(255, 255, 255, 0.1);
+	}
+
+	.portrait-circle img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.portrait-leader {
+		width: 2px;
+		height: 30px;
+		background: rgba(255, 255, 255, 0.5);
+	}
+
+	.callout-box {
+		flex: 1;
+		padding: 16px;
+		border: 2px solid rgba(255, 255, 255, 0.6);
+		background: rgba(74, 127, 191, 0.95);
+		position: relative;
+	}
+
+	.callout-header {
+		font-family: 'Courier New', monospace;
+		font-size: 0.7rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		color: rgba(255, 255, 255, 0.8);
+		margin-bottom: 12px;
+	}
+
+	.callout-text {
+		font-size: 0.95rem;
+		line-height: 1.6;
+		color: #fff;
+		margin-bottom: 12px;
+	}
+
+	.blueprint-mark {
+		border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+		position: relative;
+	}
+
+	.blueprint-mark::after {
+		content: attr(data-ref);
+		position: absolute;
+		top: -8px;
+		right: -12px;
+		font-size: 0.6rem;
+		font-weight: 700;
+		color: rgba(255, 255, 255, 0.8);
+	}
+
+	.callout-attribution {
+		display: flex;
+		gap: 8px;
+		font-family: 'Courier New', monospace;
+		font-size: 0.8rem;
+		color: rgba(255, 255, 255, 0.7);
+	}
+
+	.callout-refs {
+		position: absolute;
+		right: -30px;
+		top: 50%;
+		transform: translateY(-50%);
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	.ref-marker {
+		width: 20px;
+		height: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border: 1.5px solid rgba(255, 255, 255, 0.6);
+		border-radius: 50%;
+		font-family: 'Courier New', monospace;
+		font-size: 0.65rem;
+		font-weight: 600;
+		color: rgba(255, 255, 255, 0.8);
+	}
+
+	.blueprint-scale {
+		position: absolute;
+		bottom: 8px;
+		right: 16px;
+		font-family: 'Courier New', monospace;
+		font-size: 0.6rem;
+		color: rgba(255, 255, 255, 0.5);
+	}
+
+	/* =============================================
+	   7. INCIDENT REPORT / FIELD NOTES
+	   ============================================= */
+	.incident-testimonial {
+		max-width: 550px;
+		width: 100%;
+		background: #fff;
+		border: 1px solid #ccc;
+		font-family: 'Arial', sans-serif;
+	}
+
+	.incident-header {
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 16px;
+		background: #f5f5f5;
+		border-bottom: 2px solid #333;
+		font-size: 0.75rem;
+		font-weight: 600;
+	}
+
+	.incident-body {
+		padding: 20px;
+		position: relative;
+	}
+
+	.incident-observer {
+		display: flex;
+		gap: 12px;
+		margin-bottom: 16px;
+		padding-bottom: 16px;
+		border-bottom: 1px solid #eee;
+	}
+
+	.observer-badge {
+		width: 70px;
+		height: 70px;
+		border: 2px solid #666;
+		border-radius: 4px;
+		overflow: hidden;
+	}
+
+	.observer-badge img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.observer-info {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 2px;
+	}
+
+	.observer-label {
+		font-size: 0.6rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		color: #666;
+	}
+
+	.observer-name {
+		font-size: 1rem;
+		font-weight: 600;
+	}
+
+	.observer-id {
+		font-size: 0.8rem;
+		color: #666;
+	}
+
+	.incident-fields {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.incident-row {
+		display: flex;
+		gap: 12px;
+	}
+
+	.incident-row.full {
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.incident-label {
+		font-size: 0.7rem;
+		font-weight: 700;
+		color: #666;
+		min-width: 80px;
+	}
+
+	.incident-value {
+		font-size: 0.85rem;
+	}
+
+	.incident-text {
+		font-size: 0.9rem;
+		line-height: 1.6;
+		margin: 0;
+		padding: 12px;
+		background: #fafafa;
+		border-left: 3px solid #ddd;
+	}
+
+	.incident-highlight {
+		background: linear-gradient(180deg, transparent 50%, rgba(255, 255, 0, 0.3) 50%);
+	}
+
+	.incident-stamps {
+		position: absolute;
+		top: 20px;
+		right: 20px;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.rubber-stamp {
+		padding: 6px 12px;
+		border: 3px solid;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+		transform: rotate(-12deg);
+		opacity: 0.6;
+	}
+
+	.rubber-stamp.verified {
+		border-color: #22863a;
+		color: #22863a;
+	}
+
+	.rubber-stamp.approved {
+		border-color: #0366d6;
+		color: #0366d6;
+		transform: rotate(-8deg);
+	}
+
+	/* =============================================
+	   8. CRT / VACUUM TUBE ERA
+	   ============================================= */
+	.crt-testimonial {
+		max-width: 500px;
+		width: 100%;
+	}
+
+	.crt-frame {
+		background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 50%, #1a1a1a 100%);
+		border-radius: 12px;
+		padding: 16px;
+		box-shadow:
+			inset 0 2px 4px rgba(255,255,255,0.1),
+			0 8px 32px rgba(0,0,0,0.5);
+	}
+
+	.crt-indicators {
+		display: flex;
+		gap: 8px;
+		margin-bottom: 12px;
+	}
+
+	.indicator {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: #333;
+		border: 1px solid #555;
+	}
+
+	.indicator.on {
+		background: #4a4;
+		box-shadow: 0 0 8px #4a4;
+	}
+
+	.crt-screen {
+		position: relative;
+		background: #0a1a0a;
+		border-radius: 8px;
+		padding: 20px;
+		overflow: hidden;
+		border: 4px solid #222;
+	}
+
+	.crt-scanlines {
+		position: absolute;
+		inset: 0;
+		background: repeating-linear-gradient(
+			0deg,
+			transparent,
+			transparent 2px,
+			rgba(0, 0, 0, 0.3) 2px,
+			rgba(0, 0, 0, 0.3) 4px
+		);
+		pointer-events: none;
+	}
+
+	.crt-content {
+		position: relative;
+		display: flex;
+		gap: 16px;
+	}
+
+	.crt-portrait {
+		width: 80px;
+		height: 80px;
+		border: 2px solid #3a3;
+		border-radius: 4px;
+		overflow: hidden;
+		flex-shrink: 0;
+	}
+
+	.crt-portrait img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		filter: sepia(100%) hue-rotate(70deg) saturate(200%) brightness(0.7);
+	}
+
+	.crt-text {
+		flex: 1;
+	}
+
+	.crt-line {
+		font-family: 'Courier New', monospace;
+		font-size: 0.75rem;
+		color: #3a3;
+		margin: 0;
+		line-height: 1.4;
+		text-shadow: 0 0 8px rgba(50, 255, 50, 0.5);
+	}
+
+	.crt-highlight {
+		background: #3a3;
+		color: #0a1a0a;
+	}
+
+	.crt-blink {
+		animation: blink 1s infinite;
+	}
+
+	@keyframes blink {
+		0%, 50% { opacity: 1; }
+		51%, 100% { opacity: 0; }
+	}
+
+	.crt-label {
+		text-align: center;
+		margin-top: 12px;
+		font-family: 'Arial', sans-serif;
+		font-size: 0.65rem;
+		font-weight: 600;
+		letter-spacing: 0.15em;
+		color: #666;
+	}
+
+	/* =============================================
+	   RESPONSIVE
+	   ============================================= */
+	@media (max-width: 600px) {
+		.patent-body,
+		.punchcard-content,
+		.blueprint-callout,
+		.crt-content {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.logbook-photo-container {
+			float: none;
+			margin: 0 0 16px 0;
+		}
+
+		.incident-stamps {
+			position: static;
+			flex-direction: row;
+			margin-top: 16px;
+		}
+
+		.callout-refs {
+			position: static;
+			flex-direction: row;
+			transform: none;
+			margin-top: 12px;
+		}
+	}
+</style>

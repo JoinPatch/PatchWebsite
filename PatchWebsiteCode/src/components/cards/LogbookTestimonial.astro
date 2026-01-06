@@ -1,0 +1,192 @@
+---
+interface Props {
+    quote: string;
+    authorName: string;
+    authorTitle: string;
+    photoSrc?: string;
+    date?: string;
+    entryNum?: string;
+    class?: string;
+}
+
+const {
+    quote,
+    authorName,
+    authorTitle,
+    photoSrc,
+    date = "2024",
+    entryNum = "#1",
+    class: className
+} = Astro.props;
+---
+
+<div class:list={['logbook-testimonial', className]}>
+    <div class="logbook-paper">
+        <div class="logbook-header">
+            <span class="logbook-date">DATE: {date}</span>
+            <span class="logbook-project">PROJECT: PATCH PROGRAMME</span>
+        </div>
+
+        {photoSrc && (
+            <div class="logbook-photo-container">
+                <div class="taped-photo">
+                    <span class="tape tape-tl"></span>
+                    <span class="tape tape-tr"></span>
+                    <img src={photoSrc} alt={authorName} />
+                </div>
+            </div>
+        )}
+
+        <div class="logbook-content">
+            <p class="logbook-entry" set:html={quote} />
+        </div>
+
+        <div class="logbook-footer">
+            <div class="logbook-entry-num">ENTRY {entryNum}</div>
+            <div class="logbook-signature">
+                <span class="sig-name">— {authorName}</span>
+                <span class="sig-title">{authorTitle}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style is:global>
+    .logbook-testimonial {
+        max-width: 600px;
+        width: 100%;
+    }
+
+    .logbook-testimonial .logbook-paper {
+        background:
+            linear-gradient(#e8e8e8 1px, transparent 1px),
+            linear-gradient(90deg, #e8e8e8 1px, transparent 1px),
+            #f9f9f5;
+        background-size: 20px 20px;
+        padding: 24px;
+        border: 1px solid #ccc;
+        box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+        position: relative;
+    }
+
+    .logbook-testimonial .logbook-header {
+        display: flex;
+        justify-content: space-between;
+        font-family: 'Courier New', monospace;
+        font-size: 0.7rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #333;
+    }
+
+    .logbook-testimonial .logbook-photo-container {
+        float: right;
+        margin: 0 0 12px 16px;
+    }
+
+    .logbook-testimonial .taped-photo {
+        position: relative;
+        width: 90px;
+        height: 90px;
+        background: #fff;
+        padding: 4px;
+        box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+        transform: rotate(2deg);
+    }
+
+    .logbook-testimonial .taped-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .logbook-testimonial .tape {
+        position: absolute;
+        width: 40px;
+        height: 16px;
+        background: rgba(255, 230, 150, 0.7);
+        border: 1px solid rgba(200, 180, 100, 0.5);
+    }
+
+    .logbook-testimonial .tape-tl {
+        top: -8px;
+        left: -10px;
+        transform: rotate(-25deg);
+    }
+
+    .logbook-testimonial .tape-tr {
+        top: -8px;
+        right: -10px;
+        transform: rotate(20deg);
+    }
+
+    .logbook-testimonial .logbook-content {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 0.95rem;
+        line-height: 1.8;
+        color: #2a4a7a;
+    }
+
+    .logbook-testimonial .logbook-entry {
+        margin-bottom: 8px;
+    }
+
+    /* Orange highlighter effect */
+    .logbook-testimonial .logbook-entry .highlight,
+    .logbook-testimonial .logbook-entry mark {
+        background: linear-gradient(180deg, transparent 60%, rgba(255, 160, 0, 0.35) 60%);
+        color: inherit;
+    }
+
+    .logbook-testimonial .logbook-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 20px;
+        padding-top: 12px;
+        border-top: 1px dashed #aaa;
+        clear: both;
+    }
+
+    .logbook-testimonial .logbook-entry-num {
+        font-family: 'Courier New', monospace;
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: #888;
+        letter-spacing: 0.05em;
+    }
+
+    .logbook-testimonial .logbook-signature {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .logbook-testimonial .sig-name {
+        font-family: Georgia, 'Times New Roman', serif;
+        font-size: 0.9rem;
+        color: #2a4a7a;
+        font-style: italic;
+    }
+
+    .logbook-testimonial .sig-title {
+        font-family: 'Courier New', monospace;
+        font-size: 0.7rem;
+        color: #666;
+    }
+
+    /* Responsive */
+    @media (max-width: 500px) {
+        .logbook-testimonial .logbook-photo-container {
+            float: none;
+            margin: 0 0 16px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .logbook-testimonial .logbook-header {
+            flex-direction: column;
+            gap: 4px;
+        }
+    }
+</style>
