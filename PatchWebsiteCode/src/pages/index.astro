@@ -330,7 +330,7 @@ const heroCollage = [
 						<img slot="image" src="/AlumniCompanies/Ulysses2ColmOBrien.png" alt="Ulysses underwater robots" />
 					</div>
 					<div class="company-info">
-						<h4>Ulysses</h4>
+						<h4><a href="https://www.ulysses.inc/" target="_blank">Ulysses</a></h4>
 						<p class="company-tagline">Robots under the ocean</p>
 						<p>Underwater drones collecting and sowing seagrass seed. Restoring marine habitats 100× faster than manual planting. $10M raised.</p>
 					</div>
@@ -341,7 +341,7 @@ const heroCollage = [
 						<img slot="image" src="/AlumniCompanies/JamiePalmerIcarusRobotics.png" alt="Icarus Robotics at Times Square" />
 					</div>
 					<div class="company-info">
-						<h4>Icarus Robotics</h4>
+						<h4><a href="https://www.icarusrobotics.com/" target="_blank">Icarus Robotics</a></h4>
 						<p class="company-tagline">Robots in space</p>
 						<p>Building a robotic labor force for space. Design partnerships with two commercial space station operators and NASA.</p>
 					</div>
@@ -352,7 +352,7 @@ const heroCollage = [
 						<img slot="image" src="/FieldOfVisionTablet.jpg" alt="Field of Vision haptic devices" />
 					</div>
 					<div class="company-info">
-						<h4>Field of Vision</h4>
+						<h4><a href="https://fov.ie/" target="_blank">Field of Vision</a></h4>
 						<p class="company-tagline">Accessibility tech for blind sports fans</p>
 						<p>TIME's 100 Best Inventions. Tactile tablets that let visually impaired fans feel live sport in real-time. Deployed at FIFA World Cup, Rugby Six Nations.</p>
 					</div>
@@ -363,7 +363,7 @@ const heroCollage = [
 						<div class="photo-placeholder">[Photo: Induct team at Web Summit]</div>
 					</div>
 					<div class="company-info">
-						<h4>Induct</h4>
+						<h4><a href="https://getinduct.com/" target="_blank">Induct</a></h4>
 						<p class="company-tagline">Smart access control</p>
 						<p>Plug-and-play building access. Retrofits legacy doors in 15 minutes. Youngest team accepted to NDRC. 75% cost reduction.</p>
 					</div>
@@ -431,12 +431,7 @@ const heroCollage = [
 	<!-- ============================================
 		 SECTION 8: FUNDING & SUPPORTERS
 		 ============================================ -->
-	<SupportersSection
-		label="Thanks to our partners"
-		title="Everything is covered"
-		subtitle="Accommodation. Meals. Expenses. Stipends where needed. Thanks to our supporters, access is based on potential, not background."
-		supporters={supporters}
-	/>
+	<SupportersSection supporters={supporters} />
 
 	<Divider />
 
