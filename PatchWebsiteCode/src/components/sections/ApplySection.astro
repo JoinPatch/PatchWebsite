@@ -12,33 +12,28 @@ interface Props {
 
 const { title, description, details = [], primaryCta, secondaryCta, class: className } = Astro.props;
 
-// Left rail: hands-on building
-const leftPhotos = [
-    { src: "/Example2.jpg", alt: "Patch participants collaborating" },
-    { src: "/Robodog.jpg", alt: "Robot dog project showcase" },
-    { src: "/example1.jpg", alt: "Patch workshop session" },
-];
-
-// Right rail: people collaborating
-const rightPhotos = [
-    { src: "/Example3.jpg", alt: "Patch community event" },
-    { src: "/JohnCollisonWithPatchers.jpg", alt: "John Collison with Patch participants" },
-    { src: "/AlumniLedInitiatives/HackIrelandGroupPicture.jpg", alt: "Hack Ireland group photo" },
-];
-
-// Bottom rail: identity moments
-const bottomPhotos = [
-    { src: "/RobotGirl.jpg", alt: "Student with robotics project" },
-    { src: "/AlumniPhotos/AidanWithRocket.jpg", alt: "Aidan with rocket project" },
-    { src: "/SFFellowshipGoldenGateGroup.JPG", alt: "San Francisco fellowship at Golden Gate" },
-    { src: "/PatrickCollisonWithGroupOfPatchersInSFFellowship.png", alt: "Patrick Collison with Patchers in SF Fellowship" },
+// Single arc of 13 photos - mirrored left/right with center lowest
+const arcPhotos = [
+    "/RobotGirl.jpg",
+    "/Example2.jpg",
+    "/Robodog.jpg",
+    "/example1.jpg",
+    "/AlumniPhotos/AidanWithRocket.jpg",
+    "/SFFellowshipGoldenGateGroup.JPG",
+    "/PatrickCollisonWithGroupOfPatchersInSFFellowship.png",
+    "/SFFellowshipGoldenGateGroup.JPG",
+    "/AlumniPhotos/AidanWithRocket.jpg",
+    "/example1.jpg",
+    "/Robodog.jpg",
+    "/Example2.jpg",
+    "/RobotGirl.jpg",
 ];
 ---
 
 <section class:list={['apply-section', className]} id="apply">
-    <div class="photo-rail rail-left" aria-hidden="true">
-        {leftPhotos.map((photo) => (
-            <img src={photo.src} alt={photo.alt} loading="lazy" />
+    <div class="photo-arc" aria-hidden="true">
+        {arcPhotos.map((src) => (
+            <img src={src} loading="lazy" />
         ))}
     </div>
 
@@ -70,25 +65,13 @@ const bottomPhotos = [
             )}
         </div>
     </div>
-
-    <div class="photo-rail rail-right" aria-hidden="true">
-        {rightPhotos.map((photo) => (
-            <img src={photo.src} alt={photo.alt} loading="lazy" />
-        ))}
-    </div>
-
-    <div class="photo-rail rail-bottom" aria-hidden="true">
-        {bottomPhotos.map((photo) => (
-            <img src={photo.src} alt={photo.alt} loading="lazy" />
-        ))}
-    </div>
 </section>
 
 <style>
     .apply-section {
         position: relative;
-        padding: 140px 24px 200px;
-        min-height: 760px;
+        padding: 100px 24px 280px;
+        min-height: 700px;
         background: linear-gradient(to bottom,
             rgba(254, 252, 232, 0.35),
             rgba(255, 255, 255, 0.6)
@@ -118,6 +101,7 @@ const bottomPhotos = [
             );
     }
 
+    /* Protected text column */
     .apply-content {
         position: relative;
         z-index: 2;
@@ -180,140 +164,96 @@ const bottomPhotos = [
         flex-wrap: wrap;
     }
 
-    /* Photo rails - structural approach */
-    .photo-rail {
+    /* ===== PHOTO ARC - Single horizontal baseline ===== */
+    .photo-arc {
         position: absolute;
-        display: flex;
-        gap: 12px;
+        left: 50%;
+        top: 420px;
+        width: 0;
         pointer-events: none;
         z-index: 1;
-        filter: saturate(0.95);
     }
 
-    .photo-rail img {
+    .photo-arc img {
+        position: absolute;
         width: 112px;
-        max-width: 112px;
         height: 140px;
-        max-height: 140px;
         object-fit: cover;
         border-radius: 8px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-        flex-shrink: 0;
+        filter: saturate(0.95);
     }
 
-    /* Rails anchored to center for true U-shape */
-    .rail-left {
-        top: 120px;
-        left: 50%;
-        transform: translateX(-380px);
-        flex-direction: column;
-        align-items: flex-end;
+    /* Center photo (lowest point) */
+    .photo-arc img:nth-child(7) {
+        left: -56px;
+        top: 0px;
     }
 
-    /* Left rail curve - top to bottom moves outward */
-    .rail-left img:nth-child(1) { margin-right: 60px; }
-    .rail-left img:nth-child(2) { margin-right: 30px; }
-    .rail-left img:nth-child(3) { margin-right: 0; }
+    /* Left side - moving outward, rising gently */
+    .photo-arc img:nth-child(6) { left: -180px; top: -20px; }
+    .photo-arc img:nth-child(5) { left: -300px; top: -45px; }
+    .photo-arc img:nth-child(4) { left: -420px; top: -75px; }
+    .photo-arc img:nth-child(3) { left: -540px; top: -110px; }
 
-    .rail-right {
-        top: 120px;
-        left: 50%;
-        transform: translateX(268px);
-        flex-direction: column;
-        align-items: flex-start;
+    /* Right side - perfect mirror */
+    .photo-arc img:nth-child(8)  { left:  68px; top: -20px; }
+    .photo-arc img:nth-child(9)  { left: 188px; top: -45px; }
+    .photo-arc img:nth-child(10) { left: 308px; top: -75px; }
+    .photo-arc img:nth-child(11) { left: 428px; top: -110px; }
+
+    /* Far left stack (Amodo-style) */
+    .photo-arc img:nth-child(1) {
+        left: -660px;
+        top: -280px;
+    }
+    .photo-arc img:nth-child(2) {
+        left: -660px;
+        top: -130px;
     }
 
-    /* Right rail curve - mirror of left */
-    .rail-right img:nth-child(1) { margin-left: 60px; }
-    .rail-right img:nth-child(2) { margin-left: 30px; }
-    .rail-right img:nth-child(3) { margin-left: 0; }
-
-    .rail-bottom {
-        bottom: 60px;
-        left: 50%;
-        transform: translateX(-50%);
-        flex-direction: row;
-        align-items: flex-end;
+    /* Far right stack (mirror) */
+    .photo-arc img:nth-child(12) {
+        left: 548px;
+        top: -280px;
+    }
+    .photo-arc img:nth-child(13) {
+        left: 548px;
+        top: -130px;
     }
 
-    /* Bottom rail curve - center peaks upward */
-    .rail-bottom img:nth-child(1) { margin-bottom: 0; }
-    .rail-bottom img:nth-child(2) { margin-bottom: 24px; }
-    .rail-bottom img:nth-child(3) { margin-bottom: 24px; }
-    .rail-bottom img:nth-child(4) { margin-bottom: 0; }
-
-    /* Subtle hover animation for continuity */
-    @media (min-width: 1024px) {
-        .photo-rail img {
-            transition: transform 0.4s ease;
-        }
-
-        .apply-section:hover .photo-rail img {
-            transform: translateY(-2px);
-        }
-    }
-
-    /* Tablet: pull rails in tighter */
+    /* ===== TABLET ===== */
     @media (max-width: 1024px) {
         .apply-section {
-            min-height: 680px;
-            padding: 120px 24px 180px;
+            min-height: 640px;
+            padding: 80px 24px 240px;
         }
 
-        .photo-rail img {
+        .photo-arc {
+            top: 380px;
+        }
+
+        .photo-arc img {
             width: 96px;
-            max-width: 96px;
             height: 120px;
-            max-height: 120px;
         }
-
-        .rail-left {
-            transform: translateX(-300px);
-        }
-
-        .rail-right {
-            transform: translateX(204px);
-        }
-
-        .rail-left img:nth-child(1) { margin-right: 45px; }
-        .rail-left img:nth-child(2) { margin-right: 22px; }
-        .rail-left img:nth-child(3) { margin-right: 0; }
-
-        .rail-right img:nth-child(1) { margin-left: 45px; }
-        .rail-right img:nth-child(2) { margin-left: 22px; }
-        .rail-right img:nth-child(3) { margin-left: 0; }
     }
 
-    /* Mobile: fade and crop */
+    /* ===== MOBILE - Fade and crop ===== */
     @media (max-width: 768px) {
         .apply-section {
-            padding: 100px 24px 160px;
-            min-height: 600px;
+            padding: 80px 24px 200px;
+            min-height: 560px;
         }
 
-        .photo-rail {
-            opacity: 0.4;
+        .photo-arc {
+            opacity: 0.35;
+            top: 360px;
         }
 
-        .photo-rail img {
+        .photo-arc img {
             width: 80px;
-            max-width: 80px;
             height: 100px;
-            max-height: 100px;
-        }
-
-        .rail-left {
-            transform: translateX(-240px);
-            top: 100px;
-        }
-
-        .rail-right {
-            transform: translateX(160px);
-            top: 100px;
-        }
-
-        .rail-bottom {
-            bottom: 40px;
         }
 
         .apply-content h2 {
@@ -332,33 +272,20 @@ const bottomPhotos = [
         }
     }
 
-    /* Small mobile: crop photos, don't hide */
+    /* ===== SMALL MOBILE ===== */
     @media (max-width: 480px) {
         .apply-section {
-            padding: 72px 20px 160px;
-            min-height: 580px;
-            overflow: hidden;
+            padding: 60px 20px 180px;
+            min-height: 520px;
         }
 
-        .photo-rail img {
-            width: 88px;
-            max-width: 88px;
-            height: 110px;
-            max-height: 110px;
+        .photo-arc {
+            top: 340px;
         }
 
-        .rail-left {
-            transform: translateX(-200px);
-            top: 80px;
-        }
-
-        .rail-right {
-            transform: translateX(112px);
-            top: 80px;
-        }
-
-        .rail-bottom {
-            bottom: -90px;
+        .photo-arc img {
+            width: 72px;
+            height: 90px;
         }
 
         .apply-content h2 {
