@@ -27,37 +27,7 @@ const { variant = 'default', class: className } = Astro.props;
         height: 1px;
         background-color: var(--grid-border-color);
     }
-
-    /* Jittered variant: subtle SVG filter for imperfect line */
-    .divider-jittered::before {
-        background: repeating-linear-gradient(
-            90deg,
-            var(--grid-border-color) 0px,
-            var(--grid-border-color) 11px,
-            transparent 11px,
-            transparent 12px
-        );
-        height: 1px;
-        opacity: 0.8;
-    }
-
-    .divider-jittered::after {
-        content: '';
-        position: absolute;
-        top: -0.5px;
-        left: -100vw;
-        width: 200vw;
-        height: 2px;
-        background: repeating-linear-gradient(
-            90deg,
-            transparent 0px,
-            transparent 11px,
-            var(--grid-border-color) 11px,
-            var(--grid-border-color) 12px
-        );
-        opacity: 0.4;
-    }
-
+    
     .corner-square {
         position: absolute;
         width: 8px;
