@@ -66,37 +66,35 @@ const { title, description, images = [], href, class: className } = Astro.props;
         </div>
     </div>
 
-    <!-- Corner marks -->
-    <div class="corner tl"></div>
-    <div class="corner tr"></div>
-    <div class="corner bl"></div>
-    <div class="corner br"></div>
 </div>
 
 <style>
     .summer-programme-card {
         grid-column: 1 / -1;
         position: relative;
-        padding: 24px;
-        padding-top: 32px;
-        background: transparent;
-        border: 2px solid rgba(255, 255, 255, 0.5);
+        padding: 20px;
+        padding-top: 36px;
+        /* Solid background to mask grid lines */
+        background: #4a7fbf;
+        border: 2px solid rgba(255, 255, 255, 0.6);
         overflow: visible;
     }
 
-    /* Figure label */
+    /* Figure label - slight rotation for hand-stamped feel */
     .figure-label {
         position: absolute;
         top: -12px;
-        left: 20px;
-        padding: 4px 12px;
-        background: #2c5282;
+        left: 24px;
+        padding: 6px 14px;
+        background: #4a7fbf;
         color: rgba(255, 255, 255, 0.95);
         font-family: 'Courier New', monospace;
-        font-size: 0.7rem;
+        font-size: 0.75rem;
         font-weight: 600;
-        letter-spacing: 0.08em;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        letter-spacing: 0.1em;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        z-index: 3;
+        transform: rotate(-0.5deg);
     }
 
     .card-inner {
@@ -117,16 +115,16 @@ const { title, description, images = [], href, class: className } = Astro.props;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto auto;
-        gap: 8px;
-        padding: 8px;
-        border: 2px solid rgba(255, 255, 255, 0.5);
-        background: rgba(255, 255, 255, 0.1);
+        gap: 6px;
+        padding: 6px;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        background: transparent;
     }
 
     .image-slot {
         position: relative;
-        background: rgba(255, 255, 255, 0.15);
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: rgba(44, 82, 130, 0.3);
+        border: 1.5px solid rgba(255, 255, 255, 0.5);
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -301,48 +299,6 @@ const { title, description, images = [], href, class: className } = Astro.props;
         color: #68d391;
     }
 
-    /* Corner marks */
-    .corner {
-        position: absolute;
-        width: 16px;
-        height: 16px;
-        pointer-events: none;
-        z-index: 2;
-    }
-
-    .corner::before,
-    .corner::after {
-        content: '';
-        position: absolute;
-        background: rgba(255, 255, 255, 0.6);
-    }
-
-    .corner::before {
-        width: 16px;
-        height: 2px;
-    }
-
-    .corner::after {
-        width: 2px;
-        height: 16px;
-    }
-
-    .corner.tl { top: 8px; left: 8px; }
-    .corner.tl::before { top: 0; left: 0; }
-    .corner.tl::after { top: 0; left: 0; }
-
-    .corner.tr { top: 8px; right: 8px; }
-    .corner.tr::before { top: 0; right: 0; }
-    .corner.tr::after { top: 0; right: 0; }
-
-    .corner.bl { bottom: 8px; left: 8px; }
-    .corner.bl::before { bottom: 0; left: 0; }
-    .corner.bl::after { bottom: 0; left: 0; }
-
-    .corner.br { bottom: 8px; right: 8px; }
-    .corner.br::before { bottom: 0; right: 0; }
-    .corner.br::after { bottom: 0; right: 0; }
-
     /* Responsive */
     @media (max-width: 900px) {
         .card-inner {
@@ -392,10 +348,6 @@ const { title, description, images = [], href, class: className } = Astro.props;
         .figure-label {
             font-size: 0.6rem;
             padding: 3px 8px;
-        }
-
-        .corner {
-            display: none;
         }
     }
 </style>

@@ -29,49 +29,47 @@ const { title, description, figureNum, featured = false, gridOverlay = false, hr
             <a href={href} class="card-link">DETAILS →</a>
         )}
     </div>
-
-    <!-- Corner ticks -->
-    <div class="tick tick-tl"></div>
-    <div class="tick tick-tr"></div>
 </div>
 
 <style>
     .card-alt {
         position: relative;
-        padding: 12px;
-        border: 1.5px solid rgba(255, 255, 255, 0.4);
+        padding: 14px;
+        padding-top: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.5);
         border-radius: 0;
-        background: rgba(255, 255, 255, 0.08);
+        /* Solid background to mask grid lines */
+        background: #4a7fbf;
         transition: all 0.2s ease;
         overflow: visible;
     }
 
     .card-alt:hover {
-        background: rgba(255, 255, 255, 0.12);
-        border-color: rgba(255, 255, 255, 0.6);
+        border-color: rgba(255, 255, 255, 0.8);
     }
 
-    /* Figure number */
+    /* Figure number - slight rotation for hand-stamped feel */
     .fig-num {
         position: absolute;
-        top: -10px;
-        right: 12px;
-        padding: 2px 10px;
-        background: #2c5282;
+        top: -12px;
+        right: 16px;
+        padding: 4px 10px;
+        background: #4a7fbf;
         color: rgba(255, 255, 255, 0.95);
         font-family: 'Courier New', monospace;
-        font-size: 0.6rem;
+        font-size: 0.65rem;
         font-weight: 600;
-        letter-spacing: 0.08em;
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        letter-spacing: 0.1em;
+        border: 2px solid rgba(255, 255, 255, 0.5);
         z-index: 2;
+        transform: rotate(0.8deg);
     }
 
     .card-alt-image {
         position: relative;
         aspect-ratio: 16/9;
-        background: rgba(255, 255, 255, 0.1);
-        border: 1.5px solid rgba(255, 255, 255, 0.4);
+        background: rgba(44, 82, 130, 0.3);
+        border: 1.5px solid rgba(255, 255, 255, 0.5);
         margin-bottom: 12px;
         display: flex;
         align-items: center;
@@ -130,40 +128,6 @@ const { title, description, figureNum, featured = false, gridOverlay = false, hr
         border-color: rgba(255, 255, 255, 0.8);
     }
 
-    /* Corner ticks */
-    .tick {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        pointer-events: none;
-        z-index: 2;
-    }
-
-    .tick::before,
-    .tick::after {
-        content: '';
-        position: absolute;
-        background: rgba(255, 255, 255, 0.5);
-    }
-
-    .tick::before {
-        width: 10px;
-        height: 1.5px;
-    }
-
-    .tick::after {
-        width: 1.5px;
-        height: 10px;
-    }
-
-    .tick-tl { top: 4px; left: 4px; }
-    .tick-tl::before { top: 0; left: 0; }
-    .tick-tl::after { top: 0; left: 0; }
-
-    .tick-tr { top: 4px; right: 4px; }
-    .tick-tr::before { top: 0; right: 0; }
-    .tick-tr::after { top: 0; right: 0; }
-
     /* Featured variant - 2x prominence */
     .card-alt.featured {
         grid-column: span 2;
@@ -206,10 +170,6 @@ const { title, description, figureNum, featured = false, gridOverlay = false, hr
 
         .card-alt.featured .card-alt-image {
             aspect-ratio: 16/9;
-        }
-
-        .tick {
-            display: none;
         }
     }
 

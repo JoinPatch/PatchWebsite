@@ -117,11 +117,46 @@ const heroCollage = [
 		 ============================================ -->
 	<section class="programmes-section" id="programmes">
 		<SectionHeader
-			label="Our programmes"
-			title="Multiple paths into Patch"
+			title="Our Patch Programmes"
 		/>
 
 		<div class="programmes-wrapper">
+			<!-- Blueprint background layers -->
+			<div class="programmes-blueprint-bg" aria-hidden="true">
+				<div class="programmes-texture"></div>
+				<div class="programmes-grid-lines"></div>
+				<!-- Fold lines for paper feel -->
+				<div class="fold-line fold-horizontal"></div>
+				<div class="fold-line fold-vertical"></div>
+				<!-- Subtle age spots/stains -->
+				<div class="age-spot age-spot-1"></div>
+				<div class="age-spot age-spot-2"></div>
+				<!-- Edge darkening/wear -->
+				<div class="edge-wear"></div>
+			</div>
+
+			<!-- Registration marks -->
+			<div class="reg-mark reg-tl" aria-hidden="true">
+				<span></span><span></span>
+			</div>
+			<div class="reg-mark reg-tr" aria-hidden="true">
+				<span></span><span></span>
+			</div>
+			<div class="reg-mark reg-bl" aria-hidden="true">
+				<span></span><span></span>
+			</div>
+			<div class="reg-mark reg-br" aria-hidden="true">
+				<span></span><span></span>
+			</div>
+
+			<!-- Scale bar -->
+			<div class="scale-bar" aria-hidden="true">
+				<div class="scale-segments">
+					<span></span><span></span><span></span><span></span>
+				</div>
+				<div class="scale-label">SCALE 1:1</div>
+			</div>
+
 			<!-- Blueprint drawing title block -->
 			<div class="drawing-title-block">
 				<div class="title-block-content">
@@ -466,17 +501,200 @@ const heroCollage = [
 		position: relative;
 		padding: 24px;
 		padding-bottom: 48px;
-		border: 3px solid #2c5282;
-		background:
+		border: 3px solid #1e3a5f;
+		background: #4a7fbf;
+		overflow: hidden;
+		/* Paper shadow for depth */
+		box-shadow:
+			0 2px 4px rgba(0, 0, 0, 0.1),
+			0 8px 16px rgba(0, 0, 0, 0.1),
+			inset 0 0 80px rgba(0, 0, 0, 0.05);
+	}
+
+	/* Blueprint background container */
+	.programmes-blueprint-bg {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+	}
+
+	/* Paper texture using noise */
+	.programmes-texture {
+		position: absolute;
+		inset: 0;
+		background-image: url('/noise.png');
+		background-size: 200px;
+		opacity: 0.08;
+		mix-blend-mode: overlay;
+	}
+
+	/* Grid lines */
+	.programmes-grid-lines {
+		position: absolute;
+		inset: 0;
+		background-image:
 			/* Major grid lines */
-			linear-gradient(to right, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
-			linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 1px, transparent 1px),
+			linear-gradient(to right, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+			linear-gradient(to bottom, rgba(255, 255, 255, 0.25) 1px, transparent 1px),
 			/* Minor grid lines */
-			linear-gradient(to right, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
-			linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 1px, transparent 1px),
-			/* Base blueprint blue */
-			#4a7fbf;
-		background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px, 100% 100%;
+			linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+			linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+		background-size:
+			80px 80px,
+			80px 80px,
+			16px 16px,
+			16px 16px;
+	}
+
+	/* Fold lines - like paper has been folded */
+	.fold-line {
+		position: absolute;
+		pointer-events: none;
+	}
+
+	.fold-line.fold-horizontal {
+		left: 0;
+		right: 0;
+		top: 50%;
+		height: 1px;
+		background: linear-gradient(90deg,
+			transparent 0%,
+			rgba(0, 0, 0, 0.08) 20%,
+			rgba(0, 0, 0, 0.12) 50%,
+			rgba(0, 0, 0, 0.08) 80%,
+			transparent 100%
+		);
+		box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+	}
+
+	.fold-line.fold-vertical {
+		top: 0;
+		bottom: 0;
+		left: 50%;
+		width: 1px;
+		background: linear-gradient(180deg,
+			transparent 0%,
+			rgba(0, 0, 0, 0.08) 20%,
+			rgba(0, 0, 0, 0.12) 50%,
+			rgba(0, 0, 0, 0.08) 80%,
+			transparent 100%
+		);
+		box-shadow: 1px 0 0 rgba(255, 255, 255, 0.05);
+	}
+
+	/* Edge wear/darkening around borders */
+	.edge-wear {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		box-shadow:
+			inset 0 0 30px rgba(0, 0, 0, 0.15),
+			inset 0 0 60px rgba(0, 0, 0, 0.08);
+		border-radius: 1px;
+	}
+
+	/* Subtle age spots - like old paper stains */
+	.age-spot {
+		position: absolute;
+		border-radius: 50%;
+		pointer-events: none;
+		opacity: 0.04;
+	}
+
+	.age-spot-1 {
+		top: 15%;
+		right: 20%;
+		width: 120px;
+		height: 100px;
+		background: radial-gradient(ellipse, rgba(139, 90, 43, 0.8), transparent 70%);
+		transform: rotate(15deg);
+	}
+
+	.age-spot-2 {
+		bottom: 25%;
+		left: 10%;
+		width: 80px;
+		height: 60px;
+		background: radial-gradient(ellipse, rgba(139, 90, 43, 0.6), transparent 65%);
+		transform: rotate(-20deg);
+	}
+
+	/* Registration/crop marks in corners */
+	.reg-mark {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		z-index: 5;
+		pointer-events: none;
+	}
+
+	.reg-mark span {
+		position: absolute;
+		background: rgba(255, 255, 255, 0.5);
+	}
+
+	.reg-mark span:first-child {
+		width: 12px;
+		height: 1.5px;
+	}
+
+	.reg-mark span:last-child {
+		width: 1.5px;
+		height: 12px;
+	}
+
+	.reg-tl { top: 8px; left: 8px; }
+	.reg-tl span:first-child { top: 0; left: 0; }
+	.reg-tl span:last-child { top: 0; left: 0; }
+
+	.reg-tr { top: 8px; right: 8px; }
+	.reg-tr span:first-child { top: 0; right: 0; }
+	.reg-tr span:last-child { top: 0; right: 0; }
+
+	.reg-bl { bottom: 8px; left: 8px; }
+	.reg-bl span:first-child { bottom: 0; left: 0; }
+	.reg-bl span:last-child { bottom: 0; left: 0; }
+
+	.reg-br { bottom: 8px; right: 8px; }
+	.reg-br span:first-child { bottom: 0; right: 0; }
+	.reg-br span:last-child { bottom: 0; right: 0; }
+
+	/* Scale bar */
+	.scale-bar {
+		position: absolute;
+		bottom: 16px;
+		left: 24px;
+		z-index: 5;
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.scale-segments {
+		display: flex;
+		height: 6px;
+		border: 1px solid rgba(255, 255, 255, 0.5);
+	}
+
+	.scale-segments span {
+		width: 20px;
+		height: 100%;
+	}
+
+	.scale-segments span:nth-child(odd) {
+		background: rgba(255, 255, 255, 0.4);
+	}
+
+	.scale-segments span:nth-child(even) {
+		background: transparent;
+	}
+
+	.scale-label {
+		font-family: 'Courier New', monospace;
+		font-size: 0.55rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		color: rgba(255, 255, 255, 0.6);
 	}
 
 	/* Drawing title block - like engineering drawings */
@@ -484,12 +702,14 @@ const heroCollage = [
 		position: absolute;
 		bottom: 0;
 		right: 0;
-		border: 2px solid rgba(255, 255, 255, 0.6);
+		border: 2px solid rgba(255, 255, 255, 0.5);
 		border-right: none;
 		border-bottom: none;
-		background: rgba(44, 82, 130, 0.9);
+		background: #4a7fbf;
 		padding: 8px 16px;
 		z-index: 10;
+		transform-origin: bottom right;
+		transform: rotate(-0.3deg);
 	}
 
 	.title-block-content {
@@ -517,9 +737,11 @@ const heroCollage = [
 	}
 
 	.programmes-grid {
+		position: relative;
+		z-index: 1;
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		gap: 20px;
+		gap: 16px;
 	}
 
 	/* Section: Initiatives */

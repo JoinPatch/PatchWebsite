@@ -12,17 +12,27 @@ const { headline, description } = Astro.props;
     <div class="blueprint-bg" aria-hidden="true">
         <div class="blueprint-texture"></div>
         <div class="blueprint-grid"></div>
+        <!-- Edge wear -->
+        <div class="blueprint-edge-wear"></div>
+        <!-- Subtle age spots -->
+        <div class="age-spot age-spot-1"></div>
+        <div class="age-spot age-spot-2"></div>
         <!-- Corner markers -->
         <div class="corner-mark top-left"></div>
         <div class="corner-mark top-right"></div>
         <div class="corner-mark bottom-left"></div>
         <div class="corner-mark bottom-right"></div>
+        <!-- Pinhole marks - like it was pinned to a drafting board -->
+        <div class="pinhole pinhole-tl"></div>
+        <div class="pinhole pinhole-tr"></div>
+        <div class="pinhole pinhole-bl"></div>
+        <div class="pinhole pinhole-br"></div>
     </div>
 
     <div class="hero-layout">
         <div class="hero-content">
             <div class="content-frame">
-                <h1>{headline}</h1>
+                <h1 set:html={headline} />
                 <p>{description}</p>
                 <div class="hero-actions">
                     <slot name="actions" />
@@ -88,6 +98,16 @@ const { headline, description } = Astro.props;
             16px 16px;
     }
 
+    /* Edge wear/aging effect */
+    .blueprint-edge-wear {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        box-shadow:
+            inset 0 0 100px rgba(0, 0, 0, 0.12),
+            inset 0 0 200px rgba(0, 0, 0, 0.06);
+    }
+
     /* Corner registration marks */
     .corner-mark {
         position: absolute;
@@ -148,6 +168,54 @@ const { headline, description } = Astro.props;
         border-top: none;
     }
 
+    /* Subtle age spots - like old paper stains */
+    .age-spot {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0.03;
+    }
+
+    .age-spot-1 {
+        top: 20%;
+        left: 15%;
+        width: 150px;
+        height: 120px;
+        background: radial-gradient(ellipse, rgba(139, 90, 43, 0.7), transparent 70%);
+        transform: rotate(25deg);
+    }
+
+    .age-spot-2 {
+        bottom: 30%;
+        right: 25%;
+        width: 100px;
+        height: 80px;
+        background: radial-gradient(ellipse, rgba(139, 90, 43, 0.5), transparent 65%);
+        transform: rotate(-15deg);
+    }
+
+    /* Pinhole marks - like it was pinned to a drafting board */
+    .pinhole {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: radial-gradient(circle,
+            rgba(0, 0, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0.08) 40%,
+            transparent 70%
+        );
+        box-shadow:
+            inset 0 1px 2px rgba(0, 0, 0, 0.2),
+            0 0 0 1px rgba(255, 255, 255, 0.1);
+        pointer-events: none;
+    }
+
+    .pinhole-tl { top: 40px; left: 40px; }
+    .pinhole-tr { top: 40px; right: 40px; }
+    .pinhole-bl { bottom: 40px; left: 40px; }
+    .pinhole-br { bottom: 40px; right: 40px; }
+
     .hero-layout {
         position: relative;
         display: grid;
@@ -175,6 +243,12 @@ const { headline, description } = Astro.props;
         color: #ffffff;
         margin-bottom: 1rem;
         line-height: 1.15;
+    }
+
+    .hero-content h1 :global(.orange-highlight) {
+        background: rgba(255, 127, 0, 0.35);
+        padding: 2px 6px;
+        border-radius: 2px;
     }
 
     .hero-content p {
@@ -295,7 +369,9 @@ const { headline, description } = Astro.props;
             padding: 60px 16px 160px;
         }
 
-        .corner-mark {
+        .corner-mark,
+        .pinhole,
+        .age-spot {
             display: none;
         }
     }
