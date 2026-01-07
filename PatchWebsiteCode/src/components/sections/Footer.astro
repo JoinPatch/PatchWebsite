@@ -24,8 +24,8 @@ const { class: className } = Astro.props;
                 <div class="footer-column">
                     <h4>Programmes</h4>
                     <a href="#summer-programme">Summer Programme</a>
-                    <a href="#tecs">TECS</a>
-                    <a href="#fast-grants">Fast Grants</a>
+                    <a href="https://jointecs.org">TECS</a>
+                    <a href="/grants">Fast Grants</a>
                     <a href="#sf-fellowship">SF Fellowship</a>
                 </div>
 
@@ -34,7 +34,7 @@ const { class: className } = Astro.props;
                     <a href="#about">About Patch</a>
                     <a href="#alumni">Alumni</a>
                     <a href="#mentors">Mentors</a>
-                    <a href="#">Impact Report</a>
+                    <a href="https://joinpatch.org/impact-report">Impact Report</a>
                 </div>
 
                 <div class="footer-column">
@@ -56,12 +56,8 @@ const { class: className } = Astro.props;
         </div>
 
         <div class="footer-newsletter">
-            <h4>Stay updated</h4>
-            <p>Get news about Patch programmes and events.</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="your@email.com" />
-                <button type="submit">Subscribe</button>
-            </form>
+            <p>Want to stay updated? Get news about Patch programmes and events.</p>
+            <a href="https://subscribe.joinpatch.org/" class="newsletter-button" target="_blank" rel="noopener">Subscribe</a>
         </div>
 
         <div class="footer-bottom">
@@ -166,56 +162,25 @@ const { class: className } = Astro.props;
     }
 
     .footer-newsletter {
-        padding: 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 24px;
         background: rgba(255, 255, 255, 0.1);
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 4px;
         margin-bottom: 32px;
     }
 
-    .footer-newsletter h4 {
-        font-family: 'Courier New', Courier, monospace;
-        font-size: var(--text-sm);
-        font-weight: 500;
-        color: #fff;
-        margin-bottom: 4px;
-        letter-spacing: 0.05em;
-    }
-
     .footer-newsletter p {
         font-size: var(--text-sm);
         color: rgba(255, 255, 255, 0.7);
-        margin-bottom: 12px;
-    }
-
-    .newsletter-form {
-        display: flex;
-        gap: 8px;
-        max-width: 400px;
-    }
-
-    .newsletter-form input {
+        margin: 0;
         flex: 1;
-        padding: 8px 12px;
-        font-size: var(--text-sm);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        border-radius: 4px;
-        background: rgba(255, 255, 255, 0.1);
-        font-family: inherit;
-        color: #fff;
     }
 
-    .newsletter-form input::placeholder {
-        color: rgba(255, 255, 255, 0.5);
-    }
-
-    .newsletter-form input:focus {
-        outline: none;
-        border-color: var(--color-orange-400);
-        background: rgba(255, 255, 255, 0.15);
-    }
-
-    .newsletter-form button {
+    .newsletter-button {
+        display: inline-block;
         padding: 8px 16px;
         font-size: var(--text-sm);
         font-weight: 500;
@@ -227,9 +192,10 @@ const { class: className } = Astro.props;
         font-family: 'Courier New', Courier, monospace;
         letter-spacing: 0.05em;
         transition: background 0.15s ease;
+        text-decoration: none;
     }
 
-    .newsletter-form button:hover {
+    .newsletter-button:hover {
         background: var(--color-orange-500);
     }
 
@@ -267,8 +233,10 @@ const { class: className } = Astro.props;
             gap: 24px;
         }
 
-        .newsletter-form {
+        .footer-newsletter {
             flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
         }
     }
 </style>
