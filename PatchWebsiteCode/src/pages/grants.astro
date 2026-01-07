@@ -2,13 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 
 // UI Components
+import Button from '../components/ui/Button.astro';
 import Divider from '../components/ui/Divider.astro';
 import SectionHeader from '../components/ui/SectionHeader.astro';
 import FaqGrid from '../components/ui/FaqGrid.astro';
+import PolaroidCluster from '../components/ui/PolaroidCluster.astro';
 
 // Section Components
 import Header from '../components/sections/Header.astro';
-import ProgrammeHeader from '../components/sections/ProgrammeHeader.astro';
+import Hero from '../components/sections/Hero.astro';
 import Footer from '../components/sections/Footer.astro';
 
 // Programme Components
@@ -17,12 +19,13 @@ import SpecsSection from '../components/programme/SpecsSection.astro';
 import ExamplesSection from '../components/programme/ExamplesSection.astro';
 import QuoteSection from '../components/programme/QuoteSection.astro';
 
-// Header photos
-const headerPhotos = [
-	{ src: "/GrantsTomasMarkey.JPG", alt: "Direct air capture prototype" },
-	{ src: "/AlumniLedInitiatives/GiveAGo.png", alt: "Give(a)Go community event" },
-	{ src: "/Robodog.jpg", alt: "Hardware project" },
-	{ src: "/TECS.jpg", alt: "TECS competition" },
+// Hero polaroid photos
+const heroPolaroids = [
+	{ src: "/Robodog.jpg", alt: "Hardware project", caption: "Robodog build" },
+	{ src: "/GrantsTomasMarkey.JPG", alt: "Direct air capture prototype", caption: "DAC prototype" },
+	{ src: "/AlumniLedInitiatives/GiveAGo2.png", alt: "Give(a)Go community event", caption: "GiveAGo meetup" },
+	{ src: "/TECS.jpg", alt: "TECS competition", caption: "TECS winners!" },
+	{ src: "/Robodog.jpg", alt: "Hardware project", caption: "Robodog build" }, // Mobile only
 ];
 
 // Specifications
@@ -84,30 +87,43 @@ const faqs = [
 <Layout title="Fast Grants - Patch">
 	<Header logoText="Patch" />
 
+	<!-- Hero Section -->
+	<Hero
+		headline="Fast Grants"
+		description="Quick grants of €200–€1,000 for young builders in Ireland — go build."
+		frameLabel="FIG. 1 — GRANTS PROGRAMME"
+		compact={true}
+	>
+		<Fragment slot="actions">
+			<Button variant="cta" href="https://tally.so/r/wzN661">
+				Apply Now
+			</Button>
+			<Button variant="secondary" href="#overview">
+				Learn more
+			</Button>
+		</Fragment>
+		<Fragment slot="media">
+			<PolaroidCluster items={heroPolaroids} />
+		</Fragment>
+	</Hero>
+
 	<!-- Page wrapper for logo accents -->
 	<div class="page-content">
 		<!-- Decorative logo accents -->
 		<div class="logo-accent logo-accent-left" aria-hidden="true"></div>
 		<div class="logo-accent logo-accent-right" aria-hidden="true"></div>
 
-	<!-- Programme Header -->
-	<ProgrammeHeader
-		title="Fast Grants"
-		description="Quick grants of €200–€1,000 for young builders in Ireland — go build."
-		ctaText="Apply Now"
-		ctaHref="https://tally.so/r/wzN661"
-		photos={headerPhotos}
-	/>
-
 	<Divider />
 
 	<!-- Overview -->
-	<OverviewSection
-		leadText="Patch Grants support young builders in Ireland (ages <strong>13–19</strong>) with quick, flexible funding to help them take action."
-		listLabel="Whether you want to:"
-		listItems={whatWeFund}
-		note="…we'll fund anything that meaningfully helps you learn by doing."
-	/>
+	<div id="overview">
+		<OverviewSection
+			leadText="Patch Grants support young builders in Ireland (ages <strong>13–19</strong>) with quick, flexible funding to help them take action."
+			listLabel="Whether you want to:"
+			listItems={whatWeFund}
+			note="…we'll fund anything that meaningfully helps you learn by doing."
+		/>
+	</div>
 
 	<Divider />
 
