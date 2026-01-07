@@ -200,6 +200,26 @@ const { items, class: className } = Astro.props;
         }
     }
 
+    /* Mobile hero: single image only */
+    @media (max-width: 768px) {
+        .photo-collage {
+            display: block;
+            aspect-ratio: 4 / 3;
+        }
+
+        .item-1 {
+            height: 100%;
+        }
+
+        .item-2,
+        .item-3,
+        .item-4,
+        .item-5,
+        .item-6 {
+            display: none;
+        }
+    }
+
     @media (prefers-reduced-motion: reduce) {
         .photo-item {
             transition: none !important;
