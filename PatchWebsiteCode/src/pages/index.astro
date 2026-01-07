@@ -6,7 +6,7 @@ import Button from '../components/ui/Button.astro';
 import Divider from '../components/ui/Divider.astro';
 import SectionHeader from '../components/ui/SectionHeader.astro';
 import PhotoFrame from '../components/ui/PhotoFrame.astro';
-import PhotoCollage from '../components/ui/PhotoCollage.astro';
+import PolaroidCluster from '../components/ui/PolaroidCluster.astro';
 
 // Card Components
 import CardAlt from '../components/cards/CardAlt.astro';
@@ -43,21 +43,12 @@ const supporters = [
 	{ name: "Dogpatch Labs", logoSrc: "/PartnerLogos/DogpatchLabsLogo.png" },
 ];
 
-// Hero collage photos - 6 photos in masonry layout
-// Layout (4x4 grid):
-// ┌─────────┬─────┬─────┐
-// │    1    │  2  │     │
-// │landscape│     │  3  │
-// ├────┬────┼─────┤port │
-// │ 4  │ 5  │  6  │rait │
-// └────┴────┴─────┴─────┘
-const heroCollage = [
-	{ src: "/SFFellowshipGoldenGateGroup.JPG", alt: "SF Fellowship group at Golden Gate" },  // 1: landscape
-	{ src: "/RobotGirl.jpg", alt: "Student with robot" },  // 2: landscape (cropped)
-	{ src: "/AlumniPhotos/AidanWithRocket.jpg", alt: "Aidan with rocket" },  // 3: portrait
-	{ src: "/AlumniCompanies/JamiePalmerIcarusRobotics.png", alt: "Jamie Palmer - Icarus Robotics" },  // 4: square
-	{ src: "/AlumniCompanies/FieldOfVision.png", alt: "Field of Vision" },  // 5: square
-	{ src: "/Robodog.jpg", alt: "Robot dog project" },  // 6: landscape (cropped)
+// Hero polaroid photos - 4 photos with handwritten captions
+const heroPolaroids = [
+	{ src: "/SFFellowshipGoldenGateGroup.JPG", alt: "SF Fellowship group at Golden Gate", caption: "SF Fellowship '25" },
+	{ src: "/RobotGirl.jpg", alt: "Student with robot", caption: "Robot testing!" },
+	{ src: "/SummerProgrammeWorkingWithRTECamera.jpg", alt: "Patchers visited by RTE", caption: "Visited by RTE!" },
+	{ src: "/Robodog24Demoday.jpg", alt: "Patchdog at Demo Day", caption: "Demo Day '24" },
 ];
 ---
 
@@ -80,7 +71,7 @@ const heroCollage = [
 			</Button>
 		</Fragment>
 		<Fragment slot="media">
-			<PhotoCollage items={heroCollage} />
+			<PolaroidCluster items={heroPolaroids} />
 		</Fragment>
 	</Hero>
 
