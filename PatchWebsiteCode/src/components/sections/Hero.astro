@@ -344,6 +344,19 @@ const { headline, description, frameLabel = "FIG. 1 — PATCH COMMUNITY", compac
         margin-right: 16px; /* Space for leader line */
     }
 
+    /* Style Learn More button for blueprint background */
+    .hero-actions :global(.btn-secondary) {
+        background-color: #4a7fbf;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        color: white;
+        box-shadow: none;
+    }
+
+    .hero-actions :global(.btn-secondary:hover) {
+        background-color: #5a8fcf;
+        border-color: rgba(255, 255, 255, 0.7);
+    }
+
     .hero-media {
         position: relative;
     }
@@ -530,19 +543,6 @@ const { headline, description, frameLabel = "FIG. 1 — PATCH COMMUNITY", compac
         /* Hide leader line on mobile */
         .hero-actions :global(.btn-technical .leader-line) {
             display: none;
-        }
-
-        /* Style Learn More button for blueprint background on mobile */
-        .hero-actions :global(.btn-secondary) {
-            background-color: #4a7fbf;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            color: white;
-            box-shadow: none;
-        }
-
-        .hero-actions :global(.btn-secondary:hover) {
-            background-color: #5a8fcf;
-            border-color: rgba(255, 255, 255, 0.7);
         }
     }
 
