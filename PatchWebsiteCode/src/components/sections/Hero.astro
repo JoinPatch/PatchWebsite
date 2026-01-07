@@ -37,6 +37,12 @@ const { headline, description, frameLabel = "FIG. 1 — PATCH COMMUNITY", compac
             class="hero-sketch hero-sketch-rocket"
             loading="eager"
         />
+        <img
+            src="/sketches/graph.svg"
+            alt=""
+            class="hero-sketch hero-sketch-graph"
+            loading="eager"
+        />
     </div>
 
     <div class="hero-layout">
@@ -66,6 +72,13 @@ const { headline, description, frameLabel = "FIG. 1 — PATCH COMMUNITY", compac
                     <span class="annotation">B</span>
                     <span class="annotation">C</span>
                 </div>
+                <img
+                    src="/sketches/launchpad.svg"
+                    alt=""
+                    class="hero-sketch hero-sketch-launchpad"
+                    aria-hidden="true"
+                    loading="eager"
+                />
             </div>
         </div>
     </div>
@@ -107,6 +120,14 @@ const { headline, description, frameLabel = "FIG. 1 — PATCH COMMUNITY", compac
         left: 0;
         width: 280px;
         transform: rotate(-8deg);
+    }
+
+    /* Graph placement - right side, partially outside viewport */
+    .hero-sketch-graph {
+        top: 50%;
+        right: -60px;
+        width: 150px;
+        transform: translateY(-50%);
     }
 
     /* Paper texture using noise */
@@ -335,6 +356,18 @@ const { headline, description, frameLabel = "FIG. 1 — PATCH COMMUNITY", compac
         background: rgba(255, 255, 255, 0.05);
     }
 
+    /* Launchpad positioned at bottom-right corner of photo grid */
+    .blueprint-frame .hero-sketch-launchpad {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 160px;
+        opacity: 0.85;
+        /* Convert to orange (#ffb100): brightness(0) makes black, invert(1) makes white, then sepia + saturate + hue-rotate to get orange */
+        filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25)) brightness(0) saturate(100%) invert(67%) sepia(89%) saturate(1000%) hue-rotate(5deg) brightness(1.05);
+        pointer-events: none;
+    }
+
     /* Dashed outer frame */
     .blueprint-frame::before {
         content: '';
@@ -427,6 +460,11 @@ const { headline, description, frameLabel = "FIG. 1 — PATCH COMMUNITY", compac
             left: -20px;
             width: 100px;
         }
+
+        .hero-sketch-graph {
+            right: -50px;
+            width: 120px;
+        }
     }
 
     @media (max-width: 768px) {
@@ -449,6 +487,10 @@ const { headline, description, frameLabel = "FIG. 1 — PATCH COMMUNITY", compac
         }
 
         .content-frame .hero-sketch-lightbulb {
+            display: none;
+        }
+
+        .blueprint-frame .hero-sketch-launchpad {
             display: none;
         }
     }
