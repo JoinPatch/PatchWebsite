@@ -103,8 +103,11 @@ const heroCollage = [
 				<div class="founder-quote">
 					<span class="tape tape-tl"></span>
 					<span class="tape tape-tr"></span>
+					<div class="founder-photo">
+						<img src="/TomMcCarthy.jpg" alt="Tom McCarthy" />
+					</div>
 					<blockquote>"Patch exists to give curious, ambitious young people a space and community where they can realise their potential"</blockquote>
-					<cite>— Tom McCarthy, Founder</cite>
+					<cite>— Tom McCarthy, Patch Founder</cite>
 				</div>
 			</div>
 		</div>
@@ -479,7 +482,7 @@ const heroCollage = [
 		font-size: var(--text-md);
 		line-height: 1.7;
 		color: var(--text-secondary);
-		margin-bottom: 1.25em;
+		margin-bottom: 0.75em;
 	}
 
 	.what-patch-body p:last-child {
@@ -493,7 +496,7 @@ const heroCollage = [
 		font-weight: 500;
 		line-height: 1.5;
 		color: var(--text-primary);
-		margin-bottom: 1.5em;
+		margin-bottom: 1em;
 	}
 
 	.what-patch-quote {
@@ -532,23 +535,40 @@ const heroCollage = [
 		transform: rotate(12deg);
 	}
 
+	/* Founder photo */
+	.founder-photo {
+		position: relative;
+		float: right;
+		width: 90px;
+		height: 90px;
+		margin: 0 0 12px 16px;
+		background: #fff;
+		padding: 4px;
+		box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+		transform: rotate(2deg);
+	}
+
+	.founder-photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
 	/* Quote typography - matching entry-quote styling */
 	.founder-quote blockquote {
 		font-family: Georgia, 'Times New Roman', serif;
-		font-size: 0.95rem;
+		font-size: 0.9rem;
 		line-height: 1.7;
 		color: #2a4a7a;
 		margin: 0 0 12px 0;
-		font-style: italic;
 	}
 
 	.founder-quote cite {
 		display: block;
-		font-family: 'Courier New', monospace;
-		font-size: 0.7rem;
-		font-style: normal;
-		color: #888;
-		letter-spacing: 0.05em;
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: 0.85rem;
+		font-style: italic;
+		color: #2a4a7a;
 	}
 
 	/* Section: Programmes */
