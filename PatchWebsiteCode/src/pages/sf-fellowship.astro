@@ -8,6 +8,7 @@ import PolaroidCluster from '../components/ui/PolaroidCluster.astro';
 // Section Components
 import Header from '../components/sections/Header.astro';
 import Hero from '../components/sections/Hero.astro';
+import FieldNotesSection from '../components/sections/FieldNotesSection.astro';
 import Footer from '../components/sections/Footer.astro';
 
 // Hero polaroid photos
@@ -166,6 +167,32 @@ const meetings = [
 				</div>
 			</div>
 		</section>
+
+		<Divider />
+
+		<!-- Fellow Testimonials -->
+		<FieldNotesSection
+			testimonials={[
+				{
+					quote: `<span class="highlight">The problems being worked on were generally much bigger than the ones tackled in Ireland</span>, and it made me feel incredibly motivated about technology and about my own future.`,
+					authorName: "SF Fellow",
+					authorTitle: "2025 Cohort",
+					entryNum: "#01"
+				},
+				{
+					quote: `The fellowship was one of the best learning opportunities I've had. <span class="highlight">It's raised my ambition and drive to accomplish things.</span> I was pleasantly surprised by the amount of exposure I got to hardware companies and founders.`,
+					authorName: "SF Fellow",
+					authorTitle: "2025 Cohort",
+					entryNum: "#02"
+				},
+				{
+					quote: `The trip was great, really <span class="highlight">increased my agency a lot</span>. The experience of reaching out to ambitious people to learn from them is something that will really help me in future. The trip also exposed me to a lot of new ideas.`,
+					authorName: "SF Fellow",
+					authorTitle: "2025 Cohort",
+					entryNum: "#03"
+				}
+			]}
+		/>
 
 		<Divider />
 
