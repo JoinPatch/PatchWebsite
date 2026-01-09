@@ -12,7 +12,6 @@ import PolaroidCluster from '../components/ui/PolaroidCluster.astro';
 import Header from '../components/sections/Header.astro';
 import Hero from '../components/sections/Hero.astro';
 import MentorsSection from '../components/sections/MentorsSection.astro';
-import FieldNotesSection from '../components/sections/FieldNotesSection.astro';
 import Footer from '../components/sections/Footer.astro';
 
 // Programme Components
@@ -23,7 +22,7 @@ const heroPolaroids = [
 	{ src: "/TheSummerRoboDogCrowd.jpg", alt: "Robodog demo at Patch", caption: "Demo Day '24" },
 	{ src: "/SummerProgrammeRobodogStage.jpg", alt: "Presenting on stage", caption: "On stage!" },
 	{ src: "/SummerProgrammeGroupWork1.jpg", alt: "Teams working together", caption: "Building together" },
-	{ src: "/Tree25Girls.jpg", alt: "Patch community gathering", caption: "Summer '25" },
+	{ src: "/example1.jpg", alt: "Patch community gathering", caption: "Patch '25 cohort" },
 	{ src: "/SummerProgrammeCrowd.jpg", alt: "Summer programme cohort", caption: "The cohort" }, // Mobile only
 ];
 
@@ -103,7 +102,7 @@ const faqs = [
 		<section class="content-section" id="overview">
 			<div class="content-wrapper">
 				<p class="lead-text">
-					The Patch Summer Programme is a full-time, in-person programme for exceptional people aged <strong>16–21</strong> who want to <strong>build, research, or explore ambitious ideas seriously</strong> — alongside peers who care just as much as they do.
+					The Patch Summer Programme is a fully funded, full-time, in-person programme for exceptional people aged <strong>16–21</strong> who want to <strong>build, research, or explore ambitious ideas seriously</strong> — alongside peers who care just as much as they do.
 				</p>
 				<p class="goal-text">
 					It's free to attend. We cover accommodation, meals, and core costs so you can focus entirely on the work. This programme is the main gateway into the wider <strong>Patch community</strong> — a long-term network of builders, scientists, technologists, and founders who continue to support each other long after the summer ends.
@@ -152,17 +151,17 @@ const faqs = [
 		<Divider />
 
 		<!-- Testimonial -->
-		<FieldNotesSection
-			testimonials={[
-				{
-					quote: `<span class="highlight">Growing up in rural Kerry, I'd never had anyone to talk to about genetics or AI.</span> At Patch, I finally found people like me.`,
-					authorName: "Conor Casey",
-					authorTitle: "Patch 2020",
-					date: "15/08/2020",
-					entryNum: "#047"
-				}
-			]}
-		/>
+		<section class="inline-quote-section">
+			<div class="inline-quote">
+				<span class="tape tape-tl"></span>
+				<span class="tape tape-tr"></span>
+				<div class="quote-photo">
+					<img src="/Tara.jpg" alt="Tara Mulhall" />
+				</div>
+				<blockquote>"Patch showed me that big ideas don't have to stay ideas. You can actually make them real."</blockquote>
+				<cite>— Tara Mulhall, Patch 2024</cite>
+			</div>
+		</section>
 
 		<Divider />
 
@@ -362,8 +361,8 @@ const faqs = [
 		<section class="cta-section">
 			<div class="cta-content">
 				<h2 class="cta-title">Ready to build something great?</h2>
-				<p class="cta-text">Applications for Summer Programme 2026 close in early March.</p>
-				<p class="cta-subtext">If you're curious, ambitious, and ready to take yourself seriously — we'd love to hear from you.</p>
+				<p class="cta-text">Applications for Summer Programme 2026 close in early February.</p>
+				<p class="cta-subtext">If you're curious, passionate about learning, and love to create things — we'd love to hear from you.</p>
 				<div class="cta-buttons">
 					<a href="https://apply.joinpatch.org/" class="btn-apply">Apply Now</a>
 				</div>
@@ -453,6 +452,82 @@ const faqs = [
 		margin: 0 auto;
 		position: relative;
 		z-index: 1;
+	}
+
+	/* Inline quote section */
+	.inline-quote-section {
+		padding: 40px 24px;
+		display: flex;
+		justify-content: center;
+	}
+
+	.inline-quote {
+		position: relative;
+		max-width: 500px;
+		padding: 24px 28px;
+		background: rgba(255, 255, 255, 0.85);
+		border: 1px solid #ddd;
+		box-shadow: 2px 2px 8px rgba(0,0,0,0.08);
+		transform: rotate(0.5deg);
+	}
+
+	.inline-quote .tape {
+		position: absolute;
+		width: 30px;
+		height: 12px;
+		background: rgba(255, 230, 150, 0.75);
+		border: 1px solid rgba(200, 180, 100, 0.4);
+		z-index: 2;
+	}
+
+	.inline-quote .tape-tl {
+		top: -6px;
+		left: 16px;
+		transform: rotate(-15deg);
+	}
+
+	.inline-quote .tape-tr {
+		top: -6px;
+		right: 16px;
+		transform: rotate(12deg);
+	}
+
+	.quote-photo {
+		float: right;
+		width: 80px;
+		height: 80px;
+		margin: 0 0 12px 16px;
+		background: #fff;
+		padding: 4px;
+		box-shadow: 2px 2px 6px rgba(0,0,0,0.15);
+		transform: rotate(2deg);
+	}
+
+	.quote-photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center top;
+	}
+
+	.inline-quote blockquote {
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: 1rem;
+		line-height: 1.7;
+		color: #2a4a7a;
+		margin: 0 0 12px 0;
+	}
+
+	.inline-quote blockquote strong {
+		color: #1a3a6a;
+	}
+
+	.inline-quote cite {
+		display: block;
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: 0.85rem;
+		font-style: italic;
+		color: #2a4a7a;
 	}
 
 	/* Lead text */
