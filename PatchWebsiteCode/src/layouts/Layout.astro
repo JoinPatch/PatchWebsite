@@ -9,6 +9,7 @@ const { title = 'Patch' } = Astro.props;
 ---
 
 <!doctype html>
+<!-- Built by Tim Farrelly, Patch alum: https://timfarrelly.com -->
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -21,5 +22,8 @@ const { title = 'Patch' } = Astro.props;
 		<div class="main-container">
 			<slot />
 		</div>
+		<script>
+			console.log('Built by Tim Farrelly, Patch alum: https://timfarrelly.com');
+		</script>
 	</body>
 </html>
