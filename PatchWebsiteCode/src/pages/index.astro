@@ -68,7 +68,7 @@ const heroPolaroids = [
 				<Button variant="cta" href="#apply">
 				Apply to Summer Programme 2026
 			</Button>
-			<Button variant="secondary" href="#summer-programme">
+			<Button variant="secondary" href="/summer-programme">
 				Learn more
 			</Button>
 		</Fragment>
@@ -167,22 +167,13 @@ const heroPolaroids = [
 				<SummerProgrammeCard
 					title="Summer Accelerator"
 					description="Seven weeks. 35 people. The flagship entry point into Patch. Teams build startups, research projects, or technology. Everything covered: accommodation, meals, expenses."
-					href="#summer-programme"
+					href="/summer-programme"
 					images={[
 						{ src: "/example1.jpg", alt: "Team presenting on stage" },
 						{ src: "/Example2.jpg", alt: "Group photo" },
 						{ src: "/SummerProgrammeRobodogStage.jpg", alt: "People working on projects" }
 					]}
 				/>
-
-				<CardAlt
-					title="TECS"
-					description="A one-month competition for TY-6th year students to turn ideas into working prototypes. Run with Immersive Software Engineering at UL."
-					href="https://www.jointecs.org/"
-					figureNum="FIG. 2"
-					>
-					<img slot="image" src="/TECS.jpg" alt="TECS competition prize winners" />
-				</CardAlt>
 
 				<CardAlt
 					title="Fast Grants"
@@ -196,10 +187,19 @@ const heroPolaroids = [
 				<CardAlt
 					title="SF Fellowship"
 					description="10 days in San Francisco. Inside startups, meeting founders, seeing what's possible."
-					href="#sf-fellowship"
+					href="/sf-fellowship"
 					figureNum="FIG. 4"
 					>
 					<img slot="image" src="/SFFellowshipGoldenGateGroup.JPG" alt="SF Fellowship group at Golden Gate Bridge" />
+				</CardAlt>
+
+				<CardAlt
+					title="TECS"
+					description="A one-month competition for TY-6th year students to turn ideas into working prototypes. Run with Immersive Software Engineering at UL."
+					href="https://www.jointecs.org/"
+					figureNum="FIG. 2"
+					>
+					<img slot="image" src="/TECS.jpg" alt="TECS competition prize winners" />
 				</CardAlt>
 			</div>
 		</div>
