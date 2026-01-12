@@ -50,8 +50,8 @@ def main():
     public_dir = os.path.join(project_root, 'public')
 
     # Input and output paths
-    input_logo = os.path.join(public_dir, 'WhiteLogoNoBackground.png')
-    output_logo = os.path.join(public_dir, 'LightBlueLogoNoBackground.png')
+    input_logo = os.path.join(public_dir, 'WhiteLogoNoBackground.webp')
+    output_logo = os.path.join(public_dir, 'LightBlueLogoNoBackground.webp')
 
     # Light blue color matching the site's blue palette
     # Using a very soft blue that will work well as a subtle background pattern
@@ -65,7 +65,7 @@ def main():
 
     # Also create a very light version for even subtler use
     very_light_blue = (220, 235, 255)  # Even lighter for subtle background
-    output_very_light = os.path.join(public_dir, 'VeryLightBlueLogoNoBackground.png')
+    output_very_light = os.path.join(public_dir, 'VeryLightBlueLogoNoBackground.webp')
     create_light_blue_logo(input_logo, output_very_light, very_light_blue)
     print(f"Created very light blue logo at: {output_very_light}")
 

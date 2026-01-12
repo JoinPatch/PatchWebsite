@@ -24,33 +24,33 @@ import Footer from '../components/sections/Footer.astro';
 
 // Mentor data
 const mentors = [
-	{ name: "Patrick Collison", title: "Co-founder and CEO of Stripe", imageSrc: "/FoundersAndMentors/PatrickCollison.jpg", link: "https://patrickcollison.com/" },
-	{ name: "Sarah Friar", title: "CFO of OpenAI & Co-Launcher of Ladies Who Launch", imageSrc: "/FoundersAndMentors/SarahFriar.jpg", link: "https://www.linkedin.com/in/sarah-friar/" },
-	{ name: "Prof. Luke O'Neil", title: "Professor of Biology at Trinity College Dublin", imageSrc: "/FoundersAndMentors/LukeONeil.jpg", link: "https://x.com/laoneill111" },
-	{ name: "Niamh Donnelly", title: "Co-Founder & CTO of Akara Robotics", imageSrc: "/FoundersAndMentors/NiamhDonnelly.jpg", link: "https://www.linkedin.com/in/niamh-donnelly-akara-robotics/" },
-	{ name: "Áine Kerr", title: "Co-Founder and COO at Kinzen, previously Facebook", imageSrc: "/FoundersAndMentors/AineKerr.jpg", link: "https://ainekerr.org/" },
-	{ name: "Patrick Walsh", title: "Founder of Dogpatch Labs", imageSrc: "/FoundersAndMentors/PatrickWalsh.jpg", link: "https://twitter.com/pwlsh" },
-	{ name: "Celine Halioua", title: "Founder of Loyal, helping dogs live longer", imageSrc: "/FoundersAndMentors/CelineHalioua.jpg", link: "https://www.celinehh.com/" },
-	{ name: "James Whelton", title: "Founder of CoderDojo", imageSrc: "/FoundersAndMentors/JamesWhelton.jpg", link: "https://whelton.io/" },
+	{ name: "Patrick Collison", title: "Co-founder and CEO of Stripe", imageSrc: "/FoundersAndMentors/PatrickCollison.webp", link: "https://patrickcollison.com/" },
+	{ name: "Sarah Friar", title: "CFO of OpenAI & Co-Launcher of Ladies Who Launch", imageSrc: "/FoundersAndMentors/SarahFriar.webp", link: "https://www.linkedin.com/in/sarah-friar/" },
+	{ name: "Prof. Luke O'Neil", title: "Professor of Biology at Trinity College Dublin", imageSrc: "/FoundersAndMentors/LukeONeil.webp", link: "https://x.com/laoneill111" },
+	{ name: "Niamh Donnelly", title: "Co-Founder & CTO of Akara Robotics", imageSrc: "/FoundersAndMentors/NiamhDonnelly.webp", link: "https://www.linkedin.com/in/niamh-donnelly-akara-robotics/" },
+	{ name: "Áine Kerr", title: "Co-Founder and COO at Kinzen, previously Facebook", imageSrc: "/FoundersAndMentors/AineKerr.webp", link: "https://ainekerr.org/" },
+	{ name: "Patrick Walsh", title: "Founder of Dogpatch Labs", imageSrc: "/FoundersAndMentors/PatrickWalsh.webp", link: "https://twitter.com/pwlsh" },
+	{ name: "Celine Halioua", title: "Founder of Loyal, helping dogs live longer", imageSrc: "/FoundersAndMentors/CelineHalioua.webp", link: "https://www.celinehh.com/" },
+	{ name: "James Whelton", title: "Founder of CoderDojo", imageSrc: "/FoundersAndMentors/JamesWhelton.webp", link: "https://whelton.io/" },
 ];
 
 // Supporter data
 const supporters = [
-	{ name: "Stripe", logoSrc: "/PartnerLogos/stripe-logo-black-and-white.png" },
-	{ name: "OpenAI", logoSrc: "/PartnerLogos/OpenAILogo.png" },
-	{ name: "NDRC", logoSrc: "/PartnerLogos/NDRC_Logo_White-01.png" },
-	{ name: "Abbey Capital", logoSrc: "/PartnerLogos/AC_Old_New_Logo_Artboard-2.png" },
-	{ name: "Dogpatch Labs", logoSrc: "/PartnerLogos/DogpatchLabsLogo.png" },
+	{ name: "Stripe", logoSrc: "/PartnerLogos/stripe-logo-black-and-white.webp" },
+	{ name: "OpenAI", logoSrc: "/PartnerLogos/OpenAILogo.webp" },
+	{ name: "NDRC", logoSrc: "/PartnerLogos/NDRC_Logo_White-01.webp" },
+	{ name: "Abbey Capital", logoSrc: "/PartnerLogos/AC_Old_New_Logo_Artboard-2.webp" },
+	{ name: "Dogpatch Labs", logoSrc: "/PartnerLogos/DogpatchLabsLogo.webp" },
 ];
 
 // Hero polaroid photos - 4 photos on desktop, 2 on mobile
 // Desktop: items 1-4 in grid | Mobile: items 1 & 5 side by side
 const heroPolaroids = [
-	{ src: "/SFFellowshipGoldenGateGroup.JPG", alt: "SF Fellowship group at Golden Gate", caption: "SF Fellowship '25" },
-	{ src: "/RobotGirl.jpg", alt: "Student with robot", caption: "Robot testing!" },
-	{ src: "/SummerProgrammeWorkingWithRTECamera.jpg", alt: "Patchers visited by RTE", caption: "Visited by RTE!" },
-	{ src: "/Robodog24Demoday.jpg", alt: "Patchdog at Demo Day", caption: "Demo Day '24" },
-	{ src: "/SummerProgrammeGroupWork1.jpg", alt: "Summer programme group work", caption: "Building together" }, // Mobile only
+	{ src: "/SFFellowshipGoldenGateGroup.webp", alt: "SF Fellowship group at Golden Gate", caption: "SF Fellowship '25" },
+	{ src: "/RobotGirl.webp", alt: "Student with robot", caption: "Robot testing!" },
+	{ src: "/SummerProgrammeWorkingWithRTECamera.webp", alt: "Patchers visited by RTE", caption: "Visited by RTE!" },
+	{ src: "/Robodog24Demoday.webp", alt: "Patchdog at Demo Day", caption: "Demo Day '24" },
+	{ src: "/SummerProgrammeGroupWork1.webp", alt: "Summer programme group work", caption: "Building together" }, // Mobile only
 ];
 ---
 
@@ -97,7 +97,7 @@ const heroPolaroids = [
 					<span class="tape tape-tl"></span>
 					<span class="tape tape-tr"></span>
 					<div class="founder-photo">
-						<img src="/TomMcCarthy.jpg" alt="Tom McCarthy" />
+						<img src="/TomMcCarthy.webp" alt="Tom McCarthy" />
 					</div>
 					<blockquote>"Patch exists to give curious, ambitious young people a space and community where they can realise their potential"</blockquote>
 					<cite>— Tom McCarthy, Patch Founder</cite>
@@ -169,9 +169,9 @@ const heroPolaroids = [
 					description="Seven weeks. 35 people. The flagship entry point into Patch. Teams build startups, research projects, or technology. Everything covered: accommodation, meals, expenses."
 					href="/summer-programme"
 					images={[
-						{ src: "/example1.jpg", alt: "Team presenting on stage" },
-						{ src: "/Example2.jpg", alt: "Group photo" },
-						{ src: "/SummerProgrammeRobodogStage.jpg", alt: "People working on projects" }
+						{ src: "/example1.webp", alt: "Team presenting on stage" },
+						{ src: "/Example2.webp", alt: "Group photo" },
+						{ src: "/SummerProgrammeRobodogStage.webp", alt: "People working on projects" }
 					]}
 				/>
 
@@ -181,7 +181,7 @@ const heroPolaroids = [
 					href="/grants"
 					figureNum="FIG. 3"
 					>
-					<img slot="image" src="/GrantsTomasMarkey.JPG" alt="Grant recipient project" />
+					<img slot="image" src="/GrantsTomasMarkey.webp" alt="Grant recipient project" />
 				</CardAlt>
 
 				<CardAlt
@@ -190,7 +190,7 @@ const heroPolaroids = [
 					href="/sf-fellowship"
 					figureNum="FIG. 4"
 					>
-					<img slot="image" src="/SFFellowshipGoldenGateGroup.JPG" alt="SF Fellowship group at Golden Gate Bridge" />
+					<img slot="image" src="/SFFellowshipGoldenGateGroup.webp" alt="SF Fellowship group at Golden Gate Bridge" />
 				</CardAlt>
 
 				<CardAlt
@@ -199,7 +199,7 @@ const heroPolaroids = [
 					href="https://www.jointecs.org/"
 					figureNum="FIG. 2"
 					>
-					<img slot="image" src="/TECS.jpg" alt="TECS competition prize winners" />
+					<img slot="image" src="/TECS.webp" alt="TECS competition prize winners" />
 				</CardAlt>
 			</div>
 		</div>
@@ -225,7 +225,7 @@ const heroPolaroids = [
 				<div class="tape tape-tl"></div>
 				<div class="tape tape-tr"></div>
 				<div class="initiative-image">
-					<img src="/AlumniLedInitiatives/HackIrelandGroupPicture.jpg" alt="Hack Ireland hackathon" />
+					<img src="/AlumniLedInitiatives/HackIrelandGroupPicture.webp" alt="Hack Ireland hackathon" />
 				</div>
 				<div class="initiative-content">
 					<span class="project-label">PROJECT 01</span>
@@ -238,7 +238,7 @@ const heroPolaroids = [
 				<div class="tape tape-tl"></div>
 				<div class="tape tape-tr"></div>
 				<div class="initiative-image">
-					<img src="/AlumniLedInitiatives/RoboWarsGirl.jpg" alt="RoboWars competition" />
+					<img src="/AlumniLedInitiatives/RoboWarsGirl.webp" alt="RoboWars competition" />
 				</div>
 				<div class="initiative-content">
 					<span class="project-label">PROJECT 02</span>
@@ -251,7 +251,7 @@ const heroPolaroids = [
 				<div class="tape tape-tl"></div>
 				<div class="tape tape-tr"></div>
 				<div class="initiative-image">
-					<img src="/AlumniLedInitiatives/Eirspace.png" alt="Eirspace rocket" />
+					<img src="/AlumniLedInitiatives/Eirspace.webp" alt="Eirspace rocket" />
 				</div>
 				<div class="initiative-content">
 					<span class="project-label">PROJECT 03</span>
@@ -264,7 +264,7 @@ const heroPolaroids = [
 				<div class="tape tape-tl"></div>
 				<div class="tape tape-tr"></div>
 				<div class="initiative-image">
-					<img src="/AlumniLedInitiatives/GiveAGo.png" alt="Give(a)go workshop" />
+					<img src="/AlumniLedInitiatives/GiveAGo.webp" alt="Give(a)go workshop" />
 				</div>
 				<div class="initiative-content">
 					<span class="project-label">PROJECT 04</span>
@@ -286,7 +286,7 @@ const heroPolaroids = [
 				quote: `Of everything interesting that's ever happened in my life, a ridiculous fraction has been downstream of Patch. <span class="highlight">The belief that 'you can just do things' never left me.</span>`,
 				authorName: "Sam Enright",
 				authorTitle: "Patch 2019, Progress Ireland cofounder",
-				photoSrc: "/AlumniPhotos/SamEnright.jpg",
+				photoSrc: "/AlumniPhotos/SamEnright.webp",
 				date: "12/03/2022",
 				entryNum: "#103"
 			},
@@ -294,7 +294,7 @@ const heroPolaroids = [
 				quote: `<span class="highlight">Patch completely changed how I think about ambition and impact.</span> Being surrounded by people building boldly pushed me to dream bigger.`,
 				authorName: "Diana Hrisovescu",
 				authorTitle: "Patch 2021,O'Shaughnessy Ventures Fellow",
-				photoSrc: "/AlumniPhotos/DianaH.jpg",
+				photoSrc: "/AlumniPhotos/DianaH.webp",
 				date: "28/07/2023",
 				entryNum: "#156"
 			},
@@ -327,7 +327,7 @@ const heroPolaroids = [
 			<div class="companies-grid">
 				<div class="company-card">
 					<div class="company-image">
-						<img slot="image" src="/AlumniCompanies/Ulysses2ColmOBrien.png" alt="Ulysses underwater robots" />
+						<img slot="image" src="/AlumniCompanies/Ulysses2ColmOBrien.webp" alt="Ulysses underwater robots" />
 					</div>
 					<div class="company-info">
 						<h4><a href="https://www.ulysses.inc/" target="_blank">Ulysses</a></h4>
@@ -338,7 +338,7 @@ const heroPolaroids = [
 
 				<div class="company-card">
 					<div class="company-image">
-						<img slot="image" src="/AlumniCompanies/JamiePalmerIcarusRobotics.png" alt="Icarus Robotics at Times Square" />
+						<img slot="image" src="/AlumniCompanies/JamiePalmerIcarusRobotics.webp" alt="Icarus Robotics at Times Square" />
 					</div>
 					<div class="company-info">
 						<h4><a href="https://www.icarusrobotics.com/" target="_blank">Icarus Robotics</a></h4>
@@ -349,7 +349,7 @@ const heroPolaroids = [
 
 				<div class="company-card">
 					<div class="company-image">
-						<img slot="image" src="/FieldOfVisionTablet.jpg" alt="Field of Vision haptic devices" />
+						<img slot="image" src="/FieldOfVisionTablet.webp" alt="Field of Vision haptic devices" />
 					</div>
 					<div class="company-info">
 						<h4><a href="https://fov.ie/" target="_blank">Field of Vision</a></h4>
@@ -360,7 +360,7 @@ const heroPolaroids = [
 
 				<div class="company-card">
 					<div class="company-image">
-						<img slot="image" src="/AlumniCompanies/Induct.jpeg" alt="Induct team" />
+						<img slot="image" src="/AlumniCompanies/Induct.webp" alt="Induct team" />
 						<div class="photo-placeholder"></div>
 					</div>
 					<div class="company-info">
@@ -390,7 +390,7 @@ const heroPolaroids = [
 						<div class="tape tape-tl"></div>
 						<div class="tape tape-tr"></div>
 						<PhotoFrame
-							src="/AlumniPhotos/AidanWithRocket.jpg"
+							src="/AlumniPhotos/AidanWithRocket.webp"
 							alt="Aidan McNeill at Firefly Aerospace"
 							aspectRatio="4/3"
 							borderStyle="accent"
@@ -402,7 +402,7 @@ const heroPolaroids = [
 						<div class="tape tape-tl"></div>
 						<div class="tape tape-tr"></div>
 						<PhotoFrame
-							src="/AlumniPhotos/ColmRedBull.png"
+							src="/AlumniPhotos/ColmRedBull.webp"
 							alt="Colm O'Brien at Red Bull Racing"
 							aspectRatio="4/3"
 							borderStyle="accent"
@@ -413,7 +413,7 @@ const heroPolaroids = [
 						<div class="tape tape-tl"></div>
 						<div class="tape tape-tr"></div>
 						<PhotoFrame
-							src="/AlumniPhotos/dianaBura2.jpg"
+							src="/AlumniPhotos/dianaBura2.webp"
 							alt="Diana Bura"
 							aspectRatio="4/3"
 							borderStyle="accent"
@@ -609,7 +609,7 @@ const heroPolaroids = [
 	.programmes-texture {
 		position: absolute;
 		inset: 0;
-		background-image: url('/noise.png');
+		background-image: url('/noise.webp');
 		background-size: 200px;
 		opacity: 0.08;
 		mix-blend-mode: overlay;

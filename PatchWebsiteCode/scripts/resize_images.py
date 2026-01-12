@@ -33,7 +33,7 @@ PUBLIC_DIR = Path(__file__).parent / "public"
 IMAGE_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.webp'}
 
 # Folders/files to skip
-SKIP_PATTERNS = {'node_modules', '.git', 'favicon', 'noise.png'}
+SKIP_PATTERNS = {'node_modules', '.git', 'favicon', 'noise.webp'}
 
 
 def should_skip(path: Path) -> bool:
