@@ -1,6 +1,6 @@
 from PIL import Image
 
-img = Image.open("./public/FullLogoWhite.png").convert("RGBA")
+img = Image.open("./public/FullLogoWhite.webp").convert("RGBA")
 pixels = img.getdata()
 
 new_pixels = []
@@ -13,4 +13,4 @@ for r, g, b, a in pixels:
         new_pixels.append((r, g, b, a))
 
 img.putdata(new_pixels)
-img.save("output.png")
+img.save("output.webp")
