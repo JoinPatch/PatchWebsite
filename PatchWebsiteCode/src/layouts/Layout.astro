@@ -5,7 +5,10 @@ interface Props {
 	title?: string;
 }
 
-const { title = 'Patch' } = Astro.props;
+const {
+  title = 'Patch',
+  description = "Patch is Ireland’s community for ambitious young technologists, scientists, and entrepreneurs."
+} = Astro.props;
 ---
 
 <!doctype html>
