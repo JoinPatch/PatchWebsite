@@ -196,17 +196,12 @@ const meetings = [
 
 		<Divider />
 
-		<!-- Contact -->
-		<!-- <section class="contact-section">
-			<div class="contact-content">
-				<p class="contact-text">
-					The SF Fellowship is invitation-only. If you're interested in learning more or think you'd be a good fit, reach out to us.
-				</p>
-				<p class="contact-email">
-					<a href="mailto:team@joinpatch.org">team@joinpatch.org</a>
-				</p>
+		<!-- Partners note -->
+		<section class="partners-section">
+			<div class="partners-content">
+				<p class="thanks">The SF Fellowship was made possible by our core partners and additional help from <strong>Finn Murphy</strong> at Nebular VC, and <strong>Emma Waldron Chen</strong>.</p>
 			</div>
-		</section> -->
+		</section>
 
 	</div><!-- end page-content -->
 
@@ -519,6 +514,27 @@ const meetings = [
 
 	.gallery-item-3 {
 		transform: rotate(-0.5deg);
+	}
+
+	/* Partners section */
+	.partners-section {
+		padding: 48px 24px;
+	}
+
+	.partners-content {
+		max-width: 600px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	.partners-content .thanks {
+		font-size: var(--text-sm);
+		color: var(--text-muted);
+		line-height: 1.6;
+	}
+
+	.partners-content strong {
+		color: var(--text-primary);
 	}
 
 	/* Contact section */
