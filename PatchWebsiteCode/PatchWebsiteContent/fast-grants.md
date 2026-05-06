@@ -107,7 +107,7 @@ Yes! If your idea evolves or you have a new one, you’re welcome to apply again
 
 Thanks to generous partner support, we are able to offer **€20,000 in grants over the next year**. Applications are reviewed on a rolling basis until the annual budget is depleted.
 
-With special thanks to **Brian Kingham, Mark Cummins, Joe Liemandt, Rob Granieri,** and **Craig Falls**.
+With special thanks to **Marc McCabe, Jack O'Meara, Brian Kingham, Mark Cummins, Joe Liemandt, Rob Granieri,** and **Craig Falls**.
 
 ---
 
