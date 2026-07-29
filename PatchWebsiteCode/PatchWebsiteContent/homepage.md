@@ -71,10 +71,10 @@
 
 **CTA:** Learn more →
 
-### Patch Grants
+### Fast Grants
 [Photo: hardware project or grant recipient]
 
-> €200-€1,000 Patch Grants for 13-19 year olds to build hardware, attend conferences, or start events. Quick decisions, no bureaucracy.
+> €200-€1,000 grants for 13-19 year olds to build hardware, attend conferences, or start events. Quick decisions, no bureaucracy.
 
 **CTA:** Learn more →
 
@@ -300,7 +300,7 @@
 - Programmes
   - Summer Programme
   - TECS
-  - Patch Grants
+  - Fast Grants
   - SF Fellowship
 - Alumni
 - Impact Report
@@ -370,7 +370,7 @@ Homepage accessible by the Patch Logo in the top left corner
 
 - Programmes: 
   - Summer Accelerator 
-  - Patch Grants 
+  - Grants 
   - SF Fellowship 
   - TECS (link to jointecs.org website)
 - About (page in itself if double clicked):
