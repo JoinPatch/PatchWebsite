@@ -1,6 +1,6 @@
 # Patch Grants
 
-**Quick Patch Grants of €200–€1,000 for young builders in Ireland — go build.**
+**Quick grants of €200–€1,000 for young builders in Ireland — go build.**
 
 Patch Grants support young builders in Ireland (ages **13–19**) with fast, flexible funding to help you take action and learn by doing.
 
@@ -21,7 +21,7 @@ Whether you want to:
 - **Turnaround:** ~1 week  
 - **Process:** Short form → 15–30 min call → decision  
 
-These Patch Grants are designed to help early builders get started fast — before you have a network, track record, or budget. Even small projects can unlock confidence, skills, and a lifelong builder identity.
+These grants are designed to help early builders get started fast — before you have a network, track record, or budget. Even small projects can unlock confidence, skills, and a lifelong builder identity.
 
 ---
 
@@ -86,7 +86,7 @@ Fast and lightweight:
 ---
 
 ### Do I get mentorship?
-Yes. We connect you with someone helpful in your domain when relevant. These Patch Grants are about momentum, not bureaucracy — mentorship is tailored and lightweight.
+Yes. We connect you with someone helpful in your domain when relevant. These grants are about momentum, not bureaucracy — mentorship is tailored and lightweight.
 
 ---
 
@@ -105,7 +105,7 @@ Yes! If your idea evolves or you have a new one, you’re welcome to apply again
 
 ## Partners
 
-Thanks to generous partner support, we are able to offer **€20,000 in Patch Grants over the next year**. Applications are reviewed on a rolling basis until the annual budget is depleted.
+Thanks to generous partner support, we are able to offer **€20,000 in grants over the next year**. Applications are reviewed on a rolling basis until the annual budget is depleted.
 
 With special thanks to **Marc McCabe, Jack O'Meara, Brian Kingham, Mark Cummins, Joe Liemandt, Rob Granieri,** and **Craig Falls**.
 
